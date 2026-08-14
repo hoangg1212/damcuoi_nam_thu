@@ -36,7 +36,7 @@ export default function Hero() {
         >
 
             <Image
-                src="/images/hero.jpg"
+                src="/images/banner.png"
 
                 alt="Nguyễn Nam và Huỳnh Thư"
 

@@ -11,17 +11,18 @@ import { wedding } from "@/data/wedding";
 
 
 type TimeLeft = {
-    days:
-        number;
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+};
 
-    hours:
-        number;
 
-    minutes:
-        number;
-
-    seconds:
-        number;
+const initialTime: TimeLeft = {
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
 };
 
 
@@ -91,12 +92,30 @@ export default function Countdown() {
         setTime,
     ] =
         useState<TimeLeft>(
-            calculateTime()
+            initialTime
         );
+
+
+    const [
+        mounted,
+        setMounted,
+    ] =
+        useState(false);
 
 
     useEffect(() => {
 
+        // Đánh dấu component đã chạy phía client
+        setMounted(true);
+
+
+        // Tính ngay khi component mount
+        setTime(
+            calculateTime()
+        );
+
+
+        // Sau đó cập nhật mỗi 1 giây
         const interval =
             setInterval(
                 () => {
@@ -110,10 +129,13 @@ export default function Countdown() {
             );
 
 
-        return () =>
+        return () => {
+
             clearInterval(
                 interval
             );
+
+        };
 
     }, []);
 
@@ -278,12 +300,16 @@ export default function Countdown() {
                                         md:text-8xl
                                     "
                                 >
-                                    {String(
-                                        item.value
-                                    ).padStart(
-                                        2,
-                                        "0"
-                                    )}
+                                    {
+                                        mounted
+                                            ? String(
+                                                item.value
+                                            ).padStart(
+                                                2,
+                                                "0"
+                                            )
+                                            : "--"
+                                    }
                                 </strong>
 
 

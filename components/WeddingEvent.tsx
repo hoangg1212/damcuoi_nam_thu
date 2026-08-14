@@ -430,7 +430,7 @@ END:VCALENDAR`;
                     >
 
                         <Image
-                            src="/images/gallery-01.jpg"
+                            src="/images/event.png"
 
                             alt="Ngày chung đôi của Nam và Thư"
 

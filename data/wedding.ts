@@ -7,7 +7,7 @@ export const wedding = {
     groom: {
         fullName: "Nguyễn Nam",
         shortName: "Nam",
-        image: "/images/groom.jpg",
+        image: "/images/chure.png",
 
         description:
             "Có thể không phải người hoàn hảo nhất, nhưng luôn mong được trở thành người đủ chân thành, đủ vững vàng để cùng Thư đi qua những tháng năm phía trước.",
@@ -16,7 +16,7 @@ export const wedding = {
     bride: {
         fullName: "Huỳnh Thư",
         shortName: "Thư",
-        image: "/images/bride.jpg",
+        image: "/images/codau.png",
 
         description:
             "Một cô gái dịu dàng theo cách riêng, luôn trân trọng những điều giản dị và tin rằng hạnh phúc đẹp nhất là có một người để cùng sẻ chia mỗi ngày.",
@@ -55,7 +55,7 @@ export const wedding = {
                 "Khi ấy, chẳng ai biết rằng một cuộc gặp tưởng như rất bình thường lại là khởi đầu cho một câu chuyện mà sau này cả hai đều muốn gìn giữ thật lâu.",
 
             image:
-                "/images/story-1.jpg",
+                "/images/story-1.png",
         },
 
         {
@@ -69,7 +69,7 @@ export const wedding = {
                 "Từ những câu chuyện không đầu không cuối, những lần hẹn giản dị đến những chuyến đi đầu tiên, chúng mình dần hiểu rằng điều đáng quý nhất chính là có nhau đồng hành.",
 
             image:
-                "/images/story-2.jpg",
+                "/images/story-2.png",
         },
 
         {
@@ -83,7 +83,7 @@ export const wedding = {
                 "Sau những niềm vui, những lần giận hờn và những lúc cần học cách thấu hiểu nhau hơn, Nam và Thư nhận ra rằng người mình muốn cùng đi tiếp vẫn luôn là người đang ở bên cạnh.",
 
             image:
-                "/images/story-3.jpg",
+                "/images/story-3.png",
         },
 
         {
@@ -97,14 +97,14 @@ export const wedding = {
                 "Ngày hôm nay không phải là kết thúc của một câu chuyện tình yêu, mà là khởi đầu cho một hành trình mới — nơi hai người sẽ cùng nhau xây dựng một mái nhà mang tên chúng ta.",
 
             image:
-                "/images/hero.jpg",
+                "/images/story-4.png",
         },
     ],
 
     gallery: [
         {
             src:
-                "/images/gallery-01.jpg",
+                "/images/gallery-01.png",
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
@@ -112,7 +112,7 @@ export const wedding = {
 
         {
             src:
-                "/images/gallery-02.jpg",
+                "/images/gallery-02.png",
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
@@ -120,7 +120,7 @@ export const wedding = {
 
         {
             src:
-                "/images/gallery-03.jpg",
+                "/images/gallery-03.png",
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
@@ -128,7 +128,7 @@ export const wedding = {
 
         {
             src:
-                "/images/gallery-04.jpg",
+                "/images/gallery-04.png",
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
@@ -136,7 +136,7 @@ export const wedding = {
 
         {
             src:
-                "/images/gallery-05.jpg",
+                "/images/gallery-05.png",
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
@@ -144,7 +144,7 @@ export const wedding = {
 
         {
             src:
-                "/images/gallery-06.jpg",
+                "/images/gallery-06.png",
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
@@ -163,7 +163,7 @@ export const wedding = {
             "Riverside Palace",
 
         address:
-            "360D Bến Vân Đồn, Quận 4, Thành phố Hồ Chí Minh",
+            "Địa chỉ: Tại gia",
 
         receptionTime:
             "10:30",

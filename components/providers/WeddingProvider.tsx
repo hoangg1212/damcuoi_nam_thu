@@ -36,8 +36,7 @@ type WeddingContextType = {
 
 const WeddingContext =
     createContext<
-        WeddingContextType |
-        undefined
+        WeddingContextType | undefined
     >(undefined);
 
 
@@ -48,11 +47,19 @@ export default function WeddingProvider({
         React.ReactNode;
 }) {
 
+    /* =====================================================
+       AUDIO REF
+    ===================================================== */
+
     const audioRef =
         useRef<HTMLAudioElement>(
             null
         );
 
+
+    /* =====================================================
+       STATE MỞ THIỆP
+    ===================================================== */
 
     const [
         invitationOpened,
@@ -61,6 +68,10 @@ export default function WeddingProvider({
         useState(false);
 
 
+    /* =====================================================
+       STATE NHẠC
+    ===================================================== */
+
     const [
         isPlaying,
         setIsPlaying,
@@ -68,28 +79,40 @@ export default function WeddingProvider({
         useState(false);
 
 
-    /* =========================
-       AUDIO VOLUME
-    ========================= */
+    /* =====================================================
+       CẤU HÌNH ÂM LƯỢNG
+    ===================================================== */
 
     useEffect(() => {
 
-        if (
-            audioRef.current
-        ) {
+        const audio =
+            audioRef.current;
 
-            audioRef.current.volume =
-                0.28;
 
+        if (!audio) {
+            return;
         }
+
+
+        /*
+            0.28 = 28%
+
+            Bạn có thể chỉnh:
+            0.1  = nhỏ
+            0.3  = vừa
+            0.5  = khá lớn
+            1    = tối đa
+        */
+
+        audio.volume =
+            0.28;
 
     }, []);
 
 
-    /* =========================
-       KHÓA SCROLL TRƯỚC KHI
-       MỞ THIỆP
-    ========================= */
+    /* =====================================================
+       KHÓA SCROLL KHI CHƯA MỞ THIỆP
+    ===================================================== */
 
     useEffect(() => {
 
@@ -120,9 +143,9 @@ export default function WeddingProvider({
     ]);
 
 
-    /* =========================
-       PLAY
-    ========================= */
+    /* =====================================================
+       PLAY MUSIC
+    ===================================================== */
 
     const playMusic =
         useCallback(
@@ -133,6 +156,11 @@ export default function WeddingProvider({
 
 
                 if (!audio) {
+
+                    console.log(
+                        "❌ Không tìm thấy audio"
+                    );
+
                     return false;
                 }
 
@@ -141,9 +169,16 @@ export default function WeddingProvider({
 
                     await audio.play();
 
+
                     setIsPlaying(
                         true
                     );
+
+
+                    console.log(
+                        "🎵 Nhạc đang phát"
+                    );
+
 
                     return true;
 
@@ -152,9 +187,15 @@ export default function WeddingProvider({
                 ) {
 
                     console.log(
-                        "Không phát được nhạc:",
+                        "❌ Không phát được nhạc:",
                         error
                     );
+
+
+                    setIsPlaying(
+                        false
+                    );
+
 
                     return false;
                 }
@@ -164,9 +205,9 @@ export default function WeddingProvider({
         );
 
 
-    /* =========================
-       PAUSE
-    ========================= */
+    /* =====================================================
+       PAUSE MUSIC
+    ===================================================== */
 
     const pauseMusic =
         useCallback(
@@ -183,8 +224,14 @@ export default function WeddingProvider({
 
                 audio.pause();
 
+
                 setIsPlaying(
                     false
+                );
+
+
+                console.log(
+                    "⏸ Nhạc đã tạm dừng"
                 );
 
             },
@@ -192,17 +239,25 @@ export default function WeddingProvider({
         );
 
 
-    /* =========================
-       TOGGLE
-    ========================= */
+    /* =====================================================
+       TOGGLE MUSIC
+    ===================================================== */
 
     const toggleMusic =
         useCallback(
             async () => {
 
+                const audio =
+                    audioRef.current;
+
+
+                if (!audio) {
+                    return;
+                }
+
+
                 if (
-                    audioRef.current
-                        ?.paused
+                    audio.paused
                 ) {
 
                     await playMusic();
@@ -215,11 +270,15 @@ export default function WeddingProvider({
 
             },
             [
-                pauseMusic,
                 playMusic,
+                pauseMusic,
             ]
         );
 
+
+    /* =====================================================
+       HOÀN TẤT MỞ THIỆP
+    ===================================================== */
 
     function finishInvitation() {
 
@@ -251,31 +310,56 @@ export default function WeddingProvider({
             {children}
 
 
-            {/* NHẠC NỀN */}
+            {/* =================================================
+                AUDIO BACKGROUND
+
+                Dùng <audio> nên video MP4 sẽ KHÔNG hiện hình.
+
+                Browser chỉ dùng track âm thanh.
+            ================================================= */}
 
             <audio
                 ref={audioRef}
-                src={wedding.music}
-                loop
-                preload="metadata"
 
-                onPlay={() =>
+                src={wedding.music}
+
+                loop
+
+                preload="auto"
+
+                onPlay={() => {
+
                     setIsPlaying(
                         true
-                    )
-                }
+                    );
 
-                onPause={() =>
+                }}
+
+                onPause={() => {
+
                     setIsPlaying(
                         false
-                    )
-                }
+                    );
+
+                }}
+
+                onEnded={() => {
+
+                    setIsPlaying(
+                        false
+                    );
+
+                }}
             />
 
         </WeddingContext.Provider>
     );
 }
 
+
+/* =========================================================
+   CUSTOM HOOK
+========================================================= */
 
 export function useWedding() {
 
@@ -288,7 +372,7 @@ export function useWedding() {
     if (!context) {
 
         throw new Error(
-            "useWedding phải được sử dụng bên trong WeddingProvider."
+            "useWedding phải nằm bên trong WeddingProvider."
         );
     }
 
