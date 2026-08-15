@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import {
     useEffect,
     useState,
@@ -18,14 +16,6 @@ type TimeLeft = {
 };
 
 
-const initialTime: TimeLeft = {
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-};
-
-
 function calculateTime(): TimeLeft {
 
     const distance =
@@ -35,9 +25,7 @@ function calculateTime(): TimeLeft {
         Date.now();
 
 
-    if (
-        distance <= 0
-    ) {
+    if (distance <= 0) {
 
         return {
             days: 0,
@@ -49,6 +37,7 @@ function calculateTime(): TimeLeft {
 
 
     return {
+
         days:
             Math.floor(
                 distance /
@@ -81,8 +70,147 @@ function calculateTime(): TimeLeft {
                 ) /
                 1000
             ),
+
     };
 }
+
+
+const floatingItems = [
+
+    {
+        left: "5%",
+        delay: "0s",
+        duration: "14s",
+        size: 18,
+        type: "♡",
+    },
+
+    {
+        left: "14%",
+        delay: "4s",
+        duration: "17s",
+        size: 11,
+        type: "♥",
+    },
+
+    {
+        left: "23%",
+        delay: "7s",
+        duration: "15s",
+        size: 15,
+        type: "♡",
+    },
+
+    {
+        left: "35%",
+        delay: "2s",
+        duration: "18s",
+        size: 10,
+        type: "♥",
+    },
+
+    {
+        left: "47%",
+        delay: "9s",
+        duration: "16s",
+        size: 16,
+        type: "♡",
+    },
+
+    {
+        left: "59%",
+        delay: "5s",
+        duration: "19s",
+        size: 12,
+        type: "♥",
+    },
+
+    {
+        left: "70%",
+        delay: "1s",
+        duration: "15s",
+        size: 17,
+        type: "♡",
+    },
+
+    {
+        left: "81%",
+        delay: "8s",
+        duration: "17s",
+        size: 11,
+        type: "♥",
+    },
+
+    {
+        left: "92%",
+        delay: "3s",
+        duration: "20s",
+        size: 15,
+        type: "♡",
+    },
+
+];
+
+
+const bubbles = [
+
+    {
+        left: "8%",
+        size: 34,
+        delay: "2s",
+        duration: "17s",
+    },
+
+    {
+        left: "19%",
+        size: 18,
+        delay: "7s",
+        duration: "14s",
+    },
+
+    {
+        left: "31%",
+        size: 46,
+        delay: "4s",
+        duration: "20s",
+    },
+
+    {
+        left: "44%",
+        size: 25,
+        delay: "0s",
+        duration: "16s",
+    },
+
+    {
+        left: "56%",
+        size: 38,
+        delay: "9s",
+        duration: "19s",
+    },
+
+    {
+        left: "68%",
+        size: 20,
+        delay: "5s",
+        duration: "15s",
+    },
+
+    {
+        left: "79%",
+        size: 42,
+        delay: "1s",
+        duration: "21s",
+    },
+
+    {
+        left: "91%",
+        size: 26,
+        delay: "6s",
+        duration: "17s",
+    },
+
+];
 
 
 export default function Countdown() {
@@ -91,31 +219,26 @@ export default function Countdown() {
         time,
         setTime,
     ] =
-        useState<TimeLeft>(
-            initialTime
+        useState<TimeLeft | null>(
+            null
         );
-
-
-    const [
-        mounted,
-        setMounted,
-    ] =
-        useState(false);
 
 
     useEffect(() => {
 
-        // Đánh dấu component đã chạy phía client
-        setMounted(true);
+        const firstUpdate =
+            setTimeout(
+                () => {
+
+                    setTime(
+                        calculateTime()
+                    );
+
+                },
+                0
+            );
 
 
-        // Tính ngay khi component mount
-        setTime(
-            calculateTime()
-        );
-
-
-        // Sau đó cập nhật mỗi 1 giây
         const interval =
             setInterval(
                 () => {
@@ -131,6 +254,10 @@ export default function Countdown() {
 
         return () => {
 
+            clearTimeout(
+                firstUpdate
+            );
+
             clearInterval(
                 interval
             );
@@ -141,37 +268,31 @@ export default function Countdown() {
 
 
     const values = [
-        {
-            label:
-                "Ngày",
 
+        {
+            label: "Ngày",
             value:
-                time.days,
+                time?.days,
         },
 
         {
-            label:
-                "Giờ",
-
+            label: "Giờ",
             value:
-                time.hours,
+                time?.hours,
         },
 
         {
-            label:
-                "Phút",
-
+            label: "Phút",
             value:
-                time.minutes,
+                time?.minutes,
         },
 
         {
-            label:
-                "Giây",
-
+            label: "Giây",
             value:
-                time.seconds,
+                time?.seconds,
         },
+
     ];
 
 
@@ -188,37 +309,275 @@ export default function Countdown() {
 
                 overflow-hidden
 
+                bg-gradient-to-br
+
+                from-[#fff9f6]
+                via-[#f9eae4]
+                to-[#efd7cf]
+
                 px-5
                 py-24
 
-                text-white
+                md:min-h-[720px]
             "
         >
 
-            <Image
-                src="/images/gallery-03.jpg"
 
-                alt="Đếm ngược ngày cưới"
+            {/* ================================= */}
+            {/* BACKGROUND GLOW */}
+            {/* ================================= */}
 
-                fill
-
-                sizes="100vw"
-
+            <div
                 className="
-                    object-cover
+                    countdown-glow-1
+
+                    pointer-events-none
+
+                    absolute
+
+                    -left-32
+                    -top-32
+
+                    h-[420px]
+                    w-[420px]
+
+                    rounded-full
+
+                    bg-[#f4bdb0]/30
+
+                    blur-[110px]
                 "
             />
 
 
             <div
                 className="
-                    absolute
-                    inset-0
+                    countdown-glow-2
 
-                    bg-black/60
+                    pointer-events-none
+
+                    absolute
+
+                    -bottom-40
+                    -right-28
+
+                    h-[500px]
+                    w-[500px]
+
+                    rounded-full
+
+                    bg-[#e5c3a6]/35
+
+                    blur-[130px]
                 "
             />
 
+
+            <div
+                className="
+                    countdown-glow-3
+
+                    pointer-events-none
+
+                    absolute
+
+                    left-1/2
+                    top-1/2
+
+                    h-[350px]
+                    w-[350px]
+
+                    -translate-x-1/2
+                    -translate-y-1/2
+
+                    rounded-full
+
+                    bg-white/60
+
+                    blur-[120px]
+                "
+            />
+
+
+            {/* ================================= */}
+            {/* BUBBLES */}
+            {/* ================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+                    inset-0
+
+                    overflow-hidden
+                "
+            >
+
+                {bubbles.map(
+                    (
+                        bubble,
+                        index
+                    ) => (
+
+                        <span
+                            key={
+                                `bubble-${index}`
+                            }
+
+                            className="
+                                countdown-bubble
+
+                                absolute
+
+                                -bottom-20
+
+                                rounded-full
+
+                                border
+                                border-white/70
+
+                                bg-white/15
+
+                                shadow-[inset_0_0_18px_rgba(255,255,255,0.7)]
+
+                                backdrop-blur-[2px]
+                            "
+
+                            style={{
+                                left:
+                                    bubble.left,
+
+                                width:
+                                    bubble.size,
+
+                                height:
+                                    bubble.size,
+
+                                animationDelay:
+                                    bubble.delay,
+
+                                animationDuration:
+                                    bubble.duration,
+                            }}
+                        />
+
+                    )
+                )}
+
+            </div>
+
+
+            {/* ================================= */}
+            {/* FLOATING HEARTS */}
+            {/* ================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+                    inset-0
+
+                    overflow-hidden
+                "
+            >
+
+                {floatingItems.map(
+                    (
+                        item,
+                        index
+                    ) => (
+
+                        <span
+                            key={
+                                `heart-${index}`
+                            }
+
+                            className="
+                                countdown-heart
+
+                                absolute
+
+                                -bottom-10
+
+                                text-[#c88879]/45
+                            "
+
+                            style={{
+                                left:
+                                    item.left,
+
+                                fontSize:
+                                    item.size,
+
+                                animationDelay:
+                                    item.delay,
+
+                                animationDuration:
+                                    item.duration,
+                            }}
+                        >
+                            {item.type}
+                        </span>
+
+                    )
+                )}
+
+            </div>
+
+
+            {/* ================================= */}
+            {/* DECORATION TOP */}
+            {/* ================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+                    left-1/2
+                    top-12
+
+                    -translate-x-1/2
+
+                    flex
+                    items-center
+
+                    gap-4
+
+                    text-[#b98073]/40
+                "
+            >
+
+                <span
+                    className="
+                        h-px
+                        w-10
+
+                        bg-[#b98073]/30
+                    "
+                />
+
+                <span>
+                    ♡
+                </span>
+
+                <span
+                    className="
+                        h-px
+                        w-10
+
+                        bg-[#b98073]/30
+                    "
+                />
+
+            </div>
+
+
+            {/* ================================= */}
+            {/* MAIN CONTENT */}
+            {/* ================================= */}
 
             <div
                 className="
@@ -226,52 +585,129 @@ export default function Countdown() {
                     z-10
 
                     mx-auto
+
                     w-full
-                    max-w-5xl
+                    max-w-6xl
 
                     text-center
                 "
             >
 
+
+                {/* SMALL TITLE */}
+
                 <p
                     className="
-                        text-[9px]
+                        text-[8px]
+
+                        font-medium
 
                         uppercase
 
-                        tracking-[0.4em]
+                        tracking-[0.42em]
 
-                        text-white/60
+                        text-[#9b756b]/70
+
+                        md:text-[9px]
                     "
                 >
                     Đếm ngược đến ngày hạnh phúc
                 </p>
 
 
+                {/* TITLE */}
+
                 <h2
                     className="
                         font-wedding-serif
 
-                        mt-4
+                        mx-auto
 
-                        text-4xl
+                        mt-5
+
+                        max-w-3xl
+
+                        text-[38px]
                         font-light
+
+                        leading-tight
+
+                        text-[#5b4741]
+
+                        sm:text-5xl
 
                         md:text-6xl
                     "
                 >
-                    Ngày chúng mình về chung một nhà
+                    Ngày chúng mình
+                    <br />
+
+                    <span
+                        className="
+                            italic
+
+                            text-[#b97869]
+                        "
+                    >
+                        về chung một nhà
+                    </span>
                 </h2>
 
 
+                {/* HEART */}
+
                 <div
                     className="
-                        mt-14
+                        countdown-main-heart
+
+                        mx-auto
+                        mt-6
+
+                        flex
+
+                        h-10
+                        w-10
+
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        border
+                        border-[#d6aaa0]/40
+
+                        bg-white/40
+
+                        text-[#bd7b6c]
+
+                        shadow-[0_8px_25px_rgba(128,79,67,0.08)]
+
+                        backdrop-blur-md
+                    "
+                >
+                    ♥
+                </div>
+
+
+                {/* ================================= */}
+                {/* COUNTDOWN */}
+                {/* ================================= */}
+
+                <div
+                    className="
+                        mx-auto
+
+                        mt-12
 
                         grid
+
+                        max-w-5xl
+
                         grid-cols-2
 
-                        gap-8
+                        gap-5
+
+                        sm:gap-7
 
                         md:grid-cols-4
                     "
@@ -279,55 +715,189 @@ export default function Countdown() {
 
                     {values.map(
                         (
-                            item
+                            item,
+                            index
                         ) => (
 
                             <div
                                 key={
                                     item.label
                                 }
+
+                                className="
+                                    countdown-card
+
+                                    group
+
+                                    relative
+
+                                    mx-auto
+
+                                    flex
+
+                                    aspect-square
+                                    w-full
+                                    max-w-[155px]
+
+                                    flex-col
+
+                                    items-center
+                                    justify-center
+
+                                    overflow-hidden
+
+                                    rounded-full
+
+                                    border
+                                    border-white/70
+
+                                    bg-white/30
+
+                                    shadow-[0_20px_60px_rgba(143,94,80,0.10)]
+
+                                    backdrop-blur-lg
+
+                                    transition-all
+                                    duration-500
+
+                                    hover:-translate-y-2
+
+                                    hover:bg-white/50
+
+                                    sm:max-w-[175px]
+
+                                    md:max-w-[200px]
+                                "
+                                style={{
+                                    animationDelay:
+                                        `${index * 0.25}s`,
+                                }}
                             >
+
+
+                                {/* INNER RING */}
+
+                                <div
+                                    className="
+                                        pointer-events-none
+
+                                        absolute
+
+                                        inset-2
+
+                                        rounded-full
+
+                                        border
+                                        border-[#c99688]/20
+                                    "
+                                />
+
+
+                                {/* LIGHT */}
+
+                                <div
+                                    className="
+                                        pointer-events-none
+
+                                        absolute
+
+                                        -right-8
+                                        -top-8
+
+                                        h-24
+                                        w-24
+
+                                        rounded-full
+
+                                        bg-white/50
+
+                                        blur-2xl
+                                    "
+                                />
+
+
+                                {/* NUMBER */}
 
                                 <strong
                                     className="
                                         font-wedding-serif
 
+                                        relative
+                                        z-10
+
                                         block
 
-                                        text-6xl
+                                        text-5xl
                                         font-light
 
-                                        md:text-8xl
+                                        leading-none
+
+                                        text-[#654f48]
+
+                                        sm:text-6xl
+
+                                        md:text-7xl
                                     "
                                 >
+
                                     {
-                                        mounted
-                                            ? String(
+                                        item.value ===
+                                        undefined
+
+                                            ? "--"
+
+                                            :
+                                            String(
                                                 item.value
                                             ).padStart(
                                                 2,
                                                 "0"
                                             )
-                                            : "--"
                                     }
+
                                 </strong>
 
 
+                                {/* LABEL */}
+
                                 <span
                                     className="
+                                        relative
+                                        z-10
+
                                         mt-3
+
                                         block
 
-                                        text-[9px]
+                                        text-[8px]
+                                        font-medium
 
                                         uppercase
 
-                                        tracking-[0.3em]
+                                        tracking-[0.32em]
 
-                                        text-white/55
+                                        text-[#92766d]/70
+
+                                        sm:text-[9px]
                                     "
                                 >
                                     {item.label}
+                                </span>
+
+
+                                {/* SMALL HEART */}
+
+                                <span
+                                    className="
+                                        absolute
+                                        bottom-4
+
+                                        text-[7px]
+
+                                        text-[#c98d80]/40
+                                    "
+                                >
+                                    ♥
                                 </span>
 
                             </div>
@@ -338,23 +908,109 @@ export default function Countdown() {
                 </div>
 
 
+                {/* ================================= */}
+                {/* MESSAGE */}
+                {/* ================================= */}
+
                 <p
                     className="
                         font-wedding-serif
 
                         mx-auto
-                        mt-14
+
+                        mt-12
 
                         max-w-xl
 
-                        text-lg
+                        text-[15px]
+
                         italic
 
-                        text-white/70
+                        leading-7
+
+                        text-[#735c55]/70
+
+                        sm:text-base
+
+                        md:mt-14
+                        md:text-lg
                     "
                 >
-                    Chúng mình đang đếm từng ngày để được cùng những người thân yêu lưu lại một kỷ niệm thật đẹp.
+                    Chúng mình đang đếm từng ngày để được cùng
+                    những người thân yêu lưu lại một kỷ niệm thật đẹp.
                 </p>
+
+
+                {/* NAMES */}
+
+                <p
+                    className="
+                        font-wedding
+
+                        mt-5
+
+                        text-4xl
+
+                        text-[#b67768]
+
+                        md:text-5xl
+                    "
+                >
+                    Nam & Thư
+                </p>
+
+            </div>
+
+
+            {/* ================================= */}
+            {/* BOTTOM DECORATION */}
+            {/* ================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
+                    bottom-9
+                    left-1/2
+
+                    -translate-x-1/2
+
+                    flex
+                    items-center
+
+                    gap-3
+                "
+            >
+
+                <span
+                    className="
+                        h-px
+                        w-12
+
+                        bg-[#bb897d]/20
+                    "
+                />
+
+                <span
+                    className="
+                        text-[8px]
+
+                        text-[#bb897d]/40
+                    "
+                >
+                    ♡
+                </span>
+
+                <span
+                    className="
+                        h-px
+                        w-12
+
+                        bg-[#bb897d]/20
+                    "
+                />
 
             </div>
 
