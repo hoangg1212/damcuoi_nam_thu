@@ -13,6 +13,186 @@ import {
 } from "@/components/providers/WeddingProvider";
 
 
+/* =========================================================
+   DẤU VÂN TAY ĐÔI HÌNH TRÁI TIM
+========================================================= */
+
+function FingerprintHeart() {
+
+    return (
+
+        <div
+            className="
+                mx-auto
+
+                flex
+                items-center
+                justify-center
+            "
+            aria-hidden="true"
+        >
+
+            <svg
+                viewBox="0 0 120 64"
+
+                className="
+                    h-[54px]
+                    w-[96px]
+
+                    overflow-visible
+
+                    sm:h-[60px]
+                    sm:w-[110px]
+                "
+
+                fill="none"
+
+                xmlns="http://www.w3.org/2000/svg"
+            >
+
+                {/* =========================================
+                    VÂN TAY BÊN TRÁI
+                ========================================== */}
+
+                <g
+                    stroke="#B97882"
+                    strokeWidth="1.15"
+                    strokeLinecap="round"
+                    opacity="0.82"
+                >
+
+                    <path
+                        d="
+                            M57 51
+                            C42 44 30 34 30 22
+                            C30 14 35 9 42 9
+                            C50 9 55 15 57 22
+                        "
+                    />
+
+                    <path
+                        d="
+                            M54 47
+                            C42 41 34 32 34 23
+                            C34 17 37 13 42 13
+                            C48 13 52 18 54 25
+                        "
+                    />
+
+                    <path
+                        d="
+                            M51 43
+                            C43 38 38 31 38 24
+                            C38 20 40 17 43 17
+                            C47 17 49 21 51 27
+                        "
+                    />
+
+                    <path
+                        d="
+                            M47 39
+                            C43 35 41 30 41 25
+                            C41 22 42 21 44 21
+                            C46 21 47 24 47 29
+                        "
+                    />
+
+                    <path
+                        d="
+                            M44 34
+                            C42 31 42 27 43 25
+                        "
+                    />
+
+                </g>
+
+
+                {/* =========================================
+                    VÂN TAY BÊN PHẢI
+                ========================================== */}
+
+                <g
+                    stroke="#B97882"
+                    strokeWidth="1.15"
+                    strokeLinecap="round"
+                    opacity="0.82"
+                >
+
+                    <path
+                        d="
+                            M63 51
+                            C78 44 90 34 90 22
+                            C90 14 85 9 78 9
+                            C70 9 65 15 63 22
+                        "
+                    />
+
+                    <path
+                        d="
+                            M66 47
+                            C78 41 86 32 86 23
+                            C86 17 83 13 78 13
+                            C72 13 68 18 66 25
+                        "
+                    />
+
+                    <path
+                        d="
+                            M69 43
+                            C77 38 82 31 82 24
+                            C82 20 80 17 77 17
+                            C73 17 71 21 69 27
+                        "
+                    />
+
+                    <path
+                        d="
+                            M73 39
+                            C77 35 79 30 79 25
+                            C79 22 78 21 76 21
+                            C74 21 73 24 73 29
+                        "
+                    />
+
+                    <path
+                        d="
+                            M76 34
+                            C78 31 78 27 77 25
+                        "
+                    />
+
+                </g>
+
+
+                {/* =========================================
+                    ĐƯỜNG NỐI GIỮA
+                ========================================== */}
+
+                <path
+                    d="
+                        M57 22
+                        C59 27 59 31 60 37
+
+                        C61 31 61 27 63 22
+                    "
+
+                    stroke="#D19AA2"
+                    strokeWidth="1"
+                    strokeLinecap="round"
+                    opacity="0.65"
+                />
+
+            </svg>
+
+        </div>
+    );
+}
+
+
+/* =========================================================
+   INVITATION COVER
+========================================================= */
+
 export default function InvitationCover() {
 
     const {
@@ -30,6 +210,10 @@ export default function InvitationCover() {
         useState(false);
 
 
+    /* =====================================================
+       ĐÃ MỞ THIỆP
+    ===================================================== */
+
     if (
         invitationOpened
     ) {
@@ -38,6 +222,10 @@ export default function InvitationCover() {
 
     }
 
+
+    /* =====================================================
+       XỬ LÝ MỞ THIỆP
+    ===================================================== */
 
     function handleOpen() {
 
@@ -52,16 +240,15 @@ export default function InvitationCover() {
 
 
         /*
-            Phát nhạc ngay khi người dùng
-            trực tiếp bấm nút.
+            Phát nhạc ngay trong thao tác click.
         */
 
         void playMusic();
 
 
         /*
-            Đợi hiệu ứng cover biến mất
-            rồi mới mở nội dung website.
+            Đợi hiệu ứng fade hoàn tất
+            rồi mới remove màn hình cover.
         */
 
         setTimeout(
@@ -94,7 +281,7 @@ export default function InvitationCover() {
 
                 overflow-hidden
 
-                bg-[#f5e5de]
+                bg-[#F5F3E8]
 
                 transition-all
                 duration-[900ms]
@@ -117,10 +304,9 @@ export default function InvitationCover() {
         >
 
 
-            {/* ================================================= */}
-            {/* MOBILE BANNER */}
-            {/* < 768px */}
-            {/* ================================================= */}
+            {/* =================================================
+                ẢNH NỀN MOBILE
+            ================================================= */}
 
             <div
                 className="
@@ -159,10 +345,9 @@ export default function InvitationCover() {
             </div>
 
 
-            {/* ================================================= */}
-            {/* DESKTOP BANNER */}
-            {/* >= 768px */}
-            {/* ================================================= */}
+            {/* =================================================
+                ẢNH NỀN DESKTOP
+            ================================================= */}
 
             <div
                 className="
@@ -203,10 +388,12 @@ export default function InvitationCover() {
             </div>
 
 
-            {/* ================================================= */}
-            {/* SOFT WARM OVERLAY */}
-            {/* Không dùng overlay đen như trước */}
-            {/* ================================================= */}
+            {/* =================================================
+                LỚP PHỦ NHẸ
+
+                Phù hợp nền:
+                xanh kem + hoa hồng
+            ================================================= */}
 
             <div
                 className="
@@ -217,17 +404,18 @@ export default function InvitationCover() {
 
                     bg-gradient-to-b
 
-                    from-[#fff7f1]/10
+                    from-[#FFFDF8]/12
                     via-transparent
-                    to-[#ddb9ad]/15
+                    to-[#DDE5D8]/16
                 "
             />
 
 
-            {/* ================================================= */}
-            {/* CENTER LIGHT */}
-            {/* Làm chữ dễ đọc nhưng không che ảnh */}
-            {/* ================================================= */}
+            {/* =================================================
+                VÙNG SÁNG SAU NỘI DUNG
+
+                Giúp chữ dễ đọc khi background có hoa.
+            ================================================= */}
 
             <div
                 className="
@@ -236,35 +424,35 @@ export default function InvitationCover() {
                     absolute
 
                     left-1/2
-                    top-[48%]
+                    top-1/2
 
-                    h-[520px]
-                    w-[90%]
+                    h-[650px]
+                    w-[94%]
 
                     -translate-x-1/2
                     -translate-y-1/2
 
                     rounded-full
 
-                    bg-[#fffaf6]/40
+                    bg-[#F9F8EE]/55
 
-                    blur-[80px]
+                    blur-[90px]
 
-                    sm:w-[75%]
+                    sm:w-[80%]
 
-                    md:h-[600px]
-                    md:w-[52%]
+                    md:h-[700px]
+                    md:w-[58%]
 
-                    lg:w-[44%]
+                    lg:w-[49%]
 
-                    xl:w-[38%]
+                    xl:w-[43%]
                 "
             />
 
 
-            {/* ================================================= */}
-            {/* OUTER BORDER */}
-            {/* ================================================= */}
+            {/* =================================================
+                OUTER BORDER
+            ================================================= */}
 
             <div
                 className="
@@ -278,7 +466,7 @@ export default function InvitationCover() {
                     rounded-[22px]
 
                     border
-                    border-[#b98274]/25
+                    border-[#8FA095]/30
 
                     sm:inset-4
 
@@ -288,7 +476,9 @@ export default function InvitationCover() {
             />
 
 
-            {/* INNER BORDER */}
+            {/* =================================================
+                INNER BORDER
+            ================================================= */}
 
             <div
                 className="
@@ -302,7 +492,7 @@ export default function InvitationCover() {
                     rounded-[18px]
 
                     border
-                    border-white/30
+                    border-[#FFFDF8]/50
 
                     sm:inset-[22px]
 
@@ -312,9 +502,9 @@ export default function InvitationCover() {
             />
 
 
-            {/* ================================================= */}
-            {/* CONTENT */}
-            {/* ================================================= */}
+            {/* =================================================
+                MAIN CONTENT WRAPPER
+            ================================================= */}
 
             <div
                 className={`
@@ -334,8 +524,7 @@ export default function InvitationCover() {
 
                     px-5
 
-                    pb-14
-                    pt-20
+                    py-10
 
                     text-center
 
@@ -345,8 +534,7 @@ export default function InvitationCover() {
                     sm:px-6
 
                     md:px-8
-                    md:pb-16
-                    md:pt-24
+                    md:py-12
 
                     ${
                         opening
@@ -365,27 +553,27 @@ export default function InvitationCover() {
             >
 
 
-                {/* ================================================= */}
-                {/* CENTER CONTENT */}
-                {/* ================================================= */}
+                {/* =================================================
+                    CENTER CONTENT
+                ================================================= */}
 
                 <div
                     className="
                         mx-auto
 
                         w-full
-                        max-w-[520px]
+                        max-w-[560px]
 
-                        sm:max-w-[580px]
+                        sm:max-w-[610px]
 
-                        md:max-w-[610px]
+                        md:max-w-[650px]
                     "
                 >
 
 
-                    {/* ================================================= */}
-                    {/* SMALL TOP LABEL */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        NGÀY CHUNG ĐÔI
+                    ================================================= */}
 
                     <div
                         className="
@@ -401,299 +589,265 @@ export default function InvitationCover() {
                         <span
                             className="
                                 h-px
-                                w-7
+                                w-8
 
                                 bg-gradient-to-r
 
                                 from-transparent
-                                to-[#a8786b]/55
+                                to-[#B89A70]/55
 
-                                sm:w-10
+                                sm:w-11
                             "
                         />
 
 
                         <p
                             className="
-                                text-[10px]
-                                font-semibold
+                                text-[9px]
+                                font-medium
 
                                 uppercase
 
-                                tracking-[0.2em]
+                                tracking-[0.32em]
 
-                                text-[#82594f]
+                                text-[#607568]
 
-                                sm:text-[11px]
-                                sm:tracking-[0.27em]
+                                sm:text-[10px]
+                                sm:tracking-[0.38em]
 
-                                md:text-xs
+                                md:text-[11px]
                             "
                         >
-                            Trân trọng kính mời
+                            Ngày chung đôi
                         </p>
 
 
                         <span
                             className="
                                 h-px
-                                w-7
+                                w-8
 
                                 bg-gradient-to-l
 
                                 from-transparent
-                                to-[#a8786b]/55
+                                to-[#B89A70]/55
 
-                                sm:w-10
+                                sm:w-11
                             "
                         />
 
                     </div>
 
 
-                    {/* ================================================= */}
-                    {/* LITTLE HEART */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        CHÚ RỂ
+                    ================================================= */}
 
                     <div
                         className="
-                            mx-auto
-                            mt-5
+                            mt-6
 
-                            flex
-
-                            h-9
-                            w-9
-
-                            items-center
-                            justify-center
-
-                            rounded-full
-
-                            border
-                            border-[#b98476]/30
-
-                            bg-[#fffaf7]/55
-
-                            text-[10px]
-
-                            text-[#b46e62]
-
-                            shadow-[0_8px_24px_rgba(142,91,77,0.08)]
-
-                            backdrop-blur-sm
+                            sm:mt-7
                         "
                     >
-                        ♥
-                    </div>
 
+                        <p
+                            className="
+                                text-[9px]
+                                font-medium
 
-                    {/* ================================================= */}
-                    {/* NAMES */}
-                    {/* ================================================= */}
+                                uppercase
 
-                    <div
-                        className="
-                            mt-4
+                                tracking-[0.34em]
 
-                            flex
-                            flex-col
+                                text-[#B97882]
 
-                            items-center
-                            justify-center
-
-                            leading-none
-                        "
-                    >
+                                sm:text-[10px]
+                            "
+                        >
+                            Chú rể
+                        </p>
 
 
                         <h1
                             className="
                                 font-wedding
 
-                                text-[64px]
+                                mt-1
 
-                                leading-[0.9]
+                                text-[61px]
 
-                                text-[#704b42]
+                                leading-[0.95]
 
-                                drop-shadow-[0_3px_14px_rgba(255,255,255,0.9)]
+                                text-[#3F5147]
 
-                                sm:text-[78px]
+                                drop-shadow-[0_2px_8px_rgba(255,253,248,0.55)]
 
-                                md:text-[95px]
+                                sm:text-[77px]
 
-                                lg:text-[105px]
+                                md:text-[91px]
+
+                                lg:text-[98px]
                             "
                         >
                             {
                                 wedding
                                     .groom
-                                    .shortName
-                            }
-                        </h1>
-
-
-                        {/* & */}
-
-                        <div
-                            className="
-                                my-1.5
-
-                                flex
-
-                                items-center
-                                justify-center
-
-                                gap-3
-                            "
-                        >
-
-                            <span
-                                className="
-                                    h-px
-                                    w-8
-
-                                    bg-[#ab7a6d]/35
-                                "
-                            />
-
-
-                            <span
-                                className="
-                                    font-wedding-serif
-
-                                    text-lg
-
-                                    text-[#b47164]
-
-                                    sm:text-xl
-                                "
-                            >
-                                &
-                            </span>
-
-
-                            <span
-                                className="
-                                    h-px
-                                    w-8
-
-                                    bg-[#ab7a6d]/35
-                                "
-                            />
-
-                        </div>
-
-
-                        <h1
-                            className="
-                                font-wedding
-
-                                text-[64px]
-
-                                leading-[0.9]
-
-                                text-[#704b42]
-
-                                drop-shadow-[0_3px_14px_rgba(255,255,255,0.9)]
-
-                                sm:text-[78px]
-
-                                md:text-[95px]
-
-                                lg:text-[105px]
-                            "
-                        >
-                            {
-                                wedding
-                                    .bride
-                                    .shortName
+                                    .fullName
                             }
                         </h1>
 
                     </div>
 
 
-                    {/* ================================================= */}
-                    {/* DECORATIVE DIVIDER */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        &
+                    ================================================= */}
 
                     <div
                         className="
-                            my-5
+                            my-1.5
 
                             flex
 
                             items-center
                             justify-center
 
-                            gap-3
-
-                            sm:my-6
+                            gap-4
                         "
                     >
 
                         <span
                             className="
                                 h-px
-                                w-10
+                                w-8
 
-                                bg-gradient-to-r
-
-                                from-transparent
-                                to-[#ad7b6d]/45
-
-                                sm:w-14
+                                bg-[#B89A70]/35
                             "
                         />
 
 
                         <span
                             className="
-                                text-[9px]
+                                font-wedding-serif
 
-                                text-[#b77969]
+                                text-xl
+                                font-light
+
+                                italic
+
+                                text-[#B89A70]
+
+                                sm:text-2xl
                             "
                         >
-                            ♡
+                            &
                         </span>
 
 
                         <span
                             className="
                                 h-px
-                                w-10
+                                w-8
 
-                                bg-gradient-to-l
-
-                                from-transparent
-                                to-[#ad7b6d]/45
-
-                                sm:w-14
+                                bg-[#B89A70]/35
                             "
                         />
 
                     </div>
 
 
-                    {/* ================================================= */}
-                    {/* DATE */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        CÔ DÂU
+                    ================================================= */}
+
+                    <div>
+
+                        <p
+                            className="
+                                text-[9px]
+                                font-medium
+
+                                uppercase
+
+                                tracking-[0.34em]
+
+                                text-[#B97882]
+
+                                sm:text-[10px]
+                            "
+                        >
+                            Cô dâu
+                        </p>
+
+
+                        <h1
+                            className="
+                                font-wedding
+
+                                mt-1
+
+                                text-[61px]
+
+                                leading-[0.95]
+
+                                text-[#3F5147]
+
+                                drop-shadow-[0_2px_8px_rgba(255,253,248,0.55)]
+
+                                sm:text-[77px]
+
+                                md:text-[91px]
+
+                                lg:text-[98px]
+                            "
+                        >
+                            {
+                                wedding
+                                    .bride
+                                    .fullName
+                            }
+                        </h1>
+
+                    </div>
+
+
+                    {/* =================================================
+                        DẤU VÂN TAY ĐÔI
+                    ================================================= */}
+
+                    <div
+                        className="
+                            mt-4
+
+                            sm:mt-5
+                        "
+                    >
+
+                        <FingerprintHeart />
+
+                    </div>
+
+
+                    {/* =================================================
+                        NGÀY CƯỚI
+                    ================================================= */}
 
                     <p
                         className="
                             font-wedding-serif
 
-                            text-[13px]
-                            font-semibold
+                            mt-1
 
-                            tracking-[0.18em]
+                            text-[14px]
+                            font-medium
 
-                            text-[#755148]
+                            tracking-[0.24em]
 
-                            sm:text-sm
-                            sm:tracking-[0.22em]
+                            text-[#465A4E]
+
+                            sm:text-[15px]
+                            sm:tracking-[0.28em]
 
                             md:text-base
                         "
@@ -702,9 +856,9 @@ export default function InvitationCover() {
                     </p>
 
 
-                    {/* ================================================= */}
-                    {/* MESSAGE */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        LỜI NHẮN
+                    ================================================= */}
 
                     <p
                         className="
@@ -714,29 +868,30 @@ export default function InvitationCover() {
 
                             mt-5
 
-                            max-w-[440px]
+                            max-w-[455px]
 
                             text-[16px]
+                            font-normal
 
                             leading-7
 
-                            text-[#604b44]
+                            text-[#56685D]
 
-                            drop-shadow-[0_1px_7px_rgba(255,255,255,0.8)]
+                            drop-shadow-[0_1px_5px_rgba(255,253,248,0.5)]
 
                             sm:text-lg
                             sm:leading-8
 
-                            md:max-w-[500px]
+                            md:max-w-[520px]
                         "
                     >
-                        {wedding.invitationMessage}
+                        Một dấu mốc đẹp trong hành trình của chúng mình, sẽ càng ý nghĩa hơn khi được sẻ chia cùng những người thân quý.
                     </p>
 
 
-                    {/* ================================================= */}
-                    {/* OPEN BUTTON */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        BUTTON MỞ THIỆP
+                    ================================================= */}
 
                     <button
                         type="button"
@@ -767,23 +922,23 @@ export default function InvitationCover() {
                             rounded-full
 
                             border
-                            border-[#ab7668]/40
+                            border-[#607568]/30
 
-                            bg-[#fffaf7]/65
+                            bg-[#FFFDF8]/75
 
                             px-7
                             py-3.5
 
-                            text-[11px]
-                            font-semibold
+                            text-[10px]
+                            font-medium
 
                             uppercase
 
-                            tracking-[0.16em]
+                            tracking-[0.2em]
 
-                            text-[#68483f]
+                            text-[#3F5147]
 
-                            shadow-[0_12px_32px_rgba(116,74,63,0.12)]
+                            shadow-[0_12px_35px_rgba(63,81,71,0.10)]
 
                             backdrop-blur-md
 
@@ -792,18 +947,20 @@ export default function InvitationCover() {
 
                             hover:-translate-y-0.5
 
-                            hover:border-[#a86f62]
+                            hover:border-[#B97882]
 
-                            hover:bg-[#a86f62]
+                            hover:bg-[#B97882]
 
                             hover:text-white
+
+                            hover:shadow-[0_16px_40px_rgba(185,120,130,0.18)]
 
                             disabled:pointer-events-none
 
                             sm:min-w-[205px]
                             sm:px-8
 
-                            md:text-xs
+                            md:text-[11px]
                         "
                     >
 
@@ -828,9 +985,9 @@ export default function InvitationCover() {
                     </button>
 
 
-                    {/* ================================================= */}
-                    {/* SMALL MESSAGE */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        DÒNG GỢI Ý
+                    ================================================= */}
 
                     <p
                         className="
@@ -839,87 +996,21 @@ export default function InvitationCover() {
                             mt-4
 
                             text-[12px]
+
                             italic
 
-                            text-[#745d55]/75
+                            text-[#607568]/70
 
                             sm:text-[13px]
                         "
                     >
-                        Chạm để mở câu chuyện của chúng mình
+                        Chạm để mở tấm thiệp nhỏ của chúng mình
                     </p>
 
                 </div>
 
             </div>
 
-
-            {/* ================================================= */}
-            {/* BOTTOM SIGNATURE */}
-            {/* ================================================= */}
-
-            <div
-                className="
-                    absolute
-
-                    bottom-5
-                    left-1/2
-
-                    z-20
-
-                    flex
-
-                    -translate-x-1/2
-
-                    items-center
-                    justify-center
-
-                    gap-3
-
-                    whitespace-nowrap
-
-                    sm:bottom-6
-                "
-            >
-
-                <span
-                    className="
-                        h-px
-                        w-5
-
-                        bg-[#9f7468]/30
-                    "
-                />
-
-
-                <p
-                    className="
-                        text-[9px]
-                        font-medium
-
-                        tracking-[0.2em]
-
-                        text-[#72564e]/65
-
-                        sm:text-[10px]
-                    "
-                >
-                    NAM & THƯ · 2026
-                </p>
-
-
-                <span
-                    className="
-                        h-px
-                        w-5
-
-                        bg-[#9f7468]/30
-                    "
-                />
-
-            </div>
-
         </div>
-
     );
 }

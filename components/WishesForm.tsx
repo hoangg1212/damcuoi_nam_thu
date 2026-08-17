@@ -2,8 +2,11 @@
 
 import {
     FormEvent,
+    ReactNode,
     useState,
 } from "react";
+
+import { wedding } from "@/data/wedding";
 
 
 export default function WishesForm() {
@@ -39,6 +42,10 @@ export default function WishesForm() {
             text: "",
         });
 
+
+    /* =========================================================
+       SUBMIT WISH
+    ========================================================= */
 
     async function submit(
         event:
@@ -94,7 +101,6 @@ export default function WishesForm() {
                         "website"
                     ) || ""
                 ),
-
         };
 
 
@@ -152,7 +158,9 @@ export default function WishesForm() {
                     "success",
 
                 text:
-                    "Cảm ơn bạn. Nam và Thư đã nhận được lời chúc thật đẹp này. ♥",
+                    wedding
+                        .wishesSection
+                        .successMessage,
             });
 
 
@@ -197,13 +205,12 @@ export default function WishesForm() {
 
             className="
                 relative
+
+                -mt-px
+
                 overflow-hidden
 
-                bg-gradient-to-b
-
-                from-[#faf2ed]
-                via-[#fffaf7]
-                to-[#f7ebe5]
+                bg-[linear-gradient(to_bottom,#EAF2F5_0%,#EAF2F5_8%,#F3F6EF_46%,#FAF3EF_100%)]
 
                 px-5
                 py-20
@@ -219,57 +226,122 @@ export default function WishesForm() {
         >
 
 
-            {/* ====================================== */}
-            {/* BACKGROUND DECORATION */}
-            {/* ====================================== */}
+            {/* =================================================
+                SEAMLESS TOP TRANSITION
+
+                WeddingMessage kết thúc #EAF2F5
+                WishesForm bắt đầu #EAF2F5
+            ================================================= */}
 
             <div
                 className="
                     pointer-events-none
 
                     absolute
-                    -left-36
-                    top-[12%]
+                    left-0
+                    top-0
 
-                    h-[360px]
-                    w-[360px]
+                    h-24
+                    w-full
 
-                    rounded-full
+                    bg-gradient-to-b
 
-                    bg-[#e8b8ad]/18
-
-                    blur-[120px]
-
-                    md:h-[460px]
-                    md:w-[460px]
+                    from-[#EAF2F5]
+                    via-[#EAF2F5]/80
+                    to-transparent
                 "
             />
 
+
+            {/* =================================================
+                BLUE GLOW
+            ================================================= */}
 
             <div
                 className="
                     pointer-events-none
 
                     absolute
-                    -right-36
-                    bottom-[10%]
 
-                    h-[380px]
-                    w-[380px]
+                    -left-40
+                    top-[10%]
+
+                    h-[390px]
+                    w-[390px]
 
                     rounded-full
 
-                    bg-[#dec4a5]/20
+                    bg-[#8FB4C7]/18
 
-                    blur-[130px]
+                    blur-[125px]
 
-                    md:h-[480px]
-                    md:w-[480px]
+                    md:h-[500px]
+                    md:w-[500px]
                 "
             />
 
 
-            {/* top decoration */}
+            {/* =================================================
+                DUSTY ROSE GLOW
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
+                    -right-40
+                    bottom-[8%]
+
+                    h-[410px]
+                    w-[410px]
+
+                    rounded-full
+
+                    bg-[#D9A5AE]/17
+
+                    blur-[135px]
+
+                    md:h-[520px]
+                    md:w-[520px]
+                "
+            />
+
+
+            {/* =================================================
+                CENTER CREAM LIGHT
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
+                    left-1/2
+                    top-1/2
+
+                    h-[650px]
+                    w-[60%]
+
+                    -translate-x-1/2
+                    -translate-y-1/2
+
+                    rounded-full
+
+                    bg-[#FFFDF8]/35
+
+                    blur-[150px]
+
+                    md:w-[45%]
+                "
+            />
+
+
+            {/* =================================================
+                TOP DECORATION
+            ================================================= */}
 
             <div
                 className="
@@ -296,12 +368,12 @@ export default function WishesForm() {
                 <span
                     className="
                         h-px
-                        w-8
+                        w-9
 
                         bg-gradient-to-r
 
                         from-transparent
-                        to-[#b98777]/45
+                        to-[#B8A27D]/50
                     "
                 />
 
@@ -310,7 +382,7 @@ export default function WishesForm() {
                     className="
                         text-[8px]
 
-                        text-[#b77969]/70
+                        text-[#C98792]/80
                     "
                 >
                     ♥
@@ -320,21 +392,21 @@ export default function WishesForm() {
                 <span
                     className="
                         h-px
-                        w-8
+                        w-9
 
                         bg-gradient-to-l
 
                         from-transparent
-                        to-[#b98777]/45
+                        to-[#B8A27D]/50
                     "
                 />
 
             </div>
 
 
-            {/* ====================================== */}
-            {/* CONTENT */}
-            {/* ====================================== */}
+            {/* =================================================
+                MAIN CONTENT
+            ================================================= */}
 
             <div
                 className="
@@ -350,7 +422,7 @@ export default function WishesForm() {
 
                     gap-14
 
-                    lg:grid-cols-[0.8fr_1.2fr]
+                    lg:grid-cols-[0.82fr_1.18fr]
                     lg:gap-16
 
                     xl:gap-24
@@ -358,9 +430,9 @@ export default function WishesForm() {
             >
 
 
-                {/* ====================================== */}
-                {/* LEFT CONTENT */}
-                {/* ====================================== */}
+                {/* =================================================
+                    LEFT CONTENT
+                ================================================= */}
 
                 <div
                     className="
@@ -376,23 +448,33 @@ export default function WishesForm() {
                 >
 
 
+                    {/* EYEBROW */}
+
                     <p
                         className="
-                            text-[11px]
-                            font-semibold
+                            text-[10px]
+                            font-medium
 
                             uppercase
 
-                            tracking-[0.28em]
+                            tracking-[0.36em]
 
-                            text-[#9d6f63]
+                            text-[#C98792]
 
-                            sm:text-xs
+                            sm:text-[11px]
                         "
                     >
-                        Đôi lời gửi đến chúng mình
+                        {
+                            wedding
+                                .wishesSection
+                                .eyebrow
+                        }
                     </p>
 
+
+                    {/* =================================================
+                        TITLE
+                    ================================================= */}
 
                     <h2
                         className="
@@ -400,134 +482,61 @@ export default function WishesForm() {
 
                             mt-4
 
-                            text-[42px]
+                            text-[43px]
                             font-light
 
-                            leading-[1.15]
+                            leading-[1.12]
 
-                            text-[#4d3d37]
+                            tracking-[-0.02em]
+
+                            text-[#31566B]
 
                             sm:text-5xl
 
                             md:text-6xl
 
-                            lg:text-7xl
+                            lg:text-[68px]
                         "
                     >
-                        Gửi một
-                        <br className="hidden lg:block" />
+
+                        {
+                            wedding
+                                .wishesSection
+                                .title
+                        }
+
+
+                        <br
+                            className="
+                                hidden
+
+                                lg:block
+                            "
+                        />
+
 
                         <span
                             className="
                                 italic
 
-                                text-[#a86f62]
+                                text-[#587589]
                             "
                         >
                             {" "}
-                            lời thương
+
+                            {
+                                wedding
+                                    .wishesSection
+                                    .highlight
+                            }
                         </span>
+
                     </h2>
 
 
-                    {/* DIVIDER */}
-
-                    <div
-                        className="
-                            mt-6
-
-                            flex
-
-                            items-center
-                            justify-center
-
-                            gap-3
-
-                            lg:justify-start
-                        "
-                    >
-
-                        <span
-                            className="
-                                h-px
-                                w-10
-
-                                bg-[#c69a8d]/45
-
-                                sm:w-14
-                            "
-                        />
-
-
-                        <span
-                            className="
-                                text-[9px]
-
-                                text-[#b77969]
-                            "
-                        >
-                            ♡
-                        </span>
-
-
-                        <span
-                            className="
-                                h-px
-                                w-10
-
-                                bg-[#c69a8d]/45
-                            "
-                        />
-
-                    </div>
-
-
-                    <p
-                        className="
-                            font-wedding-serif
-
-                            mt-6
-
-                            text-[16px]
-
-                            leading-7
-
-                            text-[#64534c]
-
-                            sm:text-lg
-                            sm:leading-8
-
-                            md:text-xl
-                            md:leading-9
-                        "
-                    >
-                        Nếu có một điều bạn muốn nhắn gửi trong ngày đặc biệt này,
-                        hãy để lại vài dòng cho Nam và Thư.
-                    </p>
-
-
-                    <p
-                        className="
-                            font-wedding-serif
-
-                            mt-4
-
-                            text-[16px]
-
-                            leading-7
-
-                            text-[#64534c]
-
-                            sm:text-lg
-                            sm:leading-8
-                        "
-                    >
-                        Mỗi lời chúc, dù giản dị hay chỉ là một câu ngắn,
-                        đều sẽ trở thành một kỷ niệm đẹp mà chúng mình trân trọng lưu giữ.
-                    </p>
-
-
-                    {/* SIGNATURE */}
+                    {/* =================================================
+                        DIVIDER
+                    ================================================= */}
 
                     <div
                         className="
@@ -546,16 +555,139 @@ export default function WishesForm() {
 
                         <span
                             className="
+                                h-px
+                                w-11
+
+                                bg-gradient-to-r
+
+                                from-transparent
+                                to-[#B8A27D]/55
+
+                                sm:w-16
+                            "
+                        />
+
+
+                        <span
+                            className="
+                                text-[9px]
+
+                                text-[#C98792]
+                            "
+                        >
+                            ♡
+                        </span>
+
+
+                        <span
+                            className="
+                                h-px
+                                w-11
+
+                                bg-gradient-to-l
+
+                                from-transparent
+                                to-[#B8A27D]/55
+                            "
+                        />
+
+                    </div>
+
+
+                    {/* =================================================
+                        DESCRIPTION
+                    ================================================= */}
+
+                    <p
+                        className="
+                            font-wedding-serif
+
+                            mt-6
+
+                            text-[16px]
+                            font-normal
+
+                            leading-7
+
+                            text-[#61726D]
+
+                            sm:text-lg
+                            sm:leading-8
+
+                            md:text-xl
+                            md:leading-9
+                        "
+                    >
+                        {
+                            wedding
+                                .wishesSection
+                                .description
+                        }
+                    </p>
+
+
+                    <p
+                        className="
+                            font-wedding-serif
+
+                            mt-4
+
+                            text-[16px]
+                            font-normal
+
+                            leading-7
+
+                            text-[#61726D]/90
+
+                            sm:text-lg
+                            sm:leading-8
+                        "
+                    >
+                        {
+                            wedding
+                                .wishesSection
+                                .subDescription
+                        }
+                    </p>
+
+
+                    {/* =================================================
+                        SIGNATURE
+                    ================================================= */}
+
+                    <div
+                        className="
+                            mt-8
+
+                            flex
+
+                            items-center
+                            justify-center
+
+                            gap-4
+
+                            lg:justify-start
+                        "
+                    >
+
+                        <span
+                            className="
                                 font-wedding
 
-                                text-4xl
+                                text-[43px]
 
-                                text-[#ad7567]
+                                leading-none
+
+                                text-[#587589]
 
                                 sm:text-5xl
                             "
                         >
-                            Nam
+                            {
+                                wedding
+                                    .groom
+                                    .shortName
+                            }
                         </span>
 
 
@@ -563,7 +695,7 @@ export default function WishesForm() {
                             className="
                                 text-[9px]
 
-                                text-[#b77969]
+                                text-[#C98792]
                             "
                         >
                             ♥
@@ -574,14 +706,20 @@ export default function WishesForm() {
                             className="
                                 font-wedding
 
-                                text-4xl
+                                text-[43px]
 
-                                text-[#ad7567]
+                                leading-none
+
+                                text-[#587589]
 
                                 sm:text-5xl
                             "
                         >
-                            Thư
+                            {
+                                wedding
+                                    .bride
+                                    .shortName
+                            }
                         </span>
 
                     </div>
@@ -589,9 +727,9 @@ export default function WishesForm() {
                 </div>
 
 
-                {/* ====================================== */}
-                {/* FORM CARD */}
-                {/* ====================================== */}
+                {/* =================================================
+                    FORM CARD
+                ================================================= */}
 
                 <form
                     onSubmit={
@@ -603,22 +741,22 @@ export default function WishesForm() {
 
                         overflow-hidden
 
-                        rounded-[28px]
+                        rounded-[30px]
 
                         border
-                        border-white/80
+                        border-[#FFFDF8]/90
 
-                        bg-white/60
+                        bg-[#FFFDF8]/64
 
                         p-6
 
-                        shadow-[0_30px_80px_rgba(103,68,57,0.10)]
+                        shadow-[0_30px_85px_rgba(49,86,107,0.10)]
 
                         backdrop-blur-xl
 
                         sm:p-8
 
-                        md:rounded-[36px]
+                        md:rounded-[38px]
                         md:p-10
 
                         lg:p-12
@@ -626,7 +764,9 @@ export default function WishesForm() {
                 >
 
 
-                    {/* FORM GLOW */}
+                    {/* =================================================
+                        FORM BLUE GLOW
+                    ================================================= */}
 
                     <div
                         className="
@@ -637,17 +777,21 @@ export default function WishesForm() {
                             -right-24
                             -top-24
 
-                            h-[220px]
-                            w-[220px]
+                            h-[240px]
+                            w-[240px]
 
                             rounded-full
 
-                            bg-[#efc6ba]/25
+                            bg-[#8FB4C7]/18
 
-                            blur-[80px]
+                            blur-[85px]
                         "
                     />
 
+
+                    {/* =================================================
+                        FORM ROSE GLOW
+                    ================================================= */}
 
                     <div
                         className="
@@ -658,14 +802,35 @@ export default function WishesForm() {
                             -bottom-24
                             -left-24
 
-                            h-[230px]
-                            w-[230px]
+                            h-[250px]
+                            w-[250px]
 
                             rounded-full
 
-                            bg-[#e5ccab]/25
+                            bg-[#D9A5AE]/15
 
                             blur-[90px]
+                        "
+                    />
+
+
+                    {/* =================================================
+                        FORM INNER BORDER
+                    ================================================= */}
+
+                    <div
+                        className="
+                            pointer-events-none
+
+                            absolute
+                            inset-[6px]
+
+                            rounded-[25px]
+
+                            border
+                            border-[#B8A27D]/10
+
+                            md:rounded-[33px]
                         "
                     />
 
@@ -678,7 +843,9 @@ export default function WishesForm() {
                     >
 
 
-                        {/* FORM HEADER */}
+                        {/* =================================================
+                            FORM HEADER
+                        ================================================= */}
 
                         <div
                             className="
@@ -690,13 +857,18 @@ export default function WishesForm() {
                             "
                         >
 
+
+                            {/* HEART ICON */}
+
                             <div
                                 className="
+                                    relative
+
                                     mx-auto
 
                                     flex
-                                    h-12
-                                    w-12
+                                    h-14
+                                    w-14
 
                                     items-center
                                     justify-center
@@ -704,59 +876,102 @@ export default function WishesForm() {
                                     rounded-full
 
                                     border
-                                    border-[#c49689]/30
+                                    border-[#C98792]/25
 
-                                    bg-[#fff9f6]/70
+                                    bg-[#FFFDF8]/75
 
-                                    text-[#b77969]
+                                    text-[#C98792]
+
+                                    shadow-[0_10px_30px_rgba(49,86,107,0.07)]
                                 "
                             >
-                                ♡
+
+                                <span
+                                    className="
+                                        absolute
+                                        inset-[5px]
+
+                                        rounded-full
+
+                                        border
+                                        border-[#B8A27D]/16
+                                    "
+                                />
+
+
+                                <span
+                                    className="
+                                        relative
+                                        z-10
+                                    "
+                                >
+                                    ♡
+                                </span>
+
                             </div>
 
+
+                            {/* FORM TITLE */}
 
                             <h3
                                 className="
                                     font-wedding-serif
 
-                                    mt-4
+                                    mt-5
 
-                                    text-2xl
+                                    text-[27px]
+                                    font-normal
 
-                                    text-[#4c3c36]
+                                    leading-tight
+
+                                    text-[#31566B]
 
                                     sm:text-3xl
                                 "
                             >
-                                Lời chúc dành cho Nam & Thư
+                                {
+                                    wedding
+                                        .wishesSection
+                                        .formTitle
+                                }
                             </h3>
 
+
+                            {/* FORM DESCRIPTION */}
 
                             <p
                                 className="
                                     font-wedding-serif
 
                                     mx-auto
+
                                     mt-2
 
                                     max-w-md
 
                                     text-[14px]
+                                    font-normal
 
                                     leading-6
 
-                                    text-[#76615a]
+                                    text-[#61726D]/85
 
                                     sm:text-[15px]
                                 "
                             >
-                                Một vài dòng chân thành cũng đủ để ngày vui thêm trọn vẹn.
+                                {
+                                    wedding
+                                        .wishesSection
+                                        .formDescription
+                                }
                             </p>
 
                         </div>
 
 
-                        {/* HONEYPOT */}
+                        {/* =================================================
+                            HONEYPOT
+                        ================================================= */}
 
                         <input
                             type="text"
@@ -773,11 +988,14 @@ export default function WishesForm() {
                         />
 
 
-                        {/* NAME */}
+                        {/* =================================================
+                            NAME
+                        ================================================= */}
 
                         <Field
-                            label="Tên của bạn"
+                            label="Họ và tên"
                         >
+
                             <input
                                 type="text"
 
@@ -787,7 +1005,7 @@ export default function WishesForm() {
 
                                 maxLength={100}
 
-                                placeholder="Ví dụ: Nguyễn Minh Anh"
+                                placeholder="Nhập họ và tên"
 
                                 className="
                                     w-full
@@ -795,9 +1013,9 @@ export default function WishesForm() {
                                     rounded-2xl
 
                                     border
-                                    border-[#c7a79c]/30
+                                    border-[#7A9CAC]/22
 
-                                    bg-[#fffaf7]/60
+                                    bg-[#FFFFFF]/55
 
                                     px-4
                                     py-3.5
@@ -806,20 +1024,20 @@ export default function WishesForm() {
 
                                     text-[16px]
 
-                                    text-[#493a34]
+                                    text-[#31566B]
 
                                     outline-none
 
-                                    placeholder:text-[#8e7a72]/55
+                                    placeholder:text-[#61726D]/45
 
                                     transition-all
                                     duration-300
 
-                                    focus:border-[#b87d6e]/60
+                                    focus:border-[#7A9CAC]/60
 
                                     focus:bg-white
 
-                                    focus:shadow-[0_8px_25px_rgba(137,87,73,0.08)]
+                                    focus:shadow-[0_8px_28px_rgba(49,86,107,0.07)]
 
                                     sm:px-5
                                     sm:py-4
@@ -827,14 +1045,18 @@ export default function WishesForm() {
                                     sm:text-[17px]
                                 "
                             />
+
                         </Field>
 
 
-                        {/* RELATION */}
+                        {/* =================================================
+                            RELATION
+                        ================================================= */}
 
                         <Field
-                            label="Bạn là"
+                            label="Mối quan hệ"
                         >
+
                             <select
                                 name="relation"
 
@@ -844,9 +1066,9 @@ export default function WishesForm() {
                                     rounded-2xl
 
                                     border
-                                    border-[#c7a79c]/30
+                                    border-[#7A9CAC]/22
 
-                                    bg-[#fffaf7]/60
+                                    bg-[#FFFFFF]/55
 
                                     px-4
                                     py-3.5
@@ -855,15 +1077,18 @@ export default function WishesForm() {
 
                                     text-[16px]
 
-                                    text-[#493a34]
+                                    text-[#31566B]
 
                                     outline-none
 
                                     transition-all
+                                    duration-300
 
-                                    focus:border-[#b87d6e]/60
+                                    focus:border-[#7A9CAC]/60
 
                                     focus:bg-white
+
+                                    focus:shadow-[0_8px_28px_rgba(49,86,107,0.07)]
 
                                     sm:px-5
                                     sm:py-4
@@ -872,40 +1097,62 @@ export default function WishesForm() {
                                 "
                             >
 
-                                <option>
+                                <option
+                                    value="Bạn của cô dâu"
+                                >
                                     Bạn của cô dâu
                                 </option>
 
-                                <option>
+
+                                <option
+                                    value="Bạn của chú rể"
+                                >
                                     Bạn của chú rể
                                 </option>
 
-                                <option>
+
+                                <option
+                                    value="Bạn của cả hai"
+                                >
                                     Bạn của cả hai
                                 </option>
 
-                                <option>
+
+                                <option
+                                    value="Đồng nghiệp"
+                                >
                                     Đồng nghiệp
                                 </option>
 
-                                <option>
+
+                                <option
+                                    value="Người thân"
+                                >
                                     Người thân
                                 </option>
 
-                                <option>
-                                    Một người bạn đặc biệt
+
+                                <option
+                                    value="Khách mời"
+                                >
+                                    Khách mời
                                 </option>
 
                             </select>
+
                         </Field>
 
 
-                        {/* EMAIL */}
+                        {/* =================================================
+                            EMAIL
+                        ================================================= */}
 
                         <Field
                             label="Email"
+
                             optional
                         >
+
                             <input
                                 type="email"
 
@@ -913,7 +1160,7 @@ export default function WishesForm() {
 
                                 maxLength={200}
 
-                                placeholder="Email của bạn"
+                                placeholder="Nhập email nếu muốn"
 
                                 className="
                                     w-full
@@ -921,9 +1168,9 @@ export default function WishesForm() {
                                     rounded-2xl
 
                                     border
-                                    border-[#c7a79c]/30
+                                    border-[#7A9CAC]/22
 
-                                    bg-[#fffaf7]/60
+                                    bg-[#FFFFFF]/55
 
                                     px-4
                                     py-3.5
@@ -932,17 +1179,20 @@ export default function WishesForm() {
 
                                     text-[16px]
 
-                                    text-[#493a34]
+                                    text-[#31566B]
 
                                     outline-none
 
-                                    placeholder:text-[#8e7a72]/55
+                                    placeholder:text-[#61726D]/45
 
                                     transition-all
+                                    duration-300
 
-                                    focus:border-[#b87d6e]/60
+                                    focus:border-[#7A9CAC]/60
 
                                     focus:bg-white
+
+                                    focus:shadow-[0_8px_28px_rgba(49,86,107,0.07)]
 
                                     sm:px-5
                                     sm:py-4
@@ -950,13 +1200,16 @@ export default function WishesForm() {
                                     sm:text-[17px]
                                 "
                             />
+
                         </Field>
 
 
-                        {/* MESSAGE */}
+                        {/* =================================================
+                            MESSAGE
+                        ================================================= */}
 
                         <Field
-                            label="Lời nhắn dành cho Nam & Thư"
+                            label="Lời chúc dành cho Nam & Thư"
                         >
 
                             <textarea
@@ -971,7 +1224,9 @@ export default function WishesForm() {
                                         event
                                     ) =>
                                         setMessage(
-                                            event.target.value
+                                            event
+                                                .target
+                                                .value
                                         )
                                 }
 
@@ -981,7 +1236,7 @@ export default function WishesForm() {
 
                                 rows={5}
 
-                                placeholder="Gửi một lời chúc thật đẹp đến chúng mình..."
+                                placeholder="Gửi một lời chúc đến Nam và Thư..."
 
                                 className="
                                     min-h-[150px]
@@ -992,9 +1247,9 @@ export default function WishesForm() {
                                     rounded-2xl
 
                                     border
-                                    border-[#c7a79c]/30
+                                    border-[#7A9CAC]/22
 
-                                    bg-[#fffaf7]/60
+                                    bg-[#FFFFFF]/55
 
                                     px-4
                                     py-4
@@ -1005,17 +1260,20 @@ export default function WishesForm() {
 
                                     leading-7
 
-                                    text-[#493a34]
+                                    text-[#31566B]
 
                                     outline-none
 
-                                    placeholder:text-[#8e7a72]/55
+                                    placeholder:text-[#61726D]/45
 
                                     transition-all
+                                    duration-300
 
-                                    focus:border-[#b87d6e]/60
+                                    focus:border-[#7A9CAC]/60
 
                                     focus:bg-white
+
+                                    focus:shadow-[0_8px_28px_rgba(49,86,107,0.07)]
 
                                     sm:min-h-[170px]
 
@@ -1026,6 +1284,10 @@ export default function WishesForm() {
                             />
 
 
+                            {/* =============================================
+                                MESSAGE META
+                            ============================================= */}
+
                             <div
                                 className="
                                     mt-2
@@ -1034,26 +1296,51 @@ export default function WishesForm() {
 
                                     items-center
                                     justify-between
+
+                                    gap-4
                                 "
                             >
 
                                 <span
                                     className="
-                                        text-[11px]
+                                        font-wedding-serif
 
-                                        text-[#8a726a]/60
+                                        text-[11px]
+                                        font-normal
+
+                                        italic
+
+                                        text-[#61726D]/65
                                     "
                                 >
-                                    Viết bằng tất cả yêu thương ♥
+                                    {
+                                        wedding
+                                            .wishesSection
+                                            .helperText
+                                    }
+
+                                    <span
+                                        className="
+                                            ml-1
+
+                                            not-italic
+
+                                            text-[#C98792]
+                                        "
+                                    >
+                                        ♥
+                                    </span>
                                 </span>
 
 
                                 <span
                                     className="
-                                        text-[11px]
+                                        text-[10px]
                                         font-medium
 
-                                        text-[#8a726a]/70
+                                        tracking-[0.06em]
+
+                                        text-[#587589]/70
                                     "
                                 >
                                     {message.length}/500
@@ -1064,7 +1351,9 @@ export default function WishesForm() {
                         </Field>
 
 
-                        {/* SUBMIT */}
+                        {/* =================================================
+                            SUBMIT BUTTON
+                        ================================================= */}
 
                         <button
                             type="submit"
@@ -1090,44 +1379,49 @@ export default function WishesForm() {
 
                                 rounded-full
 
-                                bg-[#5a443c]
+                                bg-[#31566B]
 
                                 px-7
                                 py-4
 
-                                text-[11px]
-                                font-semibold
+                                text-[10px]
+                                font-medium
 
                                 uppercase
 
-                                tracking-[0.16em]
+                                tracking-[0.19em]
 
                                 text-white
 
-                                shadow-[0_14px_35px_rgba(80,54,46,0.16)]
+                                shadow-[0_14px_38px_rgba(49,86,107,0.18)]
 
                                 transition-all
                                 duration-300
 
                                 hover:-translate-y-0.5
 
-                                hover:bg-[#a86f62]
+                                hover:bg-[#587589]
+
+                                hover:shadow-[0_18px_45px_rgba(49,86,107,0.22)]
 
                                 disabled:cursor-wait
+
                                 disabled:opacity-60
 
-                                sm:text-xs
+                                sm:text-[11px]
                             "
                         >
 
                             <span
                                 className="
-                                    text-[12px]
+                                    text-[11px]
+
+                                    text-[#F1C5CB]
 
                                     transition-transform
                                     duration-300
 
-                                    group-hover:scale-110
+                                    group-hover:scale-125
                                 "
                             >
                                 ♥
@@ -1143,7 +1437,9 @@ export default function WishesForm() {
                         </button>
 
 
-                        {/* STATUS */}
+                        {/* =================================================
+                            STATUS
+                        ================================================= */}
 
                         {status.text && (
 
@@ -1156,7 +1452,7 @@ export default function WishesForm() {
                                     border
 
                                     px-4
-                                    py-3
+                                    py-3.5
 
                                     text-center
 
@@ -1173,15 +1469,15 @@ export default function WishesForm() {
                                         "success"
 
                                             ? `
-                                                border-[#9bb69d]/30
-                                                bg-[#eff7ef]
-                                                text-[#537057]
+                                                border-[#8EA995]/30
+                                                bg-[#F0F6F0]/85
+                                                text-[#53705B]
                                               `
 
                                             : `
-                                                border-[#d9a29a]/30
-                                                bg-[#fff1ef]
-                                                text-[#9a554d]
+                                                border-[#D9A29A]/30
+                                                bg-[#FFF1EF]/85
+                                                text-[#985950]
                                               `
                                     }
                                 `}
@@ -1203,14 +1499,23 @@ export default function WishesForm() {
 }
 
 
+/* =========================================================
+   FIELD COMPONENT
+========================================================= */
+
 function Field({
     label,
     optional = false,
     children,
 }: {
-    label: string;
-    optional?: boolean;
-    children: React.ReactNode;
+    label:
+        string;
+
+    optional?:
+        boolean;
+
+    children:
+        ReactNode;
 }) {
 
     return (
@@ -1232,16 +1537,18 @@ function Field({
                     items-center
                     justify-between
 
-                    text-[11px]
-                    font-semibold
+                    gap-4
+
+                    text-[10px]
+                    font-medium
 
                     uppercase
 
-                    tracking-[0.16em]
+                    tracking-[0.18em]
 
-                    text-[#6d5047]
+                    text-[#587589]
 
-                    sm:text-xs
+                    sm:text-[11px]
                 "
             >
 
@@ -1254,16 +1561,16 @@ function Field({
 
                     <span
                         className="
-                            text-[9px]
+                            font-wedding-serif
+
+                            text-[11px]
                             font-normal
 
                             normal-case
 
                             tracking-normal
 
-                            text-[#8d756d]/60
-
-                            sm:text-[10px]
+                            text-[#61726D]/55
                         "
                     >
                         Không bắt buộc

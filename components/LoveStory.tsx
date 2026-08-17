@@ -14,13 +14,12 @@ export default function LoveStory() {
 
             className="
                 relative
+
+                -mt-px
+
                 overflow-hidden
 
-                bg-gradient-to-b
-
-                from-[#fffaf7]
-                via-[#fffdf9]
-                to-[#f8eee8]
+                bg-[linear-gradient(to_bottom,#F8F1EE_0%,#F8F1EE_8%,#F5F5EC_42%,#EEF4F6_100%)]
 
                 px-5
                 py-20
@@ -36,9 +35,35 @@ export default function LoveStory() {
         >
 
 
-            {/* ==================================== */}
-            {/* BACKGROUND DECORATION */}
-            {/* ==================================== */}
+            {/* =================================================
+                SEAMLESS TOP TRANSITION
+
+                Giữ kết nối với LoveQuote phía trên.
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+                    left-0
+                    top-0
+
+                    h-24
+                    w-full
+
+                    bg-gradient-to-b
+
+                    from-[#F8F1EE]
+                    via-[#F8F1EE]/80
+                    to-transparent
+                "
+            />
+
+
+            {/* =================================================
+                BACKGROUND DECORATION - BLUE
+            ================================================= */}
 
             <div
                 className="
@@ -47,22 +72,26 @@ export default function LoveStory() {
                     absolute
 
                     -left-36
-                    top-[12%]
+                    top-[10%]
 
-                    h-[340px]
-                    w-[340px]
+                    h-[360px]
+                    w-[360px]
 
                     rounded-full
 
-                    bg-[#e8bcb0]/15
+                    bg-[#8FB4C7]/16
 
-                    blur-[120px]
+                    blur-[125px]
 
-                    md:h-[440px]
-                    md:w-[440px]
+                    md:h-[470px]
+                    md:w-[470px]
                 "
             />
 
+
+            {/* =================================================
+                BACKGROUND DECORATION - DUSTY ROSE
+            ================================================= */}
 
             <div
                 className="
@@ -73,20 +102,54 @@ export default function LoveStory() {
                     -right-40
                     bottom-[12%]
 
-                    h-[360px]
-                    w-[360px]
+                    h-[380px]
+                    w-[380px]
 
                     rounded-full
 
-                    bg-[#dcc2a4]/20
+                    bg-[#D9A5AE]/16
 
-                    blur-[130px]
+                    blur-[135px]
 
-                    md:h-[480px]
-                    md:w-[480px]
+                    md:h-[500px]
+                    md:w-[500px]
                 "
             />
 
+
+            {/* =================================================
+                CENTER SAGE LIGHT
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
+                    left-1/2
+                    top-[50%]
+
+                    h-[620px]
+                    w-[70%]
+
+                    -translate-x-1/2
+                    -translate-y-1/2
+
+                    rounded-full
+
+                    bg-[#DCE5D8]/16
+
+                    blur-[140px]
+
+                    md:w-[50%]
+                "
+            />
+
+
+            {/* =================================================
+                MAIN CONTENT
+            ================================================= */}
 
             <div
                 className="
@@ -100,9 +163,9 @@ export default function LoveStory() {
             >
 
 
-                {/* ==================================== */}
-                {/* SECTION HEADING */}
-                {/* ==================================== */}
+                {/* =================================================
+                    SECTION HEADING
+                ================================================= */}
 
                 <Reveal>
 
@@ -124,24 +187,33 @@ export default function LoveStory() {
                         "
                     >
 
+
+                        {/* EYEBROW */}
+
                         <p
                             className="
-                                text-[11px]
-                                font-semibold
+                                text-[10px]
+                                font-medium
 
                                 uppercase
 
-                                tracking-[0.28em]
+                                tracking-[0.36em]
 
-                                text-[#9d6f63]
+                                text-[#C98792]
 
-                                sm:text-xs
-                                sm:tracking-[0.32em]
+                                sm:text-[11px]
+                                sm:tracking-[0.4em]
                             "
                         >
-                            Hành trình của chúng mình
+                            {
+                                wedding
+                                    .storySection
+                                    .eyebrow
+                            }
                         </p>
 
+
+                        {/* MAIN TITLE */}
 
                         <h2
                             className="
@@ -149,25 +221,33 @@ export default function LoveStory() {
 
                                 mt-4
 
-                                text-[42px]
+                                text-[44px]
                                 font-light
 
-                                leading-tight
+                                leading-[1.08]
 
-                                text-[#4f403a]
+                                tracking-[-0.02em]
+
+                                text-[#31566B]
 
                                 sm:text-5xl
 
                                 md:text-6xl
 
-                                lg:text-7xl
+                                lg:text-[72px]
                             "
                         >
-                            Chuyện tình yêu
+                            {
+                                wedding
+                                    .storySection
+                                    .title
+                            }
                         </h2>
 
 
-                        {/* DIVIDER */}
+                        {/* =================================================
+                            DIVIDER
+                        ================================================= */}
 
                         <div
                             className="
@@ -186,11 +266,14 @@ export default function LoveStory() {
                             <span
                                 className="
                                     h-px
-                                    w-10
+                                    w-11
 
-                                    bg-[#c59b8e]/45
+                                    bg-gradient-to-r
 
-                                    sm:w-14
+                                    from-transparent
+                                    to-[#B8A27D]/50
+
+                                    sm:w-16
                                 "
                             />
 
@@ -199,7 +282,7 @@ export default function LoveStory() {
                                 className="
                                     text-[9px]
 
-                                    text-[#b77969]
+                                    text-[#C98792]
                                 "
                             >
                                 ♥
@@ -209,16 +292,21 @@ export default function LoveStory() {
                             <span
                                 className="
                                     h-px
-                                    w-10
+                                    w-11
 
-                                    bg-[#c59b8e]/45
+                                    bg-gradient-to-l
 
-                                    sm:w-14
+                                    from-transparent
+                                    to-[#B8A27D]/50
+
+                                    sm:w-16
                                 "
                             />
 
                         </div>
 
+
+                        {/* DESCRIPTION */}
 
                         <p
                             className="
@@ -228,13 +316,14 @@ export default function LoveStory() {
 
                                 mt-6
 
-                                max-w-2xl
+                                max-w-[690px]
 
                                 text-[16px]
+                                font-normal
 
                                 leading-7
 
-                                text-[#66554e]
+                                text-[#61726D]
 
                                 sm:text-lg
                                 sm:leading-8
@@ -243,9 +332,11 @@ export default function LoveStory() {
                                 md:leading-9
                             "
                         >
-                            Tình yêu của chúng mình không bắt đầu bằng điều gì quá đặc biệt.
-                            Chỉ là từ một cuộc gặp, rồi từng chút một trở thành một người không
-                            thể thiếu trong cuộc đời nhau.
+                            {
+                                wedding
+                                    .storySection
+                                    .description
+                            }
                         </p>
 
                     </div>
@@ -253,9 +344,15 @@ export default function LoveStory() {
                 </Reveal>
 
 
-                {/* ==================================== */}
-                {/* STORY LIST */}
-                {/* ==================================== */}
+                {/* =================================================
+                    STORY LIST
+
+                    GIỮ NGUYÊN:
+                    - ảnh trái / phải xen kẽ
+                    - Reveal
+                    - timeline
+                    - frame ảnh dạng vòm
+                ================================================= */}
 
                 <div
                     className="
@@ -272,7 +369,9 @@ export default function LoveStory() {
                 >
 
 
-                    {/* TIMELINE DESKTOP */}
+                    {/* =================================================
+                        DESKTOP TIMELINE
+                    ================================================= */}
 
                     <div
                         className="
@@ -293,7 +392,7 @@ export default function LoveStory() {
                             bg-gradient-to-b
 
                             from-transparent
-                            via-[#c8a497]/25
+                            via-[#7A9CAC]/25
                             to-transparent
 
                             lg:block
@@ -341,9 +440,9 @@ export default function LoveStory() {
                                     >
 
 
-                                        {/* ==================================== */}
-                                        {/* IMAGE */}
-                                        {/* ==================================== */}
+                                        {/* =================================================
+                                            IMAGE
+                                        ================================================= */}
 
                                         <div
                                             className={`
@@ -373,13 +472,13 @@ export default function LoveStory() {
                                                     rounded-t-[160px]
 
                                                     border
-                                                    border-white/80
+                                                    border-[#FFFDF8]/90
 
-                                                    bg-white/40
+                                                    bg-[#FFFDF8]/55
 
                                                     p-[6px]
 
-                                                    shadow-[0_30px_80px_rgba(105,73,61,0.12)]
+                                                    shadow-[0_30px_80px_rgba(49,86,107,0.11)]
 
                                                     sm:p-2
 
@@ -433,7 +532,12 @@ export default function LoveStory() {
                                                     />
 
 
-                                                    {/* IMAGE GRADIENT */}
+                                                    {/* =================================================
+                                                        IMAGE GRADIENT
+
+                                                        Đổi từ nâu sang
+                                                        xanh biển trầm.
+                                                    ================================================= */}
 
                                                     <div
                                                         className="
@@ -444,7 +548,7 @@ export default function LoveStory() {
 
                                                             bg-gradient-to-t
 
-                                                            from-[#342822]/20
+                                                            from-[#213E50]/18
                                                             via-transparent
                                                             to-transparent
                                                         "
@@ -453,7 +557,9 @@ export default function LoveStory() {
                                                 </div>
 
 
-                                                {/* NUMBER */}
+                                                {/* =================================================
+                                                    NUMBER
+                                                ================================================= */}
 
                                                 <div
                                                     className="
@@ -473,17 +579,18 @@ export default function LoveStory() {
                                                         rounded-full
 
                                                         border
-                                                        border-white/60
+                                                        border-[#FFFDF8]/70
 
-                                                        bg-white/70
+                                                        bg-[#FFFDF8]/82
 
                                                         font-wedding-serif
 
                                                         text-sm
+                                                        font-medium
 
-                                                        text-[#9c6d60]
+                                                        text-[#587589]
 
-                                                        shadow-lg
+                                                        shadow-[0_8px_28px_rgba(49,86,107,0.10)]
 
                                                         backdrop-blur-md
 
@@ -504,9 +611,9 @@ export default function LoveStory() {
                                         </div>
 
 
-                                        {/* ==================================== */}
-                                        {/* CONTENT */}
-                                        {/* ==================================== */}
+                                        {/* =================================================
+                                            CONTENT
+                                        ================================================= */}
 
                                         <div
                                             className={`
@@ -524,7 +631,9 @@ export default function LoveStory() {
                                         >
 
 
-                                            {/* DATE */}
+                                            {/* =================================================
+                                                DATE
+                                            ================================================= */}
 
                                             <div
                                                 className={`
@@ -547,7 +656,10 @@ export default function LoveStory() {
                                                         h-px
                                                         w-8
 
-                                                        bg-[#c49789]/50
+                                                        bg-gradient-to-r
+
+                                                        from-[#B8A27D]/55
+                                                        to-transparent
                                                     "
                                                 />
 
@@ -557,25 +669,27 @@ export default function LoveStory() {
                                                         rounded-full
 
                                                         border
-                                                        border-[#cba69a]/30
+                                                        border-[#7A9CAC]/20
 
-                                                        bg-[#fff9f6]/80
+                                                        bg-[#FFFDF8]/75
 
                                                         px-4
                                                         py-2
 
-                                                        text-[10px]
-                                                        font-semibold
+                                                        text-[9px]
+                                                        font-medium
 
                                                         uppercase
 
-                                                        tracking-[0.2em]
+                                                        tracking-[0.22em]
 
-                                                        text-[#99675b]
+                                                        text-[#587589]
 
-                                                        shadow-[0_8px_25px_rgba(138,89,74,0.06)]
+                                                        shadow-[0_8px_25px_rgba(49,86,107,0.06)]
 
-                                                        sm:text-[11px]
+                                                        backdrop-blur-md
+
+                                                        sm:text-[10px]
                                                     "
                                                 >
                                                     {item.date}
@@ -584,7 +698,9 @@ export default function LoveStory() {
                                             </div>
 
 
-                                            {/* TITLE */}
+                                            {/* =================================================
+                                                TITLE
+                                            ================================================= */}
 
                                             <h3
                                                 className="
@@ -597,7 +713,9 @@ export default function LoveStory() {
 
                                                     leading-[1.2]
 
-                                                    text-[#4b3b35]
+                                                    tracking-[-0.015em]
+
+                                                    text-[#31566B]
 
                                                     sm:text-4xl
 
@@ -610,7 +728,9 @@ export default function LoveStory() {
                                             </h3>
 
 
-                                            {/* SMALL DECORATION */}
+                                            {/* =================================================
+                                                SMALL DECORATION
+                                            ================================================= */}
 
                                             <div
                                                 className={`
@@ -620,7 +740,7 @@ export default function LoveStory() {
 
                                                     items-center
 
-                                                    gap-2
+                                                    gap-2.5
 
                                                     ${
                                                         reverse
@@ -634,7 +754,7 @@ export default function LoveStory() {
                                                     className="
                                                         text-[7px]
 
-                                                        text-[#b77969]
+                                                        text-[#C98792]
                                                     "
                                                 >
                                                     ♥
@@ -648,7 +768,7 @@ export default function LoveStory() {
 
                                                         bg-gradient-to-r
 
-                                                        from-[#c49a8d]/50
+                                                        from-[#B8A27D]/50
                                                         to-transparent
                                                     "
                                                 />
@@ -656,7 +776,9 @@ export default function LoveStory() {
                                             </div>
 
 
-                                            {/* DESCRIPTION */}
+                                            {/* =================================================
+                                                STORY DESCRIPTION
+                                            ================================================= */}
 
                                             <p
                                                 className="
@@ -665,10 +787,11 @@ export default function LoveStory() {
                                                     mt-5
 
                                                     text-[16px]
+                                                    font-normal
 
                                                     leading-7
 
-                                                    text-[#64534c]
+                                                    text-[#61726D]
 
                                                     sm:text-[17px]
                                                     sm:leading-8
@@ -681,7 +804,9 @@ export default function LoveStory() {
                                             </p>
 
 
-                                            {/* MOBILE SEPARATOR */}
+                                            {/* =================================================
+                                                MOBILE SEPARATOR
+                                            ================================================= */}
 
                                             <div
                                                 className="
@@ -704,7 +829,7 @@ export default function LoveStory() {
 
                                                         bg-gradient-to-r
 
-                                                        from-[#c5a093]/30
+                                                        from-[#7A9CAC]/25
                                                         to-transparent
                                                     "
                                                 />
@@ -714,7 +839,7 @@ export default function LoveStory() {
                                                     className="
                                                         text-[8px]
 
-                                                        text-[#b77969]/60
+                                                        text-[#C98792]/65
                                                     "
                                                 >
                                                     ♡
@@ -725,9 +850,10 @@ export default function LoveStory() {
                                         </div>
 
 
-                                        {/* ==================================== */}
-                                        {/* CENTER TIMELINE POINT - DESKTOP */}
-                                        {/* ==================================== */}
+                                        {/* =================================================
+                                            CENTER TIMELINE POINT
+                                            DESKTOP ONLY
+                                        ================================================= */}
 
                                         <div
                                             className="
@@ -750,15 +876,15 @@ export default function LoveStory() {
                                                 rounded-full
 
                                                 border
-                                                border-[#c59b8e]/35
+                                                border-[#7A9CAC]/25
 
-                                                bg-[#fffaf7]
+                                                bg-[#F7F7EF]
 
                                                 text-[8px]
 
-                                                text-[#b77969]
+                                                text-[#C98792]
 
-                                                shadow-[0_8px_30px_rgba(138,87,73,0.10)]
+                                                shadow-[0_8px_30px_rgba(49,86,107,0.09)]
 
                                                 lg:flex
                                             "
@@ -778,70 +904,141 @@ export default function LoveStory() {
                 </div>
 
 
-                {/* ==================================== */}
-                {/* END DECORATION */}
-                {/* ==================================== */}
+                {/* =================================================
+                    END DECORATION
+                ================================================= */}
 
-                <div
-                    className="
-                        mx-auto
+                <Reveal>
 
-                        mt-20
-
-                        flex
-
-                        max-w-[230px]
-
-                        items-center
-                        justify-center
-
-                        gap-4
-
-                        sm:mt-24
-
-                        md:mt-32
-                    "
-                >
-
-                    <span
+                    <div
                         className="
-                            h-px
-                            flex-1
+                            mx-auto
 
-                            bg-gradient-to-r
+                            mt-20
 
-                            from-transparent
-                            to-[#b98979]/35
-                        "
-                    />
+                            flex
 
+                            max-w-[420px]
 
-                    <span
-                        className="
-                            font-wedding
+                            items-center
+                            justify-center
 
-                            text-2xl
+                            gap-4
 
-                            text-[#b77969]/70
+                            sm:mt-24
+
+                            md:mt-32
                         "
                     >
-                        N ♥ T
-                    </span>
+
+                        <span
+                            className="
+                                h-px
+                                flex-1
+
+                                bg-gradient-to-r
+
+                                from-transparent
+                                to-[#7A9CAC]/35
+                            "
+                        />
 
 
-                    <span
-                        className="
-                            h-px
-                            flex-1
+                        <div
+                            className="
+                                text-center
+                            "
+                        >
 
-                            bg-gradient-to-l
+                            <p
+                                className="
+                                    font-wedding
 
-                            from-transparent
-                            to-[#b98979]/35
-                        "
-                    />
+                                    text-[32px]
 
-                </div>
+                                    leading-none
+
+                                    text-[#587589]
+
+                                    sm:text-[36px]
+                                "
+                            >
+                                {
+                                    wedding
+                                        .groom
+                                        .shortName
+                                }
+
+                                <span
+                                    className="
+                                        font-wedding-serif
+
+                                        mx-2
+
+                                        align-middle
+
+                                        text-[11px]
+                                        font-normal
+
+                                        text-[#C98792]
+                                    "
+                                >
+                                    ♥
+                                </span>
+
+                                {
+                                    wedding
+                                        .bride
+                                        .shortName
+                                }
+                            </p>
+
+
+                            <p
+                                className="
+                                    font-wedding-serif
+
+                                    mt-3
+
+                                    text-[14px]
+                                    font-normal
+
+                                    italic
+
+                                    leading-6
+
+                                    text-[#61726D]/85
+
+                                    sm:text-[15px]
+
+                                    md:text-[16px]
+                                "
+                            >
+                                {
+                                    wedding
+                                        .storySection
+                                        .bottomText
+                                }
+                            </p>
+
+                        </div>
+
+
+                        <span
+                            className="
+                                h-px
+                                flex-1
+
+                                bg-gradient-to-l
+
+                                from-transparent
+                                to-[#7A9CAC]/35
+                            "
+                        />
+
+                    </div>
+
+                </Reveal>
 
             </div>
 

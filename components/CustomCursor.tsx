@@ -30,15 +30,42 @@ export default function CustomCursor() {
             ).matches;
 
 
-        if (coarse) {
+        /*
+            Nếu là thiết bị cảm ứng
+            thì không bật custom cursor.
+        */
+
+        if (
+            coarse
+        ) {
             return;
         }
 
 
-        setEnabled(
-            true
-        );
+        /*
+            Không gọi setState trực tiếp
+            trong body của useEffect.
 
+            Dùng requestAnimationFrame
+            để cập nhật state sau khi browser
+            hoàn tất frame hiện tại.
+        */
+
+        const frame =
+            requestAnimationFrame(
+                () => {
+
+                    setEnabled(
+                        true
+                    );
+
+                }
+            );
+
+
+        /*
+            Theo dõi vị trí chuột.
+        */
 
         function move(
             event:
@@ -64,24 +91,47 @@ export default function CustomCursor() {
         );
 
 
-        return () =>
+        /*
+            Cleanup khi component unmount.
+        */
+
+        return () => {
+
+            cancelAnimationFrame(
+                frame
+            );
+
+
             window.removeEventListener(
                 "mousemove",
                 move
             );
 
+        };
+
     }, []);
 
 
-    if (!enabled) {
+    /*
+        Mobile / tablet cảm ứng
+        sẽ không render cursor.
+    */
+
+    if (
+        !enabled
+    ) {
+
         return null;
+
     }
 
 
     return (
 
         <div
-            ref={cursor}
+            ref={
+                cursor
+            }
 
             className="
                 pointer-events-none
@@ -102,11 +152,17 @@ export default function CustomCursor() {
                 rounded-full
 
                 border
-                border-[#b49a78]/60
+                border-[#B8A27D]/55
+
+                bg-[#FFFDF8]/20
 
                 text-[8px]
 
-                text-[#8c7558]
+                text-[#C98792]
+
+                shadow-[0_4px_18px_rgba(49,86,107,0.08)]
+
+                backdrop-blur-[2px]
 
                 transition-transform
                 duration-75
@@ -114,5 +170,6 @@ export default function CustomCursor() {
         >
             ♡
         </div>
+
     );
 }

@@ -2,8 +2,26 @@
 
 import Image from "next/image";
 
+import {
+    useEffect,
+    useState,
+} from "react";
+
 import { wedding } from "@/data/wedding";
 
+
+/* =========================================================
+   TYPE
+========================================================= */
+
+type WeddingSide =
+    "bride" |
+    "groom";
+
+
+/* =========================================================
+   CONVERT DATE TO ICS FORMAT
+========================================================= */
 
 function toICSDate(
     iso: string
@@ -24,19 +42,168 @@ function toICSDate(
 }
 
 
+/* =========================================================
+   ESCAPE TEXT FOR ICS
+========================================================= */
+
+function escapeICSText(
+    value: string
+) {
+
+    return value
+        .replace(
+            /\\/g,
+            "\\\\"
+        )
+        .replace(
+            /\n/g,
+            "\\n"
+        )
+        .replace(
+            /,/g,
+            "\\,"
+        )
+        .replace(
+            /;/g,
+            "\\;"
+        );
+}
+
+
+/* =========================================================
+   WEDDING EVENT
+========================================================= */
+
 export default function WeddingEvent() {
+
+    /*
+        Mặc định:
+        Nhà trai
+
+        URL nhà gái:
+        ?side=bride
+
+        URL nhà trai:
+        ?side=groom
+    */
+
+    const [
+        side,
+        setSide,
+    ] =
+        useState<WeddingSide>(
+            "groom"
+        );
+
+
+    /* =====================================================
+       READ SIDE FROM URL
+
+       Dùng requestAnimationFrame để tránh lỗi ESLint:
+       react-hooks/set-state-in-effect
+    ===================================================== */
+
+    useEffect(
+        () => {
+
+            const frame =
+                requestAnimationFrame(
+                    () => {
+
+                        const params =
+                            new URLSearchParams(
+                                window.location.search
+                            );
+
+
+                        const currentSide =
+                            params.get(
+                                "side"
+                            );
+
+
+                        if (
+                            currentSide ===
+                            "bride"
+                        ) {
+
+                            setSide(
+                                "bride"
+                            );
+
+                            return;
+
+                        }
+
+
+                        setSide(
+                            "groom"
+                        );
+
+                    }
+                );
+
+
+            return () => {
+
+                cancelAnimationFrame(
+                    frame
+                );
+
+            };
+
+        },
+        []
+    );
+
+
+    /* =====================================================
+       CURRENT EVENT
+    ===================================================== */
+
+    const event =
+        wedding.events[
+            side
+        ];
+
+
+    /* =====================================================
+       ADD TO CALENDAR
+    ===================================================== */
 
     function addCalendar() {
 
         const start =
             toICSDate(
-                wedding.event.startISO
+                event.startISO
             );
 
 
         const end =
             toICSDate(
-                wedding.event.endISO
+                event.endISO
+            );
+
+
+        const coupleNames =
+            `${wedding.groom.fullName} & ${wedding.bride.fullName}`;
+
+
+        const summary =
+            escapeICSText(
+                `Ngày chung đôi ${coupleNames}`
+            );
+
+
+        const location =
+            escapeICSText(
+                event.address
+            );
+
+
+        const description =
+            escapeICSText(
+                `Trân trọng kính mời đến chung vui trong ngày chung đôi của ${wedding.groom.fullName} và ${wedding.bride.fullName}.`
             );
 
 
@@ -45,19 +212,22 @@ export default function WeddingEvent() {
 VERSION:2.0
 PRODID:-//NamThuWedding//VN
 CALSCALE:GREGORIAN
+METHOD:PUBLISH
 BEGIN:VEVENT
 DTSTART:${start}
 DTEND:${end}
-SUMMARY:${wedding.event.title}
-LOCATION:${wedding.event.address}
-DESCRIPTION:Trân trọng kính mời bạn đến chung vui cùng Nguyễn Nam và Huỳnh Thư.
+SUMMARY:${summary}
+LOCATION:${location}
+DESCRIPTION:${description}
 END:VEVENT
 END:VCALENDAR`;
 
 
         const blob =
             new Blob(
-                [content],
+                [
+                    content,
+                ],
                 {
                     type:
                         "text/calendar;charset=utf-8",
@@ -82,10 +252,25 @@ END:VCALENDAR`;
 
 
         anchor.download =
-            "ngay-cuoi-nam-thu.ics";
+            side ===
+            "bride"
+
+                ? "tiec-cuoi-nha-gai-nam-thu.ics"
+
+                : "tiec-cuoi-nha-trai-nam-thu.ics";
+
+
+        document.body.appendChild(
+            anchor
+        );
 
 
         anchor.click();
+
+
+        document.body.removeChild(
+            anchor
+        );
 
 
         URL.revokeObjectURL(
@@ -102,13 +287,12 @@ END:VCALENDAR`;
 
             className="
                 relative
+
+                -mt-px
+
                 overflow-hidden
 
-                bg-gradient-to-b
-
-                from-[#fffaf7]
-                via-[#faf2ed]
-                to-[#f7ebe5]
+                bg-[linear-gradient(to_bottom,#EEF4F6_0%,#EEF4F6_8%,#F5F6EE_48%,#F8F1EE_100%)]
 
                 px-5
                 py-20
@@ -124,9 +308,34 @@ END:VCALENDAR`;
         >
 
 
-            {/* ====================================== */}
-            {/* BACKGROUND DECORATION */}
-            {/* ====================================== */}
+            {/* =================================================
+                SEAMLESS TOP
+                Nối trực tiếp từ Gallery
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+                    left-0
+                    top-0
+
+                    h-24
+                    w-full
+
+                    bg-gradient-to-b
+
+                    from-[#EEF4F6]
+                    via-[#EEF4F6]/80
+                    to-transparent
+                "
+            />
+
+
+            {/* =================================================
+                BLUE GLOW
+            ================================================= */}
 
             <div
                 className="
@@ -137,20 +346,24 @@ END:VCALENDAR`;
                     -left-40
                     top-[15%]
 
-                    h-[380px]
-                    w-[380px]
+                    h-[400px]
+                    w-[400px]
 
                     rounded-full
 
-                    bg-[#e7b8ad]/18
+                    bg-[#8FB4C7]/17
 
-                    blur-[120px]
+                    blur-[125px]
 
-                    md:h-[480px]
-                    md:w-[480px]
+                    md:h-[500px]
+                    md:w-[500px]
                 "
             />
 
+
+            {/* =================================================
+                ROSE GLOW
+            ================================================= */}
 
             <div
                 className="
@@ -161,22 +374,24 @@ END:VCALENDAR`;
                     -right-40
                     bottom-[10%]
 
-                    h-[400px]
-                    w-[400px]
+                    h-[420px]
+                    w-[420px]
 
                     rounded-full
 
-                    bg-[#ddc2a3]/20
+                    bg-[#D9A5AE]/16
 
-                    blur-[130px]
+                    blur-[135px]
 
-                    md:h-[500px]
-                    md:w-[500px]
+                    md:h-[520px]
+                    md:w-[520px]
                 "
             />
 
 
-            {/* TOP DECORATION */}
+            {/* =================================================
+                TOP DECORATION
+            ================================================= */}
 
             <div
                 className="
@@ -203,12 +418,12 @@ END:VCALENDAR`;
                 <span
                     className="
                         h-px
-                        w-8
+                        w-9
 
                         bg-gradient-to-r
 
                         from-transparent
-                        to-[#b98777]/45
+                        to-[#B8A27D]/50
                     "
                 />
 
@@ -217,7 +432,7 @@ END:VCALENDAR`;
                     className="
                         text-[8px]
 
-                        text-[#b77969]/70
+                        text-[#C98792]/80
                     "
                 >
                     ♥
@@ -227,17 +442,21 @@ END:VCALENDAR`;
                 <span
                     className="
                         h-px
-                        w-8
+                        w-9
 
                         bg-gradient-to-l
 
                         from-transparent
-                        to-[#b98777]/45
+                        to-[#B8A27D]/50
                     "
                 />
 
             </div>
 
+
+            {/* =================================================
+                MAIN CONTAINER
+            ================================================= */}
 
             <div
                 className="
@@ -251,9 +470,9 @@ END:VCALENDAR`;
             >
 
 
-                {/* ====================================== */}
-                {/* HEADING */}
-                {/* ====================================== */}
+                {/* =================================================
+                    HEADING
+                ================================================= */}
 
                 <div
                     className="
@@ -274,24 +493,31 @@ END:VCALENDAR`;
                 >
 
 
+                    {/* EYEBROW */}
+
                     <p
                         className="
-                            text-[11px]
-                            font-semibold
+                            text-[10px]
+                            font-medium
 
                             uppercase
 
-                            tracking-[0.28em]
+                            tracking-[0.38em]
 
-                            text-[#9d6f63]
+                            text-[#C98792]
 
-                            sm:text-xs
-                            sm:tracking-[0.32em]
+                            sm:text-[11px]
                         "
                     >
-                        Trân trọng kính mời
+                        {
+                            wedding
+                                .eventSection
+                                .eyebrow
+                        }
                     </p>
 
+
+                    {/* TITLE */}
 
                     <h2
                         className="
@@ -299,21 +525,27 @@ END:VCALENDAR`;
 
                             mt-4
 
-                            text-[42px]
+                            text-[44px]
                             font-light
 
                             leading-tight
 
-                            text-[#4d3d37]
+                            tracking-[-0.02em]
+
+                            text-[#31566B]
 
                             sm:text-5xl
 
                             md:text-6xl
 
-                            lg:text-7xl
+                            lg:text-[72px]
                         "
                     >
-                        Ngày chung đôi
+                        {
+                            wedding
+                                .eventSection
+                                .title
+                        }
                     </h2>
 
 
@@ -336,11 +568,14 @@ END:VCALENDAR`;
                         <span
                             className="
                                 h-px
-                                w-10
+                                w-11
 
-                                bg-[#c79b8d]/45
+                                bg-gradient-to-r
 
-                                sm:w-14
+                                from-transparent
+                                to-[#B8A27D]/50
+
+                                sm:w-16
                             "
                         />
 
@@ -349,7 +584,7 @@ END:VCALENDAR`;
                             className="
                                 text-[9px]
 
-                                text-[#b77969]
+                                text-[#C98792]
                             "
                         >
                             ♡
@@ -359,16 +594,21 @@ END:VCALENDAR`;
                         <span
                             className="
                                 h-px
-                                w-10
+                                w-11
 
-                                bg-[#c79b8d]/45
+                                bg-gradient-to-l
 
-                                sm:w-14
+                                from-transparent
+                                to-[#B8A27D]/50
+
+                                sm:w-16
                             "
                         />
 
                     </div>
 
+
+                    {/* DESCRIPTION */}
 
                     <p
                         className="
@@ -378,13 +618,14 @@ END:VCALENDAR`;
 
                             mt-6
 
-                            max-w-2xl
+                            max-w-[700px]
 
                             text-[16px]
+                            font-normal
 
                             leading-7
 
-                            text-[#64534c]
+                            text-[#61726D]
 
                             sm:text-lg
                             sm:leading-8
@@ -393,17 +634,20 @@ END:VCALENDAR`;
                             md:leading-9
                         "
                     >
-                        Trong ngày ý nghĩa nhất của cuộc đời,
-                        Nam và Thư sẽ thật hạnh phúc khi được đón bạn
-                        đến chung vui và cùng lưu lại những khoảnh khắc đáng nhớ.
+                        {
+                            wedding
+                                .eventSection
+                                .description
+                        }
                     </p>
 
                 </div>
 
 
-                {/* ====================================== */}
-                {/* MAIN EVENT */}
-                {/* ====================================== */}
+                {/* =================================================
+                    MAIN EVENT
+                    CARD TRÁI + ẢNH PHẢI
+                ================================================= */}
 
                 <div
                     className="
@@ -423,9 +667,9 @@ END:VCALENDAR`;
                 >
 
 
-                    {/* ====================================== */}
-                    {/* EVENT CARD */}
-                    {/* ====================================== */}
+                    {/* =================================================
+                        EVENT CARD
+                    ================================================= */}
 
                     <article
                         className="
@@ -436,18 +680,18 @@ END:VCALENDAR`;
                             rounded-[30px]
 
                             border
-                            border-white/80
+                            border-[#FFFDF8]/90
 
-                            bg-white/55
+                            bg-[#FFFDF8]/55
 
                             px-6
                             py-10
 
                             text-center
 
-                            shadow-[0_30px_80px_rgba(102,68,57,0.10)]
+                            shadow-[0_30px_80px_rgba(49,86,107,0.10)]
 
-                            backdrop-blur-sm
+                            backdrop-blur-md
 
                             sm:px-8
                             sm:py-12
@@ -462,7 +706,7 @@ END:VCALENDAR`;
                     >
 
 
-                        {/* CARD GLOW */}
+                        {/* CARD BLUE GLOW */}
 
                         <div
                             className="
@@ -473,17 +717,19 @@ END:VCALENDAR`;
                                 -right-24
                                 -top-24
 
-                                h-[220px]
-                                w-[220px]
+                                h-[230px]
+                                w-[230px]
 
                                 rounded-full
 
-                                bg-[#efc9be]/25
+                                bg-[#8FB4C7]/18
 
-                                blur-[80px]
+                                blur-[85px]
                             "
                         />
 
+
+                        {/* CARD ROSE GLOW */}
 
                         <div
                             className="
@@ -494,14 +740,14 @@ END:VCALENDAR`;
                                 -bottom-28
                                 -left-28
 
-                                h-[240px]
-                                w-[240px]
+                                h-[250px]
+                                w-[250px]
 
                                 rounded-full
 
-                                bg-[#e6cfad]/25
+                                bg-[#D9A5AE]/15
 
-                                blur-[90px]
+                                blur-[95px]
                             "
                         />
 
@@ -514,10 +760,14 @@ END:VCALENDAR`;
                         >
 
 
-                            {/* HEART */}
+                            {/* =================================================
+                                HEART
+                            ================================================= */}
 
                             <div
                                 className="
+                                    relative
+
                                     mx-auto
 
                                     flex
@@ -531,47 +781,76 @@ END:VCALENDAR`;
                                     rounded-full
 
                                     border
-                                    border-[#c69a8c]/35
+                                    border-[#C98792]/25
 
-                                    bg-[#fffaf7]/70
+                                    bg-[#FFFDF8]/75
 
                                     text-lg
 
-                                    text-[#b77969]
+                                    text-[#C98792]
 
-                                    shadow-[0_12px_35px_rgba(133,83,68,0.08)]
+                                    shadow-[0_12px_35px_rgba(49,86,107,0.08)]
 
                                     sm:h-16
                                     sm:w-16
                                 "
                             >
-                                ♥
+
+                                <span
+                                    className="
+                                        absolute
+                                        inset-[5px]
+
+                                        rounded-full
+
+                                        border
+                                        border-[#B8A27D]/18
+                                    "
+                                />
+
+
+                                <span
+                                    className="
+                                        relative
+                                        z-10
+                                    "
+                                >
+                                    ♥
+                                </span>
+
                             </div>
 
 
-                            {/* EVENT TYPE */}
+                            {/* =================================================
+                                SIDE LABEL
+                            ================================================= */}
 
                             <p
                                 className="
-                                    mt-5
+                                    mt-6
 
-                                    text-[11px]
-                                    font-semibold
+                                    text-[10px]
+                                    font-medium
 
                                     uppercase
 
-                                    tracking-[0.3em]
+                                    tracking-[0.34em]
 
-                                    text-[#9a6c60]
+                                    text-[#C98792]
 
-                                    sm:text-xs
+                                    sm:text-[11px]
                                 "
                             >
-                                Lễ thành hôn
+                                {
+                                    event
+                                        .sideLabel
+                                }
                             </p>
 
 
-                            {/* VENUE */}
+                            {/* =================================================
+                                VENUE
+                            ================================================= */}
 
                             <h3
                                 className="
@@ -583,25 +862,32 @@ END:VCALENDAR`;
 
                                     max-w-md
 
-                                    text-[30px]
+                                    text-[32px]
                                     font-normal
 
                                     leading-tight
 
-                                    text-[#493a34]
+                                    tracking-[-0.015em]
+
+                                    text-[#31566B]
 
                                     sm:text-4xl
 
                                     md:text-[40px]
 
-                                    lg:text-[42px]
+                                    lg:text-[44px]
                                 "
                             >
-                                {wedding.event.venue}
+                                {
+                                    event
+                                        .venue
+                                }
                             </h3>
 
 
-                            {/* SMALL DIVIDER */}
+                            {/* =================================================
+                                DIVIDER
+                            ================================================= */}
 
                             <div
                                 className="
@@ -620,9 +906,12 @@ END:VCALENDAR`;
                                 <span
                                     className="
                                         h-px
-                                        w-10
+                                        w-11
 
-                                        bg-[#c69b8d]/35
+                                        bg-gradient-to-r
+
+                                        from-transparent
+                                        to-[#B8A27D]/45
                                     "
                                 />
 
@@ -631,7 +920,7 @@ END:VCALENDAR`;
                                     className="
                                         text-[7px]
 
-                                        text-[#b77969]
+                                        text-[#C98792]
                                     "
                                 >
                                     ✦
@@ -641,18 +930,21 @@ END:VCALENDAR`;
                                 <span
                                     className="
                                         h-px
-                                        w-10
+                                        w-11
 
-                                        bg-[#c69b8d]/35
+                                        bg-gradient-to-l
+
+                                        from-transparent
+                                        to-[#B8A27D]/45
                                     "
                                 />
 
                             </div>
 
 
-                            {/* ====================================== */}
-                            {/* EVENT INFO */}
-                            {/* ====================================== */}
+                            {/* =================================================
+                                EVENT INFORMATION
+                            ================================================= */}
 
                             <div
                                 className="
@@ -666,30 +958,35 @@ END:VCALENDAR`;
 
                                     space-y-7
 
-                                    text-[#5e4d46]
+                                    text-[#61726D]
                                 "
                             >
 
 
-                                {/* DATE */}
+                                {/* =================================================
+                                    DATE
+                                ================================================= */}
 
                                 <div>
 
                                     <p
                                         className="
-                                            text-[11px]
-                                            font-semibold
+                                            text-[10px]
+                                            font-medium
 
                                             uppercase
 
-                                            tracking-[0.22em]
+                                            tracking-[0.24em]
 
-                                            text-[#98695d]
+                                            text-[#587589]
 
-                                            sm:text-xs
+                                            sm:text-[11px]
                                         "
                                     >
-                                        Chủ Nhật
+                                        {
+                                            event
+                                                .dayLabel
+                                        }
                                     </p>
 
 
@@ -698,15 +995,19 @@ END:VCALENDAR`;
                                             mt-2
 
                                             text-xl
+                                            font-normal
 
                                             leading-7
 
-                                            text-[#4c3c36]
+                                            text-[#31566B]
 
                                             sm:text-2xl
                                         "
                                     >
-                                        {wedding.displayDate}
+                                        {
+                                            event
+                                                .displayDate
+                                        }
                                     </p>
 
                                 </div>
@@ -721,12 +1022,14 @@ END:VCALENDAR`;
                                         h-px
                                         w-16
 
-                                        bg-[#c69c8f]/25
+                                        bg-[#B8A27D]/25
                                     "
                                 />
 
 
-                                {/* TIME */}
+                                {/* =================================================
+                                    TIME
+                                ================================================= */}
 
                                 <div
                                     className="
@@ -739,20 +1042,22 @@ END:VCALENDAR`;
                                 >
 
 
+                                    {/* RECEPTION */}
+
                                     <div>
 
                                         <p
                                             className="
-                                                text-[11px]
-                                                font-semibold
+                                                text-[10px]
+                                                font-medium
 
                                                 uppercase
 
-                                                tracking-[0.18em]
+                                                tracking-[0.2em]
 
-                                                text-[#98695d]
+                                                text-[#587589]
 
-                                                sm:text-xs
+                                                sm:text-[11px]
                                             "
                                         >
                                             Đón khách
@@ -765,14 +1070,13 @@ END:VCALENDAR`;
 
                                                 text-xl
 
-                                                text-[#4c3c36]
+                                                text-[#31566B]
 
                                                 sm:text-2xl
                                             "
                                         >
                                             {
-                                                wedding
-                                                    .event
+                                                event
                                                     .receptionTime
                                             }
                                         </p>
@@ -780,20 +1084,22 @@ END:VCALENDAR`;
                                     </div>
 
 
+                                    {/* PARTY */}
+
                                     <div>
 
                                         <p
                                             className="
-                                                text-[11px]
-                                                font-semibold
+                                                text-[10px]
+                                                font-medium
 
                                                 uppercase
 
-                                                tracking-[0.18em]
+                                                tracking-[0.2em]
 
-                                                text-[#98695d]
+                                                text-[#587589]
 
-                                                sm:text-xs
+                                                sm:text-[11px]
                                             "
                                         >
                                             Khai tiệc
@@ -806,14 +1112,13 @@ END:VCALENDAR`;
 
                                                 text-xl
 
-                                                text-[#4c3c36]
+                                                text-[#31566B]
 
                                                 sm:text-2xl
                                             "
                                         >
                                             {
-                                                wedding
-                                                    .event
+                                                event
                                                     .partyTime
                                             }
                                         </p>
@@ -832,27 +1137,29 @@ END:VCALENDAR`;
                                         h-px
                                         w-16
 
-                                        bg-[#c69c8f]/25
+                                        bg-[#B8A27D]/25
                                     "
                                 />
 
 
-                                {/* ADDRESS */}
+                                {/* =================================================
+                                    LOCATION
+                                ================================================= */}
 
                                 <div>
 
                                     <p
                                         className="
-                                            text-[11px]
-                                            font-semibold
+                                            text-[10px]
+                                            font-medium
 
                                             uppercase
 
-                                            tracking-[0.2em]
+                                            tracking-[0.22em]
 
-                                            text-[#98695d]
+                                            text-[#587589]
 
-                                            sm:text-xs
+                                            sm:text-[11px]
                                         "
                                     >
                                         Địa điểm
@@ -868,18 +1175,18 @@ END:VCALENDAR`;
                                             max-w-sm
 
                                             text-[16px]
+                                            font-normal
 
                                             leading-7
 
-                                            text-[#594841]
+                                            text-[#61726D]
 
                                             sm:text-[17px]
                                             sm:leading-8
                                         "
                                     >
                                         {
-                                            wedding
-                                                .event
+                                            event
                                                 .address
                                         }
                                     </p>
@@ -889,9 +1196,9 @@ END:VCALENDAR`;
                             </div>
 
 
-                            {/* ====================================== */}
-                            {/* BUTTONS */}
-                            {/* ====================================== */}
+                            {/* =================================================
+                                BUTTONS
+                            ================================================= */}
 
                             <div
                                 className="
@@ -908,10 +1215,13 @@ END:VCALENDAR`;
                             >
 
 
+                                {/* =================================================
+                                    MAP
+                                ================================================= */}
+
                                 <a
                                     href={
-                                        wedding
-                                            .event
+                                        event
                                             .mapUrl
                                     }
 
@@ -929,26 +1239,27 @@ END:VCALENDAR`;
 
                                         rounded-full
 
-                                        bg-[#59443c]
+                                        bg-[#31566B]
 
                                         px-7
 
-                                        text-[11px]
-                                        font-semibold
+                                        text-[10px]
+                                        font-medium
 
                                         uppercase
 
-                                        tracking-[0.15em]
+                                        tracking-[0.17em]
 
                                         text-white
 
-                                        shadow-[0_12px_30px_rgba(79,55,46,0.15)]
+                                        shadow-[0_12px_30px_rgba(49,86,107,0.16)]
 
                                         transition-all
                                         duration-300
 
                                         hover:-translate-y-0.5
-                                        hover:bg-[#a66f61]
+
+                                        hover:bg-[#587589]
 
                                         sm:min-w-[170px]
                                     "
@@ -956,6 +1267,10 @@ END:VCALENDAR`;
                                     Xem đường đi
                                 </a>
 
+
+                                {/* =================================================
+                                    CALENDAR
+                                ================================================= */}
 
                                 <button
                                     type="button"
@@ -975,28 +1290,30 @@ END:VCALENDAR`;
                                         rounded-full
 
                                         border
-                                        border-[#b98576]/45
+                                        border-[#7A9CAC]/35
 
-                                        bg-white/40
+                                        bg-[#FFFDF8]/45
 
                                         px-7
 
-                                        text-[11px]
-                                        font-semibold
+                                        text-[10px]
+                                        font-medium
 
                                         uppercase
 
-                                        tracking-[0.15em]
+                                        tracking-[0.17em]
 
-                                        text-[#8e6257]
+                                        text-[#587589]
 
                                         transition-all
                                         duration-300
 
                                         hover:-translate-y-0.5
 
-                                        hover:border-[#a66f61]
-                                        hover:bg-[#a66f61]
+                                        hover:border-[#587589]
+
+                                        hover:bg-[#587589]
+
                                         hover:text-white
 
                                         sm:min-w-[170px]
@@ -1012,9 +1329,10 @@ END:VCALENDAR`;
                     </article>
 
 
-                    {/* ====================================== */}
-                    {/* EVENT IMAGE */}
-                    {/* ====================================== */}
+                    {/* =================================================
+                        EVENT IMAGE
+                        GIỮ NGUYÊN FORM ẢNH
+                    ================================================= */}
 
                     <div
                         className="
@@ -1032,13 +1350,13 @@ END:VCALENDAR`;
                             rounded-[30px]
 
                             border
-                            border-white/80
+                            border-[#FFFDF8]/90
 
-                            bg-[#eee4de]
+                            bg-[#F1F3EB]
 
                             p-[6px]
 
-                            shadow-[0_30px_80px_rgba(73,51,43,0.12)]
+                            shadow-[0_30px_80px_rgba(49,86,107,0.11)]
 
                             sm:h-[520px]
 
@@ -1065,9 +1383,12 @@ END:VCALENDAR`;
                         >
 
                             <Image
-                                src="/images/event.png"
+                                src={
+                                    event
+                                        .image
+                                }
 
-                                alt="Ngày chung đôi của Nam và Thư"
+                                alt={`Ngày chung đôi của ${wedding.groom.shortName} và ${wedding.bride.shortName}`}
 
                                 fill
 
@@ -1089,7 +1410,9 @@ END:VCALENDAR`;
                             />
 
 
-                            {/* IMAGE LIGHT */}
+                            {/* =================================================
+                                IMAGE OVERLAY
+                            ================================================= */}
 
                             <div
                                 className="
@@ -1100,14 +1423,16 @@ END:VCALENDAR`;
 
                                     bg-gradient-to-t
 
-                                    from-[#362720]/25
+                                    from-[#183747]/28
                                     via-transparent
                                     to-white/5
                                 "
                             />
 
 
-                            {/* IMAGE BADGE */}
+                            {/* =================================================
+                                IMAGE BADGE
+                            ================================================= */}
 
                             <div
                                 className="
@@ -1125,7 +1450,7 @@ END:VCALENDAR`;
                                     border
                                     border-white/40
 
-                                    bg-black/15
+                                    bg-[#183747]/18
 
                                     px-5
                                     py-2.5
@@ -1134,7 +1459,7 @@ END:VCALENDAR`;
 
                                     text-sm
 
-                                    text-white/90
+                                    text-white/95
 
                                     shadow-lg
 
@@ -1144,7 +1469,31 @@ END:VCALENDAR`;
                                     sm:text-base
                                 "
                             >
-                                Nam ♥ Thư
+
+                                {
+                                    wedding
+                                        .groom
+                                        .shortName
+                                }
+
+
+                                <span
+                                    className="
+                                        mx-2
+
+                                        text-[#F1B8C0]
+                                    "
+                                >
+                                    ♥
+                                </span>
+
+
+                                {
+                                    wedding
+                                        .bride
+                                        .shortName
+                                }
+
                             </div>
 
                         </div>
@@ -1154,9 +1503,9 @@ END:VCALENDAR`;
                 </div>
 
 
-                {/* ====================================== */}
-                {/* BOTTOM DECORATION */}
-                {/* ====================================== */}
+                {/* =================================================
+                    BOTTOM DECORATION
+                ================================================= */}
 
                 <div
                     className="
@@ -1166,7 +1515,7 @@ END:VCALENDAR`;
 
                         flex
 
-                        max-w-[270px]
+                        max-w-[380px]
 
                         items-center
                         justify-center
@@ -1187,7 +1536,7 @@ END:VCALENDAR`;
                             bg-gradient-to-r
 
                             from-transparent
-                            to-[#b98777]/35
+                            to-[#7A9CAC]/35
                         "
                     />
 
@@ -1198,15 +1547,21 @@ END:VCALENDAR`;
 
                             whitespace-nowrap
 
-                            text-[11px]
+                            text-[14px]
+                            font-normal
+
                             italic
 
-                            text-[#86655b]/75
+                            text-[#587589]/85
 
-                            sm:text-xs
+                            sm:text-[15px]
                         "
                     >
-                        Hẹn gặp bạn trong ngày vui
+                        {
+                            wedding
+                                .eventSection
+                                .bottomText
+                        }
                     </span>
 
 
@@ -1218,7 +1573,7 @@ END:VCALENDAR`;
                             bg-gradient-to-l
 
                             from-transparent
-                            to-[#b98777]/35
+                            to-[#7A9CAC]/35
                         "
                     />
 

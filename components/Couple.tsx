@@ -18,9 +18,9 @@ export default function Couple() {
 
                 bg-gradient-to-b
 
-                from-[#fffaf7]
-                via-[#faf3ee]
-                to-[#f6ebe5]
+                from-[#F8F7EC]
+                via-[#F2F5EF]
+                to-[#EEF4F6]
 
                 px-5
                 py-20
@@ -36,63 +36,108 @@ export default function Couple() {
         >
 
 
-            {/* ===================================== */}
-            {/* BACKGROUND DECORATION */}
-            {/* ===================================== */}
+            {/* =================================================
+                BACKGROUND DECORATION
+                KHÔNG DÙNG ẢNH BACKGROUND
+            ================================================= */}
+
+
+            {/* BLUE GLOW - TOP LEFT */}
 
             <div
                 className="
                     pointer-events-none
 
                     absolute
-                    -left-32
+
+                    -left-40
                     top-20
 
-                    h-[320px]
-                    w-[320px]
+                    h-[360px]
+                    w-[360px]
 
                     rounded-full
 
-                    bg-[#e9bdb2]/20
-
-                    blur-[110px]
-
-                    md:h-[420px]
-                    md:w-[420px]
-                "
-            />
-
-
-            <div
-                className="
-                    pointer-events-none
-
-                    absolute
-                    -right-32
-                    bottom-16
-
-                    h-[340px]
-                    w-[340px]
-
-                    rounded-full
-
-                    bg-[#dbc3a7]/20
+                    bg-[#8FB4C7]/20
 
                     blur-[120px]
 
-                    md:h-[460px]
-                    md:w-[460px]
+                    sm:h-[430px]
+                    sm:w-[430px]
+
+                    md:h-[520px]
+                    md:w-[520px]
                 "
             />
 
 
-            {/* hoa văn nhẹ phía trên */}
+            {/* PINK GLOW - BOTTOM RIGHT */}
 
             <div
                 className="
                     pointer-events-none
 
                     absolute
+
+                    -right-40
+                    bottom-12
+
+                    h-[350px]
+                    w-[350px]
+
+                    rounded-full
+
+                    bg-[#D9A5AE]/18
+
+                    blur-[125px]
+
+                    sm:h-[430px]
+                    sm:w-[430px]
+
+                    md:h-[500px]
+                    md:w-[500px]
+                "
+            />
+
+
+            {/* SAGE GLOW - CENTER */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
+                    left-1/2
+                    top-[42%]
+
+                    h-[520px]
+                    w-[75%]
+
+                    -translate-x-1/2
+                    -translate-y-1/2
+
+                    rounded-full
+
+                    bg-[#DCE5D8]/24
+
+                    blur-[125px]
+
+                    md:w-[55%]
+                "
+            />
+
+
+            {/* =================================================
+                TOP DECORATION
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
                     left-1/2
                     top-8
 
@@ -105,8 +150,6 @@ export default function Couple() {
 
                     gap-3
 
-                    opacity-40
-
                     md:top-12
                 "
             >
@@ -114,12 +157,12 @@ export default function Couple() {
                 <span
                     className="
                         h-px
-                        w-8
+                        w-9
 
                         bg-gradient-to-r
 
                         from-transparent
-                        to-[#b68574]
+                        to-[#B8A27D]/55
                     "
                 />
 
@@ -128,7 +171,7 @@ export default function Couple() {
                     className="
                         text-[8px]
 
-                        text-[#b68574]
+                        text-[#C98792]
                     "
                 >
                     ♥
@@ -138,17 +181,21 @@ export default function Couple() {
                 <span
                     className="
                         h-px
-                        w-8
+                        w-9
 
                         bg-gradient-to-l
 
                         from-transparent
-                        to-[#b68574]
+                        to-[#B8A27D]/55
                     "
                 />
 
             </div>
 
+
+            {/* =================================================
+                MAIN CONTAINER
+            ================================================= */}
 
             <div
                 className="
@@ -162,9 +209,9 @@ export default function Couple() {
             >
 
 
-                {/* ===================================== */}
-                {/* HEADING */}
-                {/* ===================================== */}
+                {/* =================================================
+                    SECTION HEADING
+                ================================================= */}
 
                 <Reveal>
 
@@ -186,23 +233,31 @@ export default function Couple() {
                     >
 
 
+                        {/* EYEBROW */}
+
                         <p
                             className="
-                                text-[11px]
+                                text-[10px]
                                 font-medium
 
                                 uppercase
 
-                                tracking-[0.32em]
+                                tracking-[0.36em]
 
-                                text-[#9d6f63]
+                                text-[#C98792]
 
-                                sm:text-xs
+                                sm:text-[11px]
                             "
                         >
-                            Hai mảnh ghép
+                            {
+                                wedding
+                                    .coupleSection
+                                    .eyebrow
+                            }
                         </p>
 
+
+                        {/* TITLE */}
 
                         <h2
                             className="
@@ -210,25 +265,31 @@ export default function Couple() {
 
                                 mt-4
 
-                                text-[42px]
+                                text-[44px]
                                 font-light
 
-                                leading-tight
+                                leading-[1.05]
 
-                                text-[#4f403a]
+                                tracking-[-0.02em]
+
+                                text-[#31566B]
 
                                 sm:text-5xl
 
                                 md:text-6xl
 
-                                lg:text-7xl
+                                lg:text-[72px]
                             "
                         >
-                            Chúng mình
+                            {
+                                wedding
+                                    .coupleSection
+                                    .title
+                            }
                         </h2>
 
 
-                        {/* divider */}
+                        {/* DECORATIVE DIVIDER */}
 
                         <div
                             className="
@@ -247,20 +308,25 @@ export default function Couple() {
                             <span
                                 className="
                                     h-px
-                                    w-10
+                                    w-12
 
-                                    bg-[#c59b8e]/40
+                                    bg-gradient-to-r
 
-                                    sm:w-14
+                                    from-transparent
+                                    to-[#B8A27D]/45
+
+                                    sm:w-16
                                 "
                             />
 
 
                             <span
                                 className="
-                                    text-[9px]
+                                    font-wedding-serif
 
-                                    text-[#b77969]
+                                    text-[10px]
+
+                                    text-[#C98792]
                                 "
                             >
                                 ♡
@@ -270,16 +336,21 @@ export default function Couple() {
                             <span
                                 className="
                                     h-px
-                                    w-10
+                                    w-12
 
-                                    bg-[#c59b8e]/40
+                                    bg-gradient-to-l
 
-                                    sm:w-14
+                                    from-transparent
+                                    to-[#B8A27D]/45
+
+                                    sm:w-16
                                 "
                             />
 
                         </div>
 
+
+                        {/* DESCRIPTION */}
 
                         <p
                             className="
@@ -288,13 +359,14 @@ export default function Couple() {
                                 mx-auto
                                 mt-6
 
-                                max-w-2xl
+                                max-w-[690px]
 
                                 text-[16px]
+                                font-normal
 
                                 leading-7
 
-                                text-[#66554e]
+                                text-[#61726D]
 
                                 sm:text-lg
                                 sm:leading-8
@@ -303,8 +375,11 @@ export default function Couple() {
                                 md:leading-9
                             "
                         >
-                            Hai hành trình khác nhau, hai thế giới từng chẳng liên quan,
-                            rồi một ngày lại gặp nhau và trở thành một phần trong cuộc đời của nhau.
+                            {
+                                wedding
+                                    .coupleSection
+                                    .description
+                            }
                         </p>
 
                     </div>
@@ -312,9 +387,10 @@ export default function Couple() {
                 </Reveal>
 
 
-                {/* ===================================== */}
-                {/* COUPLE GRID */}
-                {/* ===================================== */}
+                {/* =================================================
+                    COUPLE GRID
+                    CHÚ RỂ - HEART - CÔ DÂU
+                ================================================= */}
 
                 <div
                     className="
@@ -325,7 +401,6 @@ export default function Couple() {
                         gap-12
 
                         md:grid-cols-[1fr_80px_1fr]
-
                         md:gap-6
 
                         lg:grid-cols-[1fr_100px_1fr]
@@ -334,9 +409,9 @@ export default function Couple() {
                 >
 
 
-                    {/* ===================================== */}
-                    {/* GROOM */}
-                    {/* ===================================== */}
+                    {/* =================================================
+                        GROOM
+                    ================================================= */}
 
                     <Reveal>
 
@@ -370,13 +445,13 @@ export default function Couple() {
                                     rounded-t-[150px]
 
                                     border
-                                    border-white/70
+                                    border-[#FFFDF8]/90
 
-                                    bg-white/40
+                                    bg-[#FFFDF8]/55
 
                                     p-[6px]
 
-                                    shadow-[0_28px_70px_rgba(104,72,61,0.12)]
+                                    shadow-[0_30px_80px_rgba(49,86,107,0.11)]
 
                                     sm:p-2
                                 "
@@ -397,11 +472,15 @@ export default function Couple() {
 
                                     <Image
                                         src={
-                                            wedding.groom.image
+                                            wedding
+                                                .groom
+                                                .image
                                         }
 
                                         alt={
-                                            wedding.groom.fullName
+                                            wedding
+                                                .groom
+                                                .fullName
                                         }
 
                                         fill
@@ -426,7 +505,7 @@ export default function Couple() {
                                     />
 
 
-                                    {/* soft gradient */}
+                                    {/* SOFT BLUE GRADIENT */}
 
                                     <div
                                         className="
@@ -437,7 +516,7 @@ export default function Couple() {
 
                                             bg-gradient-to-t
 
-                                            from-[#3d3029]/20
+                                            from-[#213E50]/18
                                             via-transparent
                                             to-transparent
                                         "
@@ -454,17 +533,17 @@ export default function Couple() {
                                 className="
                                     mt-7
 
-                                    text-[11px]
-                                    font-semibold
+                                    text-[10px]
+                                    font-medium
 
                                     uppercase
 
-                                    tracking-[0.28em]
+                                    tracking-[0.34em]
 
-                                    text-[#a06f62]
+                                    text-[#C98792]
 
                                     sm:mt-8
-                                    sm:text-xs
+                                    sm:text-[11px]
                                 "
                             >
                                 Chú rể
@@ -479,21 +558,27 @@ export default function Couple() {
 
                                     mt-2
 
-                                    text-[32px]
+                                    text-[34px]
                                     font-normal
 
                                     leading-tight
 
-                                    text-[#4c3d37]
+                                    tracking-[-0.015em]
+
+                                    text-[#31566B]
 
                                     sm:text-4xl
 
-                                    md:text-[38px]
+                                    md:text-[40px]
 
                                     lg:text-5xl
                                 "
                             >
-                                {wedding.groom.fullName}
+                                {
+                                    wedding
+                                        .groom
+                                        .fullName
+                                }
                             </h3>
 
 
@@ -509,7 +594,7 @@ export default function Couple() {
                                     items-center
                                     justify-center
 
-                                    gap-2
+                                    gap-2.5
                                 "
                             >
 
@@ -518,26 +603,34 @@ export default function Couple() {
                                         h-px
                                         w-8
 
-                                        bg-[#caa79c]/40
+                                        bg-gradient-to-r
+
+                                        from-transparent
+                                        to-[#B8A27D]/45
                                     "
                                 />
+
 
                                 <span
                                     className="
                                         text-[7px]
 
-                                        text-[#b77969]/80
+                                        text-[#C98792]
                                     "
                                 >
                                     ♥
                                 </span>
+
 
                                 <span
                                     className="
                                         h-px
                                         w-8
 
-                                        bg-[#caa79c]/40
+                                        bg-gradient-to-l
+
+                                        from-transparent
+                                        to-[#B8A27D]/45
                                     "
                                 />
 
@@ -556,10 +649,11 @@ export default function Couple() {
                                     max-w-md
 
                                     text-[16px]
+                                    font-normal
 
                                     leading-7
 
-                                    text-[#66554e]
+                                    text-[#61726D]
 
                                     sm:text-[17px]
                                     sm:leading-8
@@ -567,7 +661,11 @@ export default function Couple() {
                                     lg:text-lg
                                 "
                             >
-                                {wedding.groom.description}
+                                {
+                                    wedding
+                                        .groom
+                                        .description
+                                }
                             </p>
 
                         </article>
@@ -575,9 +673,9 @@ export default function Couple() {
                     </Reveal>
 
 
-                    {/* ===================================== */}
-                    {/* CENTER LOVE CONNECTOR */}
-                    {/* ===================================== */}
+                    {/* =================================================
+                        CENTER LOVE CONNECTOR
+                    ================================================= */}
 
                     <div
                         className="
@@ -599,7 +697,7 @@ export default function Couple() {
                     >
 
 
-                        {/* mobile line */}
+                        {/* MOBILE LEFT LINE */}
 
                         <span
                             className="
@@ -610,15 +708,15 @@ export default function Couple() {
                                 bg-gradient-to-r
 
                                 from-transparent
-                                via-[#c19a8d]/40
-                                to-[#c19a8d]/40
+                                via-[#7A9CAC]/35
+                                to-[#7A9CAC]/35
 
                                 md:hidden
                             "
                         />
 
 
-                        {/* desktop vertical line */}
+                        {/* DESKTOP TOP LINE */}
 
                         <span
                             className="
@@ -630,18 +728,23 @@ export default function Couple() {
                                 bg-gradient-to-b
 
                                 from-transparent
-                                via-[#c19a8d]/35
-                                to-[#c19a8d]/35
+                                via-[#7A9CAC]/30
+                                to-[#7A9CAC]/30
 
                                 md:block
                             "
                         />
 
 
-                        {/* HEART */}
+                        {/* =================================================
+                            HEART ICON
+                            GIỮ NGUYÊN TRÁI TIM
+                        ================================================= */}
 
                         <div
                             className="
+                                relative
+
                                 mx-5
 
                                 flex
@@ -656,15 +759,15 @@ export default function Couple() {
                                 rounded-full
 
                                 border
-                                border-[#c6a092]/40
+                                border-[#C98792]/30
 
-                                bg-white/60
+                                bg-[#FFFDF8]/82
 
                                 text-base
 
-                                text-[#b77969]
+                                text-[#C98792]
 
-                                shadow-[0_12px_35px_rgba(142,90,75,0.10)]
+                                shadow-[0_12px_38px_rgba(49,86,107,0.10)]
 
                                 backdrop-blur-md
 
@@ -675,11 +778,35 @@ export default function Couple() {
                                 md:w-16
                             "
                         >
-                            ♥
+
+                            {/* SMALL INNER RING */}
+
+                            <span
+                                className="
+                                    absolute
+                                    inset-[5px]
+
+                                    rounded-full
+
+                                    border
+                                    border-[#B8A27D]/20
+                                "
+                            />
+
+
+                            <span
+                                className="
+                                    relative
+                                    z-10
+                                "
+                            >
+                                ♥
+                            </span>
+
                         </div>
 
 
-                        {/* mobile line */}
+                        {/* MOBILE RIGHT LINE */}
 
                         <span
                             className="
@@ -690,15 +817,15 @@ export default function Couple() {
                                 bg-gradient-to-l
 
                                 from-transparent
-                                via-[#c19a8d]/40
-                                to-[#c19a8d]/40
+                                via-[#7A9CAC]/35
+                                to-[#7A9CAC]/35
 
                                 md:hidden
                             "
                         />
 
 
-                        {/* desktop line */}
+                        {/* DESKTOP BOTTOM LINE */}
 
                         <span
                             className="
@@ -710,8 +837,8 @@ export default function Couple() {
                                 bg-gradient-to-t
 
                                 from-transparent
-                                via-[#c19a8d]/35
-                                to-[#c19a8d]/35
+                                via-[#7A9CAC]/30
+                                to-[#7A9CAC]/30
 
                                 md:block
                             "
@@ -720,9 +847,9 @@ export default function Couple() {
                     </div>
 
 
-                    {/* ===================================== */}
-                    {/* BRIDE */}
-                    {/* ===================================== */}
+                    {/* =================================================
+                        BRIDE
+                    ================================================= */}
 
                     <Reveal
                         delay={150}
@@ -758,13 +885,13 @@ export default function Couple() {
                                     rounded-t-[150px]
 
                                     border
-                                    border-white/70
+                                    border-[#FFFDF8]/90
 
-                                    bg-white/40
+                                    bg-[#FFFDF8]/55
 
                                     p-[6px]
 
-                                    shadow-[0_28px_70px_rgba(104,72,61,0.12)]
+                                    shadow-[0_30px_80px_rgba(49,86,107,0.11)]
 
                                     sm:p-2
                                 "
@@ -785,11 +912,15 @@ export default function Couple() {
 
                                     <Image
                                         src={
-                                            wedding.bride.image
+                                            wedding
+                                                .bride
+                                                .image
                                         }
 
                                         alt={
-                                            wedding.bride.fullName
+                                            wedding
+                                                .bride
+                                                .fullName
                                         }
 
                                         fill
@@ -814,6 +945,8 @@ export default function Couple() {
                                     />
 
 
+                                    {/* SOFT BLUE GRADIENT */}
+
                                     <div
                                         className="
                                             pointer-events-none
@@ -823,7 +956,7 @@ export default function Couple() {
 
                                             bg-gradient-to-t
 
-                                            from-[#3d3029]/20
+                                            from-[#213E50]/18
                                             via-transparent
                                             to-transparent
                                         "
@@ -840,17 +973,17 @@ export default function Couple() {
                                 className="
                                     mt-7
 
-                                    text-[11px]
-                                    font-semibold
+                                    text-[10px]
+                                    font-medium
 
                                     uppercase
 
-                                    tracking-[0.28em]
+                                    tracking-[0.34em]
 
-                                    text-[#a06f62]
+                                    text-[#C98792]
 
                                     sm:mt-8
-                                    sm:text-xs
+                                    sm:text-[11px]
                                 "
                             >
                                 Cô dâu
@@ -865,21 +998,27 @@ export default function Couple() {
 
                                     mt-2
 
-                                    text-[32px]
+                                    text-[34px]
                                     font-normal
 
                                     leading-tight
 
-                                    text-[#4c3d37]
+                                    tracking-[-0.015em]
+
+                                    text-[#31566B]
 
                                     sm:text-4xl
 
-                                    md:text-[38px]
+                                    md:text-[40px]
 
                                     lg:text-5xl
                                 "
                             >
-                                {wedding.bride.fullName}
+                                {
+                                    wedding
+                                        .bride
+                                        .fullName
+                                }
                             </h3>
 
 
@@ -895,7 +1034,7 @@ export default function Couple() {
                                     items-center
                                     justify-center
 
-                                    gap-2
+                                    gap-2.5
                                 "
                             >
 
@@ -904,26 +1043,34 @@ export default function Couple() {
                                         h-px
                                         w-8
 
-                                        bg-[#caa79c]/40
+                                        bg-gradient-to-r
+
+                                        from-transparent
+                                        to-[#B8A27D]/45
                                     "
                                 />
+
 
                                 <span
                                     className="
                                         text-[7px]
 
-                                        text-[#b77969]/80
+                                        text-[#C98792]
                                     "
                                 >
                                     ♥
                                 </span>
+
 
                                 <span
                                     className="
                                         h-px
                                         w-8
 
-                                        bg-[#caa79c]/40
+                                        bg-gradient-to-l
+
+                                        from-transparent
+                                        to-[#B8A27D]/45
                                     "
                                 />
 
@@ -942,10 +1089,11 @@ export default function Couple() {
                                     max-w-md
 
                                     text-[16px]
+                                    font-normal
 
                                     leading-7
 
-                                    text-[#66554e]
+                                    text-[#61726D]
 
                                     sm:text-[17px]
                                     sm:leading-8
@@ -953,7 +1101,11 @@ export default function Couple() {
                                     lg:text-lg
                                 "
                             >
-                                {wedding.bride.description}
+                                {
+                                    wedding
+                                        .bride
+                                        .description
+                                }
                             </p>
 
                         </article>
@@ -963,9 +1115,9 @@ export default function Couple() {
                 </div>
 
 
-                {/* ===================================== */}
-                {/* BOTTOM DECORATION */}
-                {/* ===================================== */}
+                {/* =================================================
+                    BOTTOM DECORATION
+                ================================================= */}
 
                 <div
                     className="
@@ -979,8 +1131,6 @@ export default function Couple() {
 
                         gap-4
 
-                        opacity-50
-
                         md:mt-24
                     "
                 >
@@ -993,21 +1143,34 @@ export default function Couple() {
                             bg-gradient-to-r
 
                             from-transparent
-                            to-[#a97d6d]/50
+                            to-[#7A9CAC]/35
                         "
                     />
 
 
                     <span
                         className="
-                            font-wedding-serif
+        font-wedding-serif
 
-                            text-[10px]
+        text-[15px]
+        font-normal
 
-                            text-[#a97d6d]
-                        "
+        italic
+
+        tracking-[0.06em]
+
+        text-[#587589]/85
+
+        sm:text-[16px]
+
+        md:text-[17px]
+    "
                     >
-                        together
+                        {
+                            wedding
+                                .coupleSection
+                                .bottomText
+                        }
                     </span>
 
 
@@ -1019,7 +1182,7 @@ export default function Couple() {
                             bg-gradient-to-l
 
                             from-transparent
-                            to-[#a97d6d]/50
+                            to-[#7A9CAC]/35
                         "
                     />
 

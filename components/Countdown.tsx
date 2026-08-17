@@ -8,13 +8,29 @@ import {
 import { wedding } from "@/data/wedding";
 
 
+/* =========================================================
+   TYPE
+========================================================= */
+
 type TimeLeft = {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
+
+    days:
+        number;
+
+    hours:
+        number;
+
+    minutes:
+        number;
+
+    seconds:
+        number;
 };
 
+
+/* =========================================================
+   CALCULATE COUNTDOWN
+========================================================= */
 
 function calculateTime(): TimeLeft {
 
@@ -25,14 +41,25 @@ function calculateTime(): TimeLeft {
         Date.now();
 
 
-    if (distance <= 0) {
+    if (
+        distance <= 0
+    ) {
 
         return {
-            days: 0,
-            hours: 0,
-            minutes: 0,
-            seconds: 0,
+
+            days:
+                0,
+
+            hours:
+                0,
+
+            minutes:
+                0,
+
+            seconds:
+                0,
         };
+
     }
 
 
@@ -70,148 +97,298 @@ function calculateTime(): TimeLeft {
                 ) /
                 1000
             ),
-
     };
 }
 
 
+/* =========================================================
+   FLOATING HEARTS
+
+   GIỮ NGUYÊN HIỆU ỨNG
+========================================================= */
+
 const floatingItems = [
 
     {
-        left: "5%",
-        delay: "0s",
-        duration: "14s",
-        size: 18,
-        type: "♡",
+        left:
+            "5%",
+
+        delay:
+            "0s",
+
+        duration:
+            "14s",
+
+        size:
+            18,
+
+        type:
+            "♡",
     },
 
     {
-        left: "14%",
-        delay: "4s",
-        duration: "17s",
-        size: 11,
-        type: "♥",
+        left:
+            "14%",
+
+        delay:
+            "4s",
+
+        duration:
+            "17s",
+
+        size:
+            11,
+
+        type:
+            "♥",
     },
 
     {
-        left: "23%",
-        delay: "7s",
-        duration: "15s",
-        size: 15,
-        type: "♡",
+        left:
+            "23%",
+
+        delay:
+            "7s",
+
+        duration:
+            "15s",
+
+        size:
+            15,
+
+        type:
+            "♡",
     },
 
     {
-        left: "35%",
-        delay: "2s",
-        duration: "18s",
-        size: 10,
-        type: "♥",
+        left:
+            "35%",
+
+        delay:
+            "2s",
+
+        duration:
+            "18s",
+
+        size:
+            10,
+
+        type:
+            "♥",
     },
 
     {
-        left: "47%",
-        delay: "9s",
-        duration: "16s",
-        size: 16,
-        type: "♡",
+        left:
+            "47%",
+
+        delay:
+            "9s",
+
+        duration:
+            "16s",
+
+        size:
+            16,
+
+        type:
+            "♡",
     },
 
     {
-        left: "59%",
-        delay: "5s",
-        duration: "19s",
-        size: 12,
-        type: "♥",
+        left:
+            "59%",
+
+        delay:
+            "5s",
+
+        duration:
+            "19s",
+
+        size:
+            12,
+
+        type:
+            "♥",
     },
 
     {
-        left: "70%",
-        delay: "1s",
-        duration: "15s",
-        size: 17,
-        type: "♡",
+        left:
+            "70%",
+
+        delay:
+            "1s",
+
+        duration:
+            "15s",
+
+        size:
+            17,
+
+        type:
+            "♡",
     },
 
     {
-        left: "81%",
-        delay: "8s",
-        duration: "17s",
-        size: 11,
-        type: "♥",
+        left:
+            "81%",
+
+        delay:
+            "8s",
+
+        duration:
+            "17s",
+
+        size:
+            11,
+
+        type:
+            "♥",
     },
 
     {
-        left: "92%",
-        delay: "3s",
-        duration: "20s",
-        size: 15,
-        type: "♡",
-    },
+        left:
+            "92%",
 
+        delay:
+            "3s",
+
+        duration:
+            "20s",
+
+        size:
+            15,
+
+        type:
+            "♡",
+    },
 ];
 
+
+/* =========================================================
+   BUBBLES
+
+   GIỮ NGUYÊN HIỆU ỨNG
+========================================================= */
 
 const bubbles = [
 
     {
-        left: "8%",
-        size: 34,
-        delay: "2s",
-        duration: "17s",
+        left:
+            "8%",
+
+        size:
+            34,
+
+        delay:
+            "2s",
+
+        duration:
+            "17s",
     },
 
     {
-        left: "19%",
-        size: 18,
-        delay: "7s",
-        duration: "14s",
+        left:
+            "19%",
+
+        size:
+            18,
+
+        delay:
+            "7s",
+
+        duration:
+            "14s",
     },
 
     {
-        left: "31%",
-        size: 46,
-        delay: "4s",
-        duration: "20s",
+        left:
+            "31%",
+
+        size:
+            46,
+
+        delay:
+            "4s",
+
+        duration:
+            "20s",
     },
 
     {
-        left: "44%",
-        size: 25,
-        delay: "0s",
-        duration: "16s",
+        left:
+            "44%",
+
+        size:
+            25,
+
+        delay:
+            "0s",
+
+        duration:
+            "16s",
     },
 
     {
-        left: "56%",
-        size: 38,
-        delay: "9s",
-        duration: "19s",
+        left:
+            "56%",
+
+        size:
+            38,
+
+        delay:
+            "9s",
+
+        duration:
+            "19s",
     },
 
     {
-        left: "68%",
-        size: 20,
-        delay: "5s",
-        duration: "15s",
+        left:
+            "68%",
+
+        size:
+            20,
+
+        delay:
+            "5s",
+
+        duration:
+            "15s",
     },
 
     {
-        left: "79%",
-        size: 42,
-        delay: "1s",
-        duration: "21s",
+        left:
+            "79%",
+
+        size:
+            42,
+
+        delay:
+            "1s",
+
+        duration:
+            "21s",
     },
 
     {
-        left: "91%",
-        size: 26,
-        delay: "6s",
-        duration: "17s",
-    },
+        left:
+            "91%",
 
+        size:
+            26,
+
+        delay:
+            "6s",
+
+        duration:
+            "17s",
+    },
 ];
 
+
+/* =========================================================
+   COUNTDOWN COMPONENT
+========================================================= */
 
 export default function Countdown() {
 
@@ -219,10 +396,15 @@ export default function Countdown() {
         time,
         setTime,
     ] =
-        useState<TimeLeft | null>(
+        useState<
+            TimeLeft |
             null
-        );
+        >(null);
 
+
+    /* =====================================================
+       UPDATE TIMER
+    ===================================================== */
 
     useEffect(() => {
 
@@ -258,6 +440,7 @@ export default function Countdown() {
                 firstUpdate
             );
 
+
             clearInterval(
                 interval
             );
@@ -267,32 +450,43 @@ export default function Countdown() {
     }, []);
 
 
+    /* =====================================================
+       COUNTDOWN VALUES
+    ===================================================== */
+
     const values = [
 
         {
-            label: "Ngày",
+            label:
+                "Ngày",
+
             value:
                 time?.days,
         },
 
         {
-            label: "Giờ",
+            label:
+                "Giờ",
+
             value:
                 time?.hours,
         },
 
         {
-            label: "Phút",
+            label:
+                "Phút",
+
             value:
                 time?.minutes,
         },
 
         {
-            label: "Giây",
+            label:
+                "Giây",
+
             value:
                 time?.seconds,
         },
-
     ];
 
 
@@ -302,6 +496,8 @@ export default function Countdown() {
             className="
                 relative
 
+                -mt-px
+
                 flex
                 min-h-[650px]
 
@@ -309,23 +505,50 @@ export default function Countdown() {
 
                 overflow-hidden
 
-                bg-gradient-to-br
-
-                from-[#fff9f6]
-                via-[#f9eae4]
-                to-[#efd7cf]
+                bg-[linear-gradient(to_bottom,#EEF4F6_0%,#EEF4F6_8%,#F4F6EF_48%,#F8F1EE_100%)]
 
                 px-5
                 py-24
 
+                sm:px-6
+
                 md:min-h-[720px]
+                md:px-8
+                md:py-28
             "
         >
 
 
-            {/* ================================= */}
-            {/* BACKGROUND GLOW */}
-            {/* ================================= */}
+            {/* =================================================
+                SEAMLESS TOP TRANSITION
+
+                Nối trực tiếp từ LoveStory:
+                #EEF4F6 -> #EEF4F6
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+                    left-0
+                    top-0
+
+                    h-24
+                    w-full
+
+                    bg-gradient-to-b
+
+                    from-[#EEF4F6]
+                    via-[#EEF4F6]/80
+                    to-transparent
+                "
+            />
+
+
+            {/* =================================================
+                BLUE GLOW
+            ================================================= */}
 
             <div
                 className="
@@ -343,12 +566,19 @@ export default function Countdown() {
 
                     rounded-full
 
-                    bg-[#f4bdb0]/30
+                    bg-[#8FB4C7]/20
 
-                    blur-[110px]
+                    blur-[115px]
+
+                    md:h-[500px]
+                    md:w-[500px]
                 "
             />
 
+
+            {/* =================================================
+                DUSTY ROSE GLOW
+            ================================================= */}
 
             <div
                 className="
@@ -366,12 +596,19 @@ export default function Countdown() {
 
                     rounded-full
 
-                    bg-[#e5c3a6]/35
+                    bg-[#D9A5AE]/18
 
                     blur-[130px]
+
+                    md:h-[560px]
+                    md:w-[560px]
                 "
             />
 
+
+            {/* =================================================
+                CENTER CREAM / SAGE LIGHT
+            ================================================= */}
 
             <div
                 className="
@@ -384,24 +621,28 @@ export default function Countdown() {
                     left-1/2
                     top-1/2
 
-                    h-[350px]
-                    w-[350px]
+                    h-[420px]
+                    w-[70%]
 
                     -translate-x-1/2
                     -translate-y-1/2
 
                     rounded-full
 
-                    bg-white/60
+                    bg-[#F8F7EC]/60
 
-                    blur-[120px]
+                    blur-[125px]
+
+                    md:w-[52%]
                 "
             />
 
 
-            {/* ================================= */}
-            {/* BUBBLES */}
-            {/* ================================= */}
+            {/* =================================================
+                BUBBLES
+
+                HIỆU ỨNG GIỮ NGUYÊN
+            ================================================= */}
 
             <div
                 className="
@@ -435,9 +676,9 @@ export default function Countdown() {
                                 rounded-full
 
                                 border
-                                border-white/70
+                                border-[#FFFFFF]/75
 
-                                bg-white/15
+                                bg-[#FFFFFF]/16
 
                                 shadow-[inset_0_0_18px_rgba(255,255,255,0.7)]
 
@@ -445,6 +686,7 @@ export default function Countdown() {
                             "
 
                             style={{
+
                                 left:
                                     bubble.left,
 
@@ -468,9 +710,11 @@ export default function Countdown() {
             </div>
 
 
-            {/* ================================= */}
-            {/* FLOATING HEARTS */}
-            {/* ================================= */}
+            {/* =================================================
+                FLOATING HEARTS
+
+                HIỆU ỨNG GIỮ NGUYÊN
+            ================================================= */}
 
             <div
                 className="
@@ -501,10 +745,11 @@ export default function Countdown() {
 
                                 -bottom-10
 
-                                text-[#c88879]/45
+                                text-[#C98792]/38
                             "
 
                             style={{
+
                                 left:
                                     item.left,
 
@@ -527,26 +772,27 @@ export default function Countdown() {
             </div>
 
 
-            {/* ================================= */}
-            {/* DECORATION TOP */}
-            {/* ================================= */}
+            {/* =================================================
+                TOP DECORATION
+            ================================================= */}
 
             <div
                 className="
                     pointer-events-none
 
                     absolute
+
                     left-1/2
                     top-12
 
+                    flex
+
                     -translate-x-1/2
 
-                    flex
                     items-center
+                    justify-center
 
                     gap-4
-
-                    text-[#b98073]/40
                 "
             >
 
@@ -555,29 +801,43 @@ export default function Countdown() {
                         h-px
                         w-10
 
-                        bg-[#b98073]/30
+                        bg-gradient-to-r
+
+                        from-transparent
+                        to-[#B8A27D]/45
                     "
                 />
 
-                <span>
+
+                <span
+                    className="
+                        text-[9px]
+
+                        text-[#C98792]/70
+                    "
+                >
                     ♡
                 </span>
+
 
                 <span
                     className="
                         h-px
                         w-10
 
-                        bg-[#b98073]/30
+                        bg-gradient-to-l
+
+                        from-transparent
+                        to-[#B8A27D]/45
                     "
                 />
 
             </div>
 
 
-            {/* ================================= */}
-            {/* MAIN CONTENT */}
-            {/* ================================= */}
+            {/* =================================================
+                MAIN CONTENT
+            ================================================= */}
 
             <div
                 className="
@@ -594,28 +854,37 @@ export default function Countdown() {
             >
 
 
-                {/* SMALL TITLE */}
+                {/* =================================================
+                    EYEBROW
+                ================================================= */}
 
                 <p
                     className="
-                        text-[8px]
-
+                        text-[9px]
                         font-medium
 
                         uppercase
 
-                        tracking-[0.42em]
+                        tracking-[0.36em]
 
-                        text-[#9b756b]/70
+                        text-[#C98792]
 
-                        md:text-[9px]
+                        sm:text-[10px]
+
+                        md:text-[11px]
                     "
                 >
-                    Đếm ngược đến ngày hạnh phúc
+                    {
+                        wedding
+                            .countdownSection
+                            .eyebrow
+                    }
                 </p>
 
 
-                {/* TITLE */}
+                {/* =================================================
+                    TITLE
+                ================================================= */}
 
                 <h2
                     className="
@@ -627,46 +896,69 @@ export default function Countdown() {
 
                         max-w-3xl
 
-                        text-[38px]
+                        text-[39px]
                         font-light
 
-                        leading-tight
+                        leading-[1.15]
 
-                        text-[#5b4741]
+                        tracking-[-0.02em]
+
+                        text-[#31566B]
 
                         sm:text-5xl
 
                         md:text-6xl
+
+                        lg:text-[66px]
                     "
                 >
-                    Ngày chúng mình
+
+                    {
+                        wedding
+                            .countdownSection
+                            .title
+                    }
+
+
                     <br />
+
 
                     <span
                         className="
                             italic
 
-                            text-[#b97869]
+                            text-[#587589]
                         "
                     >
-                        về chung một nhà
+                        {
+                            wedding
+                                .countdownSection
+                                .highlight
+                        }
                     </span>
+
                 </h2>
 
 
-                {/* HEART */}
+                {/* =================================================
+                    MAIN HEART
+
+                    GIỮ ICON TRÁI TIM
+                ================================================= */}
 
                 <div
                     className="
                         countdown-main-heart
+
+                        relative
 
                         mx-auto
                         mt-6
 
                         flex
 
-                        h-10
-                        w-10
+                        h-11
+                        w-11
 
                         items-center
                         justify-center
@@ -674,24 +966,49 @@ export default function Countdown() {
                         rounded-full
 
                         border
-                        border-[#d6aaa0]/40
+                        border-[#C98792]/25
 
-                        bg-white/40
+                        bg-[#FFFDF8]/75
 
-                        text-[#bd7b6c]
+                        text-[#C98792]
 
-                        shadow-[0_8px_25px_rgba(128,79,67,0.08)]
+                        shadow-[0_10px_30px_rgba(49,86,107,0.08)]
 
                         backdrop-blur-md
+
+                        sm:h-12
+                        sm:w-12
                     "
                 >
-                    ♥
+
+                    <span
+                        className="
+                            absolute
+                            inset-[4px]
+
+                            rounded-full
+
+                            border
+                            border-[#B8A27D]/18
+                        "
+                    />
+
+
+                    <span
+                        className="
+                            relative
+                            z-10
+                        "
+                    >
+                        ♥
+                    </span>
+
                 </div>
 
 
-                {/* ================================= */}
-                {/* COUNTDOWN */}
-                {/* ================================= */}
+                {/* =================================================
+                    COUNTDOWN CARDS
+                ================================================= */}
 
                 <div
                     className="
@@ -749,11 +1066,11 @@ export default function Countdown() {
                                     rounded-full
 
                                     border
-                                    border-white/70
+                                    border-[#FFFFFF]/80
 
-                                    bg-white/30
+                                    bg-[#FFFDF8]/40
 
-                                    shadow-[0_20px_60px_rgba(143,94,80,0.10)]
+                                    shadow-[0_20px_60px_rgba(49,86,107,0.09)]
 
                                     backdrop-blur-lg
 
@@ -762,12 +1079,17 @@ export default function Countdown() {
 
                                     hover:-translate-y-2
 
-                                    hover:bg-white/50
+                                    hover:border-[#C98792]/25
+
+                                    hover:bg-[#FFFDF8]/68
+
+                                    hover:shadow-[0_24px_70px_rgba(49,86,107,0.13)]
 
                                     sm:max-w-[175px]
 
                                     md:max-w-[200px]
                                 "
+
                                 style={{
                                     animationDelay:
                                         `${index * 0.25}s`,
@@ -775,7 +1097,9 @@ export default function Countdown() {
                             >
 
 
-                                {/* INNER RING */}
+                                {/* =================================================
+                                    INNER RING
+                                ================================================= */}
 
                                 <div
                                     className="
@@ -788,12 +1112,14 @@ export default function Countdown() {
                                         rounded-full
 
                                         border
-                                        border-[#c99688]/20
+                                        border-[#7A9CAC]/16
                                     "
                                 />
 
 
-                                {/* LIGHT */}
+                                {/* =================================================
+                                    SOFT LIGHT
+                                ================================================= */}
 
                                 <div
                                     className="
@@ -809,14 +1135,16 @@ export default function Countdown() {
 
                                         rounded-full
 
-                                        bg-white/50
+                                        bg-white/55
 
                                         blur-2xl
                                     "
                                 />
 
 
-                                {/* NUMBER */}
+                                {/* =================================================
+                                    NUMBER
+                                ================================================= */}
 
                                 <strong
                                     className="
@@ -832,7 +1160,9 @@ export default function Countdown() {
 
                                         leading-none
 
-                                        text-[#654f48]
+                                        tracking-[-0.03em]
+
+                                        text-[#31566B]
 
                                         sm:text-6xl
 
@@ -847,6 +1177,7 @@ export default function Countdown() {
                                             ? "--"
 
                                             :
+
                                             String(
                                                 item.value
                                             ).padStart(
@@ -858,7 +1189,9 @@ export default function Countdown() {
                                 </strong>
 
 
-                                {/* LABEL */}
+                                {/* =================================================
+                                    LABEL
+                                ================================================= */}
 
                                 <span
                                     className="
@@ -876,7 +1209,7 @@ export default function Countdown() {
 
                                         tracking-[0.32em]
 
-                                        text-[#92766d]/70
+                                        text-[#61726D]/80
 
                                         sm:text-[9px]
                                     "
@@ -885,7 +1218,9 @@ export default function Countdown() {
                                 </span>
 
 
-                                {/* SMALL HEART */}
+                                {/* =================================================
+                                    SMALL HEART
+                                ================================================= */}
 
                                 <span
                                     className="
@@ -894,7 +1229,7 @@ export default function Countdown() {
 
                                         text-[7px]
 
-                                        text-[#c98d80]/40
+                                        text-[#C98792]/45
                                     "
                                 >
                                     ♥
@@ -908,9 +1243,9 @@ export default function Countdown() {
                 </div>
 
 
-                {/* ================================= */}
-                {/* MESSAGE */}
-                {/* ================================= */}
+                {/* =================================================
+                    MESSAGE
+                ================================================= */}
 
                 <p
                     className="
@@ -920,28 +1255,35 @@ export default function Countdown() {
 
                         mt-12
 
-                        max-w-xl
+                        max-w-[610px]
 
                         text-[15px]
+                        font-normal
 
                         italic
 
                         leading-7
 
-                        text-[#735c55]/70
+                        text-[#61726D]/90
 
                         sm:text-base
+                        sm:leading-8
 
                         md:mt-14
                         md:text-lg
                     "
                 >
-                    Chúng mình đang đếm từng ngày để được cùng
-                    những người thân yêu lưu lại một kỷ niệm thật đẹp.
+                    {
+                        wedding
+                            .countdownSection
+                            .message
+                    }
                 </p>
 
 
-                {/* NAMES */}
+                {/* =================================================
+                    COUPLE NAMES
+                ================================================= */}
 
                 <p
                     className="
@@ -949,22 +1291,57 @@ export default function Countdown() {
 
                         mt-5
 
-                        text-4xl
+                        text-[42px]
 
-                        text-[#b67768]
+                        leading-none
 
-                        md:text-5xl
+                        text-[#587589]
+
+                        sm:text-5xl
+
+                        md:text-[54px]
                     "
                 >
-                    Nam & Thư
+
+                    {
+                        wedding
+                            .groom
+                            .shortName
+                    }
+
+
+                    <span
+                        className="
+                            font-wedding-serif
+
+                            mx-3
+
+                            align-middle
+
+                            text-[14px]
+                            font-normal
+
+                            text-[#C98792]
+                        "
+                    >
+                        &
+                    </span>
+
+
+                    {
+                        wedding
+                            .bride
+                            .shortName
+                    }
+
                 </p>
 
             </div>
 
 
-            {/* ================================= */}
-            {/* BOTTOM DECORATION */}
-            {/* ================================= */}
+            {/* =================================================
+                BOTTOM DECORATION
+            ================================================= */}
 
             <div
                 className="
@@ -975,10 +1352,12 @@ export default function Countdown() {
                     bottom-9
                     left-1/2
 
+                    flex
+
                     -translate-x-1/2
 
-                    flex
                     items-center
+                    justify-center
 
                     gap-3
                 "
@@ -989,26 +1368,34 @@ export default function Countdown() {
                         h-px
                         w-12
 
-                        bg-[#bb897d]/20
+                        bg-gradient-to-r
+
+                        from-transparent
+                        to-[#B8A27D]/30
                     "
                 />
+
 
                 <span
                     className="
                         text-[8px]
 
-                        text-[#bb897d]/40
+                        text-[#C98792]/55
                     "
                 >
                     ♡
                 </span>
+
 
                 <span
                     className="
                         h-px
                         w-12
 
-                        bg-[#bb897d]/20
+                        bg-gradient-to-l
+
+                        from-transparent
+                        to-[#B8A27D]/30
                     "
                 />
 

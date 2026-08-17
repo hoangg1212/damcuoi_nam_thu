@@ -9,26 +9,32 @@ import { wedding } from "@/data/wedding";
 
 
 const links = [
+
     {
         href: "#home",
         label: "Trang chủ",
     },
+
     {
         href: "#couple",
         label: "Chúng mình",
     },
+
     {
         href: "#story",
-        label: "Chuyện tình yêu",
+        label: "Hành trình",
     },
+
     {
         href: "#gallery",
         label: "Khoảnh khắc",
     },
+
     {
         href: "#event",
         label: "Ngày chung đôi",
     },
+
     {
         href: "#wishes",
         label: "Lời chúc",
@@ -52,6 +58,10 @@ export default function Header() {
         useState(false);
 
 
+    /* =========================================================
+       HANDLE SCROLL
+    ========================================================= */
+
     useEffect(() => {
 
         const updateScroll =
@@ -63,12 +73,6 @@ export default function Header() {
 
             };
 
-
-        /*
-            Chạy sau khi browser đã render
-            để tránh setState trực tiếp
-            trong effect.
-        */
 
         const frame =
             requestAnimationFrame(
@@ -91,6 +95,7 @@ export default function Header() {
                 frame
             );
 
+
             window.removeEventListener(
                 "scroll",
                 updateScroll
@@ -101,20 +106,34 @@ export default function Header() {
     }, []);
 
 
+    /* =========================================================
+       LOCK BODY WHEN MOBILE MENU OPEN
+    ========================================================= */
+
     useEffect(() => {
 
-        if (!menuOpen) {
+        if (
+            !menuOpen
+        ) {
+
             return;
+
         }
 
 
-        document.body.style.overflow =
+        document
+            .body
+            .style
+            .overflow =
             "hidden";
 
 
         return () => {
 
-            document.body.style.overflow =
+            document
+                .body
+                .style
+                .overflow =
                 "";
 
         };
@@ -126,9 +145,9 @@ export default function Header() {
 
         <>
 
-            {/* ================================================= */}
-            {/* HEADER */}
-            {/* ================================================= */}
+            {/* =================================================
+                HEADER
+            ================================================= */}
 
             <header
                 className={`
@@ -145,23 +164,25 @@ export default function Header() {
 
                     ${
                         scrolled
+
                             ? `
                                 border-b
-                                border-[#b89975]/15
+                                border-[#7A9CAC]/12
 
-                                bg-[#fbf7f2]/90
+                                bg-[#F8F7EE]/90
 
-                                text-[#443630]
+                                text-[#31566B]
 
-                                shadow-[0_10px_35px_rgba(83,59,47,0.06)]
+                                shadow-[0_10px_35px_rgba(49,86,107,0.06)]
 
                                 backdrop-blur-xl
                               `
+
                             : `
                                 bg-gradient-to-b
 
-                                from-black/30
-                                via-black/10
+                                from-[#163846]/25
+                                via-[#163846]/8
                                 to-transparent
 
                                 text-white
@@ -171,7 +192,9 @@ export default function Header() {
             >
 
 
-                {/* GOLD TOP LINE */}
+                {/* =================================================
+                    TOP CHAMPAGNE LINE
+                ================================================= */}
 
                 <div
                     className={`
@@ -188,10 +211,11 @@ export default function Header() {
                         ${
                             scrolled
                                 ? "opacity-100"
-                                : "opacity-50"
+                                : "opacity-55"
                         }
                     `}
                 >
+
                     <div
                         className="
                             mx-auto
@@ -202,12 +226,17 @@ export default function Header() {
                             bg-gradient-to-r
 
                             from-transparent
-                            via-[#c9a77f]/60
+                            via-[#B8A27D]/55
                             to-transparent
                         "
                     />
+
                 </div>
 
+
+                {/* =================================================
+                    HEADER INNER
+                ================================================= */}
 
                 <div
                     className="
@@ -231,14 +260,14 @@ export default function Header() {
                 >
 
 
-                    {/* ================================================= */}
-                    {/* LOGO */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        LOGO
+                    ================================================= */}
 
                     <a
                         href="#home"
 
-                        aria-label="Nam và Thư"
+                        aria-label={`${wedding.groom.shortName} và ${wedding.bride.shortName}`}
 
                         className="
                             group
@@ -246,6 +275,7 @@ export default function Header() {
                             relative
 
                             flex
+
                             items-center
 
                             gap-2
@@ -257,6 +287,8 @@ export default function Header() {
                         "
                     >
 
+
+                        {/* GROOM NAME */}
 
                         <span
                             className="
@@ -271,14 +303,22 @@ export default function Header() {
                                 md:text-[46px]
                             "
                         >
-                            Nam
+                            {
+                                wedding
+                                    .groom
+                                    .shortName
+                            }
                         </span>
 
 
-                        {/* HEART */}
+                        {/* =================================================
+                            HEART
+                        ================================================= */}
 
                         <span
                             className={`
+                                relative
+
                                 flex
 
                                 h-7
@@ -293,31 +333,62 @@ export default function Header() {
 
                                 font-wedding-serif
 
-                                text-[9px]
+                                text-[8px]
 
                                 transition-all
                                 duration-500
 
                                 ${
                                     scrolled
+
                                         ? `
-                                            border-[#b99372]/30
-                                            bg-[#b99372]/5
-                                            text-[#b17b69]
+                                            border-[#C98792]/25
+
+                                            bg-[#FFFDF8]/65
+
+                                            text-[#C98792]
+
+                                            shadow-[0_5px_16px_rgba(49,86,107,0.06)]
                                           `
+
                                         : `
                                             border-white/30
+
                                             bg-white/10
-                                            text-[#f1d6c2]
+
+                                            text-[#F2C6CD]
 
                                             backdrop-blur-md
                                           `
                                 }
                             `}
                         >
-                            ♥
+
+                            <span
+                                className="
+                                    absolute
+                                    inset-[3px]
+
+                                    rounded-full
+
+                                    border
+                                    border-[#B8A27D]/15
+                                "
+                            />
+
+                            <span
+                                className="
+                                    relative
+                                    z-10
+                                "
+                            >
+                                ♥
+                            </span>
+
                         </span>
 
+
+                        {/* BRIDE NAME */}
 
                         <span
                             className="
@@ -332,15 +403,19 @@ export default function Header() {
                                 md:text-[46px]
                             "
                         >
-                            Thư
+                            {
+                                wedding
+                                    .bride
+                                    .shortName
+                            }
                         </span>
 
                     </a>
 
 
-                    {/* ================================================= */}
-                    {/* DESKTOP NAVIGATION */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        DESKTOP NAVIGATION
+                    ================================================= */}
 
                     <nav
                         className="
@@ -350,9 +425,9 @@ export default function Header() {
 
                             gap-6
 
-                            xl:gap-8
-
                             lg:flex
+
+                            xl:gap-8
                         "
                     >
 
@@ -377,12 +452,12 @@ export default function Header() {
 
                                         py-3
 
-                                        text-[11px]
+                                        text-[10px]
                                         font-medium
 
                                         uppercase
 
-                                        tracking-[0.14em]
+                                        tracking-[0.16em]
 
                                         opacity-90
 
@@ -391,11 +466,13 @@ export default function Header() {
 
                                         hover:opacity-100
 
-                                        xl:text-[12px]
+                                        xl:text-[11px]
                                     "
                                 >
 
-                                    {link.label}
+                                    {
+                                        link.label
+                                    }
 
 
                                     {/* UNDERLINE */}
@@ -414,7 +491,7 @@ export default function Header() {
 
                                             bg-current
 
-                                            opacity-60
+                                            opacity-45
 
                                             transition-all
                                             duration-300
@@ -424,7 +501,7 @@ export default function Header() {
                                     />
 
 
-                                    {/* SMALL DOT */}
+                                    {/* SMALL ROSE DOT */}
 
                                     <span
                                         className="
@@ -441,7 +518,7 @@ export default function Header() {
 
                                             rounded-full
 
-                                            bg-[#c99b88]
+                                            bg-[#C98792]
 
                                             opacity-0
 
@@ -461,9 +538,9 @@ export default function Header() {
                     </nav>
 
 
-                    {/* ================================================= */}
-                    {/* MOBILE MENU BUTTON */}
-                    {/* ================================================= */}
+                    {/* =================================================
+                        MOBILE MENU BUTTON
+                    ================================================= */}
 
                     <button
                         type="button"
@@ -478,6 +555,8 @@ export default function Header() {
                         aria-label="Mở menu"
 
                         className={`
+                            group
+
                             flex
 
                             h-11
@@ -501,13 +580,23 @@ export default function Header() {
 
                             ${
                                 scrolled
+
                                     ? `
-                                        border-[#9f7c66]/20
-                                        bg-[#9f7c66]/5
+                                        border-[#7A9CAC]/20
+
+                                        bg-[#FFFDF8]/50
+
+                                        text-[#31566B]
+
+                                        shadow-[0_6px_20px_rgba(49,86,107,0.05)]
                                       `
+
                                     : `
                                         border-white/30
-                                        bg-black/10
+
+                                        bg-white/10
+
+                                        text-white
 
                                         backdrop-blur-md
                                       `
@@ -524,6 +613,7 @@ export default function Header() {
                             "
                         />
 
+
                         <span
                             className="
                                 h-px
@@ -532,10 +622,12 @@ export default function Header() {
                                 bg-current
 
                                 transition-all
+                                duration-300
 
                                 group-hover:w-[19px]
                             "
                         />
+
 
                         <span
                             className="
@@ -553,9 +645,9 @@ export default function Header() {
             </header>
 
 
-            {/* ================================================= */}
-            {/* MOBILE MENU */}
-            {/* ================================================= */}
+            {/* =================================================
+                MOBILE MENU
+            ================================================= */}
 
             <div
                 className={`
@@ -571,10 +663,12 @@ export default function Header() {
 
                     ${
                         menuOpen
+
                             ? `
                                 visible
                                 opacity-100
                               `
+
                             : `
                                 pointer-events-none
                                 invisible
@@ -585,23 +679,23 @@ export default function Header() {
             >
 
 
-                {/* BACKGROUND */}
+                {/* =================================================
+                    BACKGROUND
+                ================================================= */}
 
                 <div
                     className="
                         absolute
                         inset-0
 
-                        bg-gradient-to-br
-
-                        from-[#fffaf6]
-                        via-[#f8ebe5]
-                        to-[#ead7cf]
+                        bg-[linear-gradient(to_bottom,#F8F7EC_0%,#F3F5EF_48%,#EAF2F5_100%)]
                     "
                 />
 
 
-                {/* GLOW LEFT */}
+                {/* =================================================
+                    BLUE GLOW
+                ================================================= */}
 
                 <div
                     className="
@@ -612,19 +706,21 @@ export default function Header() {
                         -left-28
                         top-10
 
-                        h-[320px]
-                        w-[320px]
+                        h-[340px]
+                        w-[340px]
 
                         rounded-full
 
-                        bg-[#e3b9ac]/25
+                        bg-[#8FB4C7]/20
 
-                        blur-[100px]
+                        blur-[105px]
                     "
                 />
 
 
-                {/* GLOW RIGHT */}
+                {/* =================================================
+                    PINK GLOW
+                ================================================= */}
 
                 <div
                     className="
@@ -635,25 +731,56 @@ export default function Header() {
                         -bottom-24
                         -right-24
 
-                        h-[350px]
-                        w-[350px]
+                        h-[370px]
+                        w-[370px]
 
                         rounded-full
 
-                        bg-[#dabf9f]/30
+                        bg-[#D9A5AE]/18
 
-                        blur-[110px]
+                        blur-[115px]
                     "
                 />
 
 
-                {/* DECORATION TOP */}
+                {/* =================================================
+                    CENTER CREAM LIGHT
+                ================================================= */}
 
                 <div
                     className="
                         pointer-events-none
 
                         absolute
+
+                        left-1/2
+                        top-1/2
+
+                        h-[400px]
+                        w-[75%]
+
+                        -translate-x-1/2
+                        -translate-y-1/2
+
+                        rounded-full
+
+                        bg-[#FFFDF8]/35
+
+                        blur-[110px]
+                    "
+                />
+
+
+                {/* =================================================
+                    TOP DECORATION
+                ================================================= */}
+
+                <div
+                    className="
+                        pointer-events-none
+
+                        absolute
+
                         left-1/2
                         top-7
 
@@ -662,6 +789,7 @@ export default function Header() {
                         -translate-x-1/2
 
                         items-center
+                        justify-center
 
                         gap-3
                     "
@@ -670,41 +798,45 @@ export default function Header() {
                     <span
                         className="
                             h-px
-                            w-8
+                            w-9
 
                             bg-gradient-to-r
 
                             from-transparent
-                            to-[#a87f69]/30
+                            to-[#B8A27D]/40
                         "
                     />
+
 
                     <span
                         className="
                             text-[7px]
 
-                            text-[#a87f69]/50
+                            text-[#C98792]/75
                         "
                     >
                         ♥
                     </span>
 
+
                     <span
                         className="
                             h-px
-                            w-8
+                            w-9
 
                             bg-gradient-to-l
 
                             from-transparent
-                            to-[#a87f69]/30
+                            to-[#B8A27D]/40
                         "
                     />
 
                 </div>
 
 
-                {/* CLOSE BUTTON */}
+                {/* =================================================
+                    CLOSE BUTTON
+                ================================================= */}
 
                 <button
                     type="button"
@@ -720,6 +852,7 @@ export default function Header() {
 
                     className="
                         absolute
+
                         right-5
                         top-5
 
@@ -736,9 +869,9 @@ export default function Header() {
                         rounded-full
 
                         border
-                        border-[#9d7964]/15
+                        border-[#7A9CAC]/18
 
-                        bg-white/35
+                        bg-[#FFFDF8]/55
 
                         font-wedding-serif
 
@@ -747,20 +880,25 @@ export default function Header() {
 
                         leading-none
 
-                        text-[#624d43]
+                        text-[#31566B]
+
+                        shadow-[0_8px_24px_rgba(49,86,107,0.06)]
 
                         backdrop-blur-lg
 
                         transition-all
+                        duration-300
 
-                        hover:bg-white/60
+                        hover:bg-white
                     "
                 >
                     ×
                 </button>
 
 
-                {/* CONTENT */}
+                {/* =================================================
+                    MOBILE MENU CONTENT
+                ================================================= */}
 
                 <div
                     className="
@@ -782,26 +920,31 @@ export default function Header() {
                 >
 
 
-                    {/* SMALL HEADING */}
+                    {/* =================================================
+                        EYEBROW
+                    ================================================= */}
 
                     <p
                         className="
                             mb-3
 
-                            text-[8px]
+                            text-[9px]
+                            font-medium
 
                             uppercase
 
-                            tracking-[0.35em]
+                            tracking-[0.38em]
 
-                            text-[#8b7066]/55
+                            text-[#C98792]
                         "
                     >
-                        The Wedding Of
+                        Ngày chung đôi
                     </p>
 
 
-                    {/* NAME */}
+                    {/* =================================================
+                        COUPLE NAMES
+                    ================================================= */}
 
                     <div
                         className="
@@ -812,7 +955,7 @@ export default function Header() {
 
                             gap-3
 
-                            text-[#5d463e]
+                            text-[#31566B]
                         "
                     >
 
@@ -820,18 +963,24 @@ export default function Header() {
                             className="
                                 font-wedding
 
-                                text-[47px]
+                                text-[48px]
+
+                                leading-none
                             "
                         >
-                            Nam
+                            {
+                                wedding
+                                    .groom
+                                    .shortName
+                            }
                         </span>
 
 
                         <span
                             className="
-                                text-[9px]
+                                text-[8px]
 
-                                text-[#b77969]
+                                text-[#C98792]
                             "
                         >
                             ♥
@@ -842,16 +991,24 @@ export default function Header() {
                             className="
                                 font-wedding
 
-                                text-[47px]
+                                text-[48px]
+
+                                leading-none
                             "
                         >
-                            Thư
+                            {
+                                wedding
+                                    .bride
+                                    .shortName
+                            }
                         </span>
 
                     </div>
 
 
-                    {/* DIVIDER */}
+                    {/* =================================================
+                        DIVIDER
+                    ================================================= */}
 
                     <div
                         className="
@@ -871,33 +1028,43 @@ export default function Header() {
                                 h-px
                                 w-12
 
-                                bg-[#9d7565]/20
+                                bg-gradient-to-r
+
+                                from-transparent
+                                to-[#7A9CAC]/30
                             "
                         />
+
 
                         <span
                             className="
                                 text-[7px]
 
-                                text-[#b77c6c]
+                                text-[#B8A27D]
                             "
                         >
                             ✦
                         </span>
+
 
                         <span
                             className="
                                 h-px
                                 w-12
 
-                                bg-[#9d7565]/20
+                                bg-gradient-to-l
+
+                                from-transparent
+                                to-[#7A9CAC]/30
                             "
                         />
 
                     </div>
 
 
-                    {/* LINKS */}
+                    {/* =================================================
+                        MOBILE LINKS
+                    ================================================= */}
 
                     <nav
                         className="
@@ -945,35 +1112,47 @@ export default function Header() {
                                         text-[27px]
                                         font-light
 
-                                        text-[#51423c]
+                                        text-[#31566B]
 
                                         transition-all
                                         duration-300
 
                                         hover:translate-x-1
 
-                                        hover:text-[#ad7465]
+                                        hover:text-[#587589]
 
                                         sm:text-3xl
                                     "
                                 >
 
+                                    {/* NUMBER */}
+
                                     <span
                                         className="
                                             text-[7px]
+                                            font-medium
 
-                                            text-[#bb8677]/40
+                                            tracking-[0.1em]
+
+                                            text-[#C98792]/50
 
                                             transition-opacity
 
                                             group-hover:opacity-100
                                         "
                                     >
-                                        0{index + 1}
+                                        {String(
+                                            index + 1
+                                        ).padStart(
+                                            2,
+                                            "0"
+                                        )}
                                     </span>
 
 
-                                    {link.label}
+                                    {
+                                        link.label
+                                    }
 
                                 </a>
 
@@ -983,11 +1162,13 @@ export default function Header() {
                     </nav>
 
 
-                    {/* DATE */}
+                    {/* =================================================
+                        DATE
+                    ================================================= */}
 
                     <div
                         className="
-                            mt-8
+                            mt-9
 
                             flex
 
@@ -1001,9 +1182,12 @@ export default function Header() {
                         <span
                             className="
                                 h-px
-                                w-7
+                                w-8
 
-                                bg-[#9d7565]/20
+                                bg-gradient-to-r
+
+                                from-transparent
+                                to-[#B8A27D]/35
                             "
                         />
 
@@ -1013,22 +1197,29 @@ export default function Header() {
                                 font-wedding-serif
 
                                 text-[10px]
+                                font-medium
 
-                                tracking-[0.18em]
+                                tracking-[0.2em]
 
-                                text-[#8a6b60]/55
+                                text-[#587589]/75
                             "
                         >
-                            {wedding.displayDate}
+                            {
+                                wedding
+                                    .displayDate
+                            }
                         </p>
 
 
                         <span
                             className="
                                 h-px
-                                w-7
+                                w-8
 
-                                bg-[#9d7565]/20
+                                bg-gradient-to-l
+
+                                from-transparent
+                                to-[#B8A27D]/35
                             "
                         />
 

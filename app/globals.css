@@ -29,6 +29,25 @@
 
     --gold-light:
         #ded0bd;
+    /* =========================================
+       INVITATION COLOR
+    ========================================== */
+
+    --invitation-cream: #f7f4ea;
+
+    --invitation-ivory: #fffdf8;
+
+    --invitation-ink: #3f5147;
+
+    --invitation-sage: #607568;
+
+    --invitation-sage-light: #8ea094;
+
+    --invitation-rose: #b97882;
+
+    --invitation-rose-light: #d9a8ae;
+
+    --invitation-champagne: #b89a70;    
 }
 
 

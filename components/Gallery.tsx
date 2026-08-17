@@ -12,17 +12,31 @@ import {
 import { wedding } from "@/data/wedding";
 
 
+/* =========================================================
+   EDITORIAL IMAGE LAYOUT
+
+   GIỮ NGUYÊN BỐ CỤC ẢNH HIỆN TẠI
+========================================================= */
+
 const layouts = [
+
     "lg:col-span-8 lg:h-[560px]",
+
     "lg:col-span-4 lg:h-[440px] lg:mt-20",
 
     "lg:col-span-4 lg:h-[430px]",
+
     "lg:col-span-8 lg:h-[540px]",
 
     "lg:col-span-5 lg:h-[600px]",
+
     "lg:col-span-7 lg:h-[470px] lg:mt-24",
 ];
 
+
+/* =========================================================
+   GALLERY
+========================================================= */
 
 export default function Gallery() {
 
@@ -42,6 +56,10 @@ export default function Gallery() {
         );
 
 
+    /* =====================================================
+       NEXT IMAGE
+    ===================================================== */
+
     const next =
         useCallback(
             () => {
@@ -55,7 +73,9 @@ export default function Gallery() {
                             current ===
                             null
                         ) {
+
                             return null;
+
                         }
 
 
@@ -63,7 +83,9 @@ export default function Gallery() {
                             current +
                             1
                         ) %
-                            wedding.gallery.length;
+                            wedding
+                                .gallery
+                                .length;
 
                     }
                 );
@@ -72,6 +94,10 @@ export default function Gallery() {
             []
         );
 
+
+    /* =====================================================
+       PREVIOUS IMAGE
+    ===================================================== */
 
     const previous =
         useCallback(
@@ -86,16 +112,22 @@ export default function Gallery() {
                             current ===
                             null
                         ) {
+
                             return null;
+
                         }
 
 
                         return (
                             current -
                             1 +
-                            wedding.gallery.length
+                            wedding
+                                .gallery
+                                .length
                         ) %
-                            wedding.gallery.length;
+                            wedding
+                                .gallery
+                                .length;
 
                     }
                 );
@@ -104,6 +136,10 @@ export default function Gallery() {
             []
         );
 
+
+    /* =====================================================
+       KEYBOARD + BODY SCROLL
+    ===================================================== */
 
     useEffect(
         () => {
@@ -117,7 +153,9 @@ export default function Gallery() {
                     selected ===
                     null
                 ) {
+
                     return;
+
                 }
 
 
@@ -166,7 +204,9 @@ export default function Gallery() {
                 null
             ) {
 
-                document.body.style
+                document
+                    .body
+                    .style
                     .overflow =
                     "hidden";
 
@@ -181,7 +221,9 @@ export default function Gallery() {
                 );
 
 
-                document.body.style
+                document
+                    .body
+                    .style
                     .overflow =
                     "";
 
@@ -203,13 +245,12 @@ export default function Gallery() {
 
             className="
                 relative
+
+                -mt-px
+
                 overflow-hidden
 
-                bg-gradient-to-b
-
-                from-[#f8eee8]
-                via-[#fffaf7]
-                to-[#faf4ef]
+                bg-[linear-gradient(to_bottom,#F8F1EE_0%,#F8F1EE_8%,#F6F6ED_44%,#EEF4F6_100%)]
 
                 px-5
                 py-20
@@ -225,9 +266,39 @@ export default function Gallery() {
         >
 
 
-            {/* ======================================= */}
-            {/* BACKGROUND DECORATION */}
-            {/* ======================================= */}
+            {/* =================================================
+                SEAMLESS TOP TRANSITION
+
+                Countdown kết thúc:
+                #F8F1EE
+
+                Gallery bắt đầu:
+                #F8F1EE
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+                    left-0
+                    top-0
+
+                    h-24
+                    w-full
+
+                    bg-gradient-to-b
+
+                    from-[#F8F1EE]
+                    via-[#F8F1EE]/80
+                    to-transparent
+                "
+            />
+
+
+            {/* =================================================
+                BACKGROUND GLOW - BLUE
+            ================================================= */}
 
             <div
                 className="
@@ -236,22 +307,26 @@ export default function Gallery() {
                     absolute
 
                     -left-36
-                    top-[15%]
+                    top-[14%]
 
-                    h-[360px]
-                    w-[360px]
+                    h-[380px]
+                    w-[380px]
 
                     rounded-full
 
-                    bg-[#e9beb2]/15
+                    bg-[#8FB4C7]/16
 
-                    blur-[120px]
+                    blur-[125px]
 
-                    md:h-[460px]
-                    md:w-[460px]
+                    md:h-[480px]
+                    md:w-[480px]
                 "
             />
 
+
+            {/* =================================================
+                BACKGROUND GLOW - ROSE
+            ================================================= */}
 
             <div
                 className="
@@ -260,30 +335,63 @@ export default function Gallery() {
                     absolute
 
                     -right-36
-                    bottom-[15%]
+                    bottom-[14%]
 
-                    h-[380px]
-                    w-[380px]
+                    h-[400px]
+                    w-[400px]
 
                     rounded-full
 
-                    bg-[#dcc3a5]/20
+                    bg-[#D9A5AE]/16
 
-                    blur-[130px]
+                    blur-[135px]
 
-                    md:h-[480px]
-                    md:w-[480px]
+                    md:h-[500px]
+                    md:w-[500px]
                 "
             />
 
 
-            {/* TOP DECORATION */}
+            {/* =================================================
+                SAGE LIGHT
+            ================================================= */}
 
             <div
                 className="
                     pointer-events-none
 
                     absolute
+
+                    left-1/2
+                    top-1/2
+
+                    h-[650px]
+                    w-[65%]
+
+                    -translate-x-1/2
+                    -translate-y-1/2
+
+                    rounded-full
+
+                    bg-[#DCE5D8]/14
+
+                    blur-[145px]
+
+                    md:w-[48%]
+                "
+            />
+
+
+            {/* =================================================
+                TOP DECORATION
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
                     left-1/2
                     top-8
 
@@ -296,8 +404,6 @@ export default function Gallery() {
 
                     gap-3
 
-                    opacity-50
-
                     md:top-12
                 "
             >
@@ -305,12 +411,12 @@ export default function Gallery() {
                 <span
                     className="
                         h-px
-                        w-8
+                        w-9
 
                         bg-gradient-to-r
 
                         from-transparent
-                        to-[#b98777]
+                        to-[#B8A27D]/55
                     "
                 />
 
@@ -319,7 +425,7 @@ export default function Gallery() {
                     className="
                         text-[8px]
 
-                        text-[#b77969]
+                        text-[#C98792]/80
                     "
                 >
                     ♡
@@ -329,17 +435,21 @@ export default function Gallery() {
                 <span
                     className="
                         h-px
-                        w-8
+                        w-9
 
                         bg-gradient-to-l
 
                         from-transparent
-                        to-[#b98777]
+                        to-[#B8A27D]/55
                     "
                 />
 
             </div>
 
+
+            {/* =================================================
+                MAIN CONTAINER
+            ================================================= */}
 
             <div
                 className="
@@ -353,9 +463,9 @@ export default function Gallery() {
             >
 
 
-                {/* ======================================= */}
-                {/* HEADING */}
-                {/* ======================================= */}
+                {/* =================================================
+                    HEADING
+                ================================================= */}
 
                 <div
                     className="
@@ -376,24 +486,35 @@ export default function Gallery() {
                 >
 
 
+                    {/* EYEBROW */}
+
                     <p
                         className="
-                            text-[11px]
-                            font-semibold
+                            text-[10px]
+                            font-medium
 
                             uppercase
 
-                            tracking-[0.28em]
+                            tracking-[0.36em]
 
-                            text-[#9d6f63]
+                            text-[#C98792]
 
-                            sm:text-xs
-                            sm:tracking-[0.32em]
+                            sm:text-[11px]
+
+                            md:tracking-[0.4em]
                         "
                     >
-                        Những khoảnh khắc đáng nhớ
+                        {
+                            wedding
+                                .gallerySection
+                                .eyebrow
+                        }
                     </p>
 
+
+                    {/* =================================================
+                        TITLE
+                    ================================================= */}
 
                     <h2
                         className="
@@ -405,37 +526,61 @@ export default function Gallery() {
 
                             max-w-4xl
 
-                            text-[40px]
+                            text-[41px]
                             font-light
 
                             leading-[1.15]
 
-                            text-[#4c3d37]
+                            tracking-[-0.02em]
+
+                            text-[#31566B]
 
                             sm:text-5xl
 
                             md:text-6xl
 
-                            lg:text-7xl
+                            lg:text-[72px]
                         "
                     >
-                        Chuyện của chúng mình
-                        <br className="hidden sm:block" />
+
+                        {
+                            wedding
+                                .gallerySection
+                                .title
+                        }
+
+
+                        <br
+                            className="
+                                hidden
+
+                                sm:block
+                            "
+                        />
+
 
                         <span
                             className="
                                 italic
 
-                                text-[#a86f62]
+                                text-[#587589]
                             "
                         >
                             {" "}
-                            qua từng bức ảnh
+
+                            {
+                                wedding
+                                    .gallerySection
+                                    .highlight
+                            }
                         </span>
+
                     </h2>
 
 
-                    {/* DIVIDER */}
+                    {/* =================================================
+                        DIVIDER
+                    ================================================= */}
 
                     <div
                         className="
@@ -454,11 +599,14 @@ export default function Gallery() {
                         <span
                             className="
                                 h-px
-                                w-10
+                                w-11
 
-                                bg-[#c89f93]/45
+                                bg-gradient-to-r
 
-                                sm:w-14
+                                from-transparent
+                                to-[#B8A27D]/50
+
+                                sm:w-16
                             "
                         />
 
@@ -467,7 +615,7 @@ export default function Gallery() {
                             className="
                                 text-[9px]
 
-                                text-[#b77969]
+                                text-[#C98792]
                             "
                         >
                             ♥
@@ -477,16 +625,23 @@ export default function Gallery() {
                         <span
                             className="
                                 h-px
-                                w-10
+                                w-11
 
-                                bg-[#c89f93]/45
+                                bg-gradient-to-l
 
-                                sm:w-14
+                                from-transparent
+                                to-[#B8A27D]/50
+
+                                sm:w-16
                             "
                         />
 
                     </div>
 
+
+                    {/* =================================================
+                        DESCRIPTION
+                    ================================================= */}
 
                     <p
                         className="
@@ -496,13 +651,14 @@ export default function Gallery() {
 
                             mt-6
 
-                            max-w-2xl
+                            max-w-[700px]
 
                             text-[16px]
+                            font-normal
 
                             leading-7
 
-                            text-[#64534c]
+                            text-[#61726D]
 
                             sm:text-lg
                             sm:leading-8
@@ -511,17 +667,27 @@ export default function Gallery() {
                             md:leading-9
                         "
                     >
-                        Có những khoảnh khắc chỉ diễn ra một lần,
-                        nhưng khi được lưu lại bằng một bức ảnh,
-                        chúng sẽ trở thành ký ức để nhớ về thật lâu.
+                        {
+                            wedding
+                                .gallerySection
+                                .description
+                        }
                     </p>
 
                 </div>
 
 
-                {/* ======================================= */}
-                {/* GALLERY */}
-                {/* ======================================= */}
+                {/* =================================================
+                    GALLERY
+
+                    GIỮ NGUYÊN:
+                    - layout
+                    - kích thước
+                    - frame
+                    - hover
+                    - số thứ tự
+                    - nút +
+                ================================================= */}
 
                 <div
                     className="
@@ -575,20 +741,22 @@ export default function Gallery() {
                                     rounded-[24px]
 
                                     border
-                                    border-white/70
+                                    border-[#FFFDF8]/85
 
-                                    bg-[#eee4de]
+                                    bg-[#F1F3EB]
 
                                     p-[5px]
 
                                     text-left
 
-                                    shadow-[0_24px_60px_rgba(93,63,53,0.10)]
+                                    shadow-[0_24px_65px_rgba(49,86,107,0.10)]
 
                                     transition-all
                                     duration-500
 
                                     hover:-translate-y-1
+
+                                    hover:shadow-[0_30px_75px_rgba(49,86,107,0.15)]
 
                                     sm:h-[420px]
                                     sm:rounded-[28px]
@@ -605,7 +773,9 @@ export default function Gallery() {
                             >
 
 
-                                {/* IMAGE */}
+                                {/* =================================================
+                                    IMAGE
+                                ================================================= */}
 
                                 <div
                                     className="
@@ -655,7 +825,12 @@ export default function Gallery() {
                                     />
 
 
-                                    {/* SOFT OVERLAY */}
+                                    {/* =================================================
+                                        IMAGE OVERLAY
+
+                                        Đổi nâu đen thành
+                                        ocean blue trầm.
+                                    ================================================= */}
 
                                     <div
                                         className="
@@ -664,11 +839,11 @@ export default function Gallery() {
 
                                             bg-gradient-to-t
 
-                                            from-[#2d211c]/45
-                                            via-transparent
+                                            from-[#183747]/55
+                                            via-[#213E50]/5
                                             to-transparent
 
-                                            opacity-70
+                                            opacity-75
 
                                             transition-opacity
                                             duration-500
@@ -678,11 +853,14 @@ export default function Gallery() {
                                     />
 
 
-                                    {/* NUMBER */}
+                                    {/* =================================================
+                                        IMAGE NUMBER
+                                    ================================================= */}
 
                                     <div
                                         className="
                                             absolute
+
                                             left-4
                                             top-4
 
@@ -699,11 +877,12 @@ export default function Gallery() {
                                             border
                                             border-white/40
 
-                                            bg-white/20
+                                            bg-white/18
 
                                             font-wedding-serif
 
                                             text-[11px]
+                                            font-medium
 
                                             text-white
 
@@ -724,7 +903,9 @@ export default function Gallery() {
                                     </div>
 
 
-                                    {/* BOTTOM LABEL */}
+                                    {/* =================================================
+                                        BOTTOM INFO
+                                    ================================================= */}
 
                                     <div
                                         className="
@@ -749,23 +930,32 @@ export default function Gallery() {
 
                                         <div>
 
+
+                                            {/* LABEL */}
+
                                             <p
                                                 className="
-                                                    text-[10px]
-                                                    font-semibold
+                                                    text-[9px]
+                                                    font-medium
 
                                                     uppercase
 
-                                                    tracking-[0.2em]
+                                                    tracking-[0.24em]
 
                                                     text-white/70
 
-                                                    sm:text-[11px]
+                                                    sm:text-[10px]
                                                 "
                                             >
-                                                Kỷ niệm
+                                                {
+                                                    wedding
+                                                        .gallerySection
+                                                        .cardLabel
+                                                }
                                             </p>
 
+
+                                            {/* ALT TEXT */}
 
                                             <p
                                                 className="
@@ -789,7 +979,9 @@ export default function Gallery() {
                                         </div>
 
 
-                                        {/* VIEW BUTTON */}
+                                        {/* =================================================
+                                            VIEW BUTTON
+                                        ================================================= */}
 
                                         <span
                                             className="
@@ -806,7 +998,7 @@ export default function Gallery() {
                                                 rounded-full
 
                                                 border
-                                                border-white/50
+                                                border-white/45
 
                                                 bg-white/10
 
@@ -823,8 +1015,12 @@ export default function Gallery() {
                                                 duration-300
 
                                                 group-hover:rotate-90
+
+                                                group-hover:border-white
+
                                                 group-hover:bg-white
-                                                group-hover:text-[#5a443c]
+
+                                                group-hover:text-[#31566B]
                                             "
                                         >
                                             +
@@ -842,9 +1038,9 @@ export default function Gallery() {
                 </div>
 
 
-                {/* ======================================= */}
-                {/* BOTTOM TEXT */}
-                {/* ======================================= */}
+                {/* =================================================
+                    BOTTOM TEXT
+                ================================================= */}
 
                 <div
                     className="
@@ -854,12 +1050,12 @@ export default function Gallery() {
 
                         flex
 
-                        max-w-[280px]
+                        max-w-[440px]
 
                         items-center
                         justify-center
 
-                        gap-3
+                        gap-4
 
                         sm:mt-16
 
@@ -875,7 +1071,7 @@ export default function Gallery() {
                             bg-gradient-to-r
 
                             from-transparent
-                            to-[#b98777]/30
+                            to-[#7A9CAC]/35
                         "
                     />
 
@@ -886,13 +1082,23 @@ export default function Gallery() {
 
                             whitespace-nowrap
 
-                            text-[11px]
+                            text-[14px]
+                            font-normal
+
                             italic
 
-                            text-[#89675d]/70
+                            text-[#587589]/85
+
+                            sm:text-[15px]
+
+                            md:text-[16px]
                         "
                     >
-                        Những điều mình muốn nhớ mãi
+                        {
+                            wedding
+                                .gallerySection
+                                .bottomText
+                        }
                     </p>
 
 
@@ -904,7 +1110,7 @@ export default function Gallery() {
                             bg-gradient-to-l
 
                             from-transparent
-                            to-[#b98777]/30
+                            to-[#7A9CAC]/35
                         "
                     />
 
@@ -913,9 +1119,11 @@ export default function Gallery() {
             </div>
 
 
-            {/* ======================================= */}
-            {/* LIGHTBOX */}
-            {/* ======================================= */}
+            {/* =================================================
+                LIGHTBOX
+
+                GIỮ NGUYÊN CHỨC NĂNG
+            ================================================= */}
 
             {selected !== null && (
 
@@ -933,7 +1141,7 @@ export default function Gallery() {
 
                         overflow-hidden
 
-                        bg-[#171210]/95
+                        bg-[#102735]/95
 
                         px-3
                         py-4
@@ -949,7 +1157,8 @@ export default function Gallery() {
                         ) => {
 
                             touchStart.current =
-                                event.touches[0]
+                                event
+                                    .touches[0]
                                     .clientX;
 
                         }
@@ -991,32 +1200,58 @@ export default function Gallery() {
                 >
 
 
-                    {/* LIGHTBOX GLOW */}
+                    {/* =================================================
+                        LIGHTBOX GLOW
+                    ================================================= */}
 
                     <div
                         className="
                             pointer-events-none
 
                             absolute
+
                             left-1/2
                             top-1/2
 
-                            h-[500px]
-                            w-[500px]
+                            h-[520px]
+                            w-[520px]
 
                             -translate-x-1/2
                             -translate-y-1/2
 
                             rounded-full
 
-                            bg-[#cf9d8b]/10
+                            bg-[#8FB4C7]/10
 
-                            blur-[130px]
+                            blur-[140px]
                         "
                     />
 
 
-                    {/* CLOSE */}
+                    <div
+                        className="
+                            pointer-events-none
+
+                            absolute
+
+                            -right-24
+                            bottom-0
+
+                            h-[350px]
+                            w-[350px]
+
+                            rounded-full
+
+                            bg-[#C98792]/8
+
+                            blur-[120px]
+                        "
+                    />
+
+
+                    {/* =================================================
+                        CLOSE
+                    ================================================= */}
 
                     <button
                         type="button"
@@ -1064,9 +1299,11 @@ export default function Gallery() {
                             backdrop-blur-md
 
                             transition-all
+                            duration-300
 
                             hover:bg-white
-                            hover:text-[#31251f]
+
+                            hover:text-[#31566B]
 
                             sm:right-6
                             sm:top-6
@@ -1076,7 +1313,9 @@ export default function Gallery() {
                     </button>
 
 
-                    {/* PREVIOUS */}
+                    {/* =================================================
+                        PREVIOUS
+                    ================================================= */}
 
                     <button
                         type="button"
@@ -1091,7 +1330,7 @@ export default function Gallery() {
                             absolute
 
                             bottom-6
-                            left-[calc(50%-60px)]
+                            left-[calc(50%_-_58px)]
 
                             z-30
 
@@ -1107,7 +1346,7 @@ export default function Gallery() {
                             border
                             border-white/25
 
-                            bg-black/20
+                            bg-white/8
 
                             font-wedding-serif
 
@@ -1118,24 +1357,28 @@ export default function Gallery() {
                             backdrop-blur-md
 
                             transition-all
+                            duration-300
 
                             hover:bg-white
-                            hover:text-[#31251f]
+
+                            hover:text-[#31566B]
 
                             md:bottom-auto
                             md:left-7
                             md:top-1/2
                             md:-translate-y-1/2
 
-                            md:h-13
-                            md:w-13
+                            md:h-12
+                            md:w-12
                         "
                     >
                         ‹
                     </button>
 
 
-                    {/* IMAGE WRAPPER */}
+                    {/* =================================================
+                        IMAGE WRAPPER
+                    ================================================= */}
 
                     <div
                         className="
@@ -1159,15 +1402,19 @@ export default function Gallery() {
 
                         <Image
                             src={
-                                wedding.gallery[
-                                    selected
-                                ].src
+                                wedding
+                                    .gallery[
+                                        selected
+                                    ]
+                                    .src
                             }
 
                             alt={
-                                wedding.gallery[
-                                    selected
-                                ].alt
+                                wedding
+                                    .gallery[
+                                        selected
+                                    ]
+                                    .alt
                             }
 
                             fill
@@ -1184,7 +1431,9 @@ export default function Gallery() {
                     </div>
 
 
-                    {/* NEXT */}
+                    {/* =================================================
+                        NEXT
+                    ================================================= */}
 
                     <button
                         type="button"
@@ -1199,7 +1448,7 @@ export default function Gallery() {
                             absolute
 
                             bottom-6
-                            right-[calc(50%-60px)]
+                            right-[calc(50%_-_58px)]
 
                             z-30
 
@@ -1215,7 +1464,7 @@ export default function Gallery() {
                             border
                             border-white/25
 
-                            bg-black/20
+                            bg-white/8
 
                             font-wedding-serif
 
@@ -1226,21 +1475,28 @@ export default function Gallery() {
                             backdrop-blur-md
 
                             transition-all
+                            duration-300
 
                             hover:bg-white
-                            hover:text-[#31251f]
+
+                            hover:text-[#31566B]
 
                             md:bottom-auto
                             md:right-7
                             md:top-1/2
                             md:-translate-y-1/2
+
+                            md:h-12
+                            md:w-12
                         "
                     >
                         ›
                     </button>
 
 
-                    {/* IMAGE INFO */}
+                    {/* =================================================
+                        IMAGE INFO
+                    ================================================= */}
 
                     <div
                         className="
@@ -1266,20 +1522,23 @@ export default function Gallery() {
                         "
                     >
 
+                        {/* INDEX */}
+
                         <p
                             className="
-                                text-[10px]
+                                text-[9px]
                                 font-medium
 
                                 uppercase
 
-                                tracking-[0.22em]
+                                tracking-[0.26em]
 
                                 text-white/55
                             "
                         >
                             {String(
-                                selected + 1
+                                selected +
+                                1
                             ).padStart(
                                 2,
                                 "0"
@@ -1288,13 +1547,17 @@ export default function Gallery() {
                             {" · "}
 
                             {String(
-                                wedding.gallery.length
+                                wedding
+                                    .gallery
+                                    .length
                             ).padStart(
                                 2,
                                 "0"
                             )}
                         </p>
 
+
+                        {/* IMAGE NAME */}
 
                         <p
                             className="
@@ -1303,16 +1566,19 @@ export default function Gallery() {
                                 mt-1
 
                                 text-base
+                                font-normal
 
-                                text-white/85
+                                text-white/90
 
                                 sm:text-lg
                             "
                         >
                             {
-                                wedding.gallery[
-                                    selected
-                                ].alt
+                                wedding
+                                    .gallery[
+                                        selected
+                                    ]
+                                    .alt
                             }
                         </p>
 
