@@ -20,57 +20,6 @@ type WeddingSide =
 
 
 /* =========================================================
-   CONVERT DATE TO ICS FORMAT
-========================================================= */
-
-function toICSDate(
-    iso: string
-) {
-
-    return new Date(
-        iso
-    )
-        .toISOString()
-        .replace(
-            /[-:]/g,
-            ""
-        )
-        .replace(
-            /\.\d{3}Z$/,
-            "Z"
-        );
-}
-
-
-/* =========================================================
-   ESCAPE TEXT FOR ICS
-========================================================= */
-
-function escapeICSText(
-    value: string
-) {
-
-    return value
-        .replace(
-            /\\/g,
-            "\\\\"
-        )
-        .replace(
-            /\n/g,
-            "\\n"
-        )
-        .replace(
-            /,/g,
-            "\\,"
-        )
-        .replace(
-            /;/g,
-            "\\;"
-        );
-}
-
-
-/* =========================================================
    WEDDING EVENT
 ========================================================= */
 
@@ -98,9 +47,6 @@ export default function WeddingEvent() {
 
     /* =====================================================
        READ SIDE FROM URL
-
-       Dùng requestAnimationFrame để tránh lỗi ESLint:
-       react-hooks/set-state-in-effect
     ===================================================== */
 
     useEffect(
@@ -159,125 +105,15 @@ export default function WeddingEvent() {
 
     /* =====================================================
        CURRENT EVENT
+
+       bride => dữ liệu nhà gái
+       groom => dữ liệu nhà trai
     ===================================================== */
 
     const event =
         wedding.events[
             side
         ];
-
-
-    /* =====================================================
-       ADD TO CALENDAR
-    ===================================================== */
-
-    function addCalendar() {
-
-        const start =
-            toICSDate(
-                event.startISO
-            );
-
-
-        const end =
-            toICSDate(
-                event.endISO
-            );
-
-
-        const coupleNames =
-            `${wedding.groom.fullName} & ${wedding.bride.fullName}`;
-
-
-        const summary =
-            escapeICSText(
-                `Ngày chung đôi ${coupleNames}`
-            );
-
-
-        const location =
-            escapeICSText(
-                event.address
-            );
-
-
-        const description =
-            escapeICSText(
-                `Trân trọng kính mời đến chung vui trong ngày chung đôi của ${wedding.groom.fullName} và ${wedding.bride.fullName}.`
-            );
-
-
-        const content =
-`BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//NamThuWedding//VN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-BEGIN:VEVENT
-DTSTART:${start}
-DTEND:${end}
-SUMMARY:${summary}
-LOCATION:${location}
-DESCRIPTION:${description}
-END:VEVENT
-END:VCALENDAR`;
-
-
-        const blob =
-            new Blob(
-                [
-                    content,
-                ],
-                {
-                    type:
-                        "text/calendar;charset=utf-8",
-                }
-            );
-
-
-        const url =
-            URL.createObjectURL(
-                blob
-            );
-
-
-        const anchor =
-            document.createElement(
-                "a"
-            );
-
-
-        anchor.href =
-            url;
-
-
-        anchor.download =
-            side ===
-            "bride"
-
-                ? "tiec-cuoi-nha-gai-nam-thu.ics"
-
-                : "tiec-cuoi-nha-trai-nam-thu.ics";
-
-
-        document.body.appendChild(
-            anchor
-        );
-
-
-        anchor.click();
-
-
-        document.body.removeChild(
-            anchor
-        );
-
-
-        URL.revokeObjectURL(
-            url
-        );
-
-    }
 
 
     return (
@@ -310,7 +146,6 @@ END:VCALENDAR`;
 
             {/* =================================================
                 SEAMLESS TOP
-                Nối trực tiếp từ Gallery
             ================================================= */}
 
             <div
@@ -493,8 +328,6 @@ END:VCALENDAR`;
                 >
 
 
-                    {/* EYEBROW */}
-
                     <p
                         className="
                             text-[10px]
@@ -516,8 +349,6 @@ END:VCALENDAR`;
                         }
                     </p>
 
-
-                    {/* TITLE */}
 
                     <h2
                         className="
@@ -608,8 +439,6 @@ END:VCALENDAR`;
                     </div>
 
 
-                    {/* DESCRIPTION */}
-
                     <p
                         className="
                             font-wedding-serif
@@ -645,8 +474,7 @@ END:VCALENDAR`;
 
 
                 {/* =================================================
-                    MAIN EVENT
-                    CARD TRÁI + ẢNH PHẢI
+                    CARD + IMAGE
                 ================================================= */}
 
                 <div
@@ -706,7 +534,7 @@ END:VCALENDAR`;
                     >
 
 
-                        {/* CARD BLUE GLOW */}
+                        {/* BLUE GLOW */}
 
                         <div
                             className="
@@ -729,7 +557,7 @@ END:VCALENDAR`;
                         />
 
 
-                        {/* CARD ROSE GLOW */}
+                        {/* ROSE GLOW */}
 
                         <div
                             className="
@@ -822,7 +650,7 @@ END:VCALENDAR`;
 
 
                             {/* =================================================
-                                SIDE LABEL
+                                NHÀ GÁI / NHÀ TRAI
                             ================================================= */}
 
                             <p
@@ -885,9 +713,7 @@ END:VCALENDAR`;
                             </h3>
 
 
-                            {/* =================================================
-                                DIVIDER
-                            ================================================= */}
+                            {/* DIVIDER */}
 
                             <div
                                 className="
@@ -963,9 +789,7 @@ END:VCALENDAR`;
                             >
 
 
-                                {/* =================================================
-                                    DATE
-                                ================================================= */}
+                                {/* DATE */}
 
                                 <div>
 
@@ -1013,8 +837,6 @@ END:VCALENDAR`;
                                 </div>
 
 
-                                {/* DIVIDER */}
-
                                 <div
                                     className="
                                         mx-auto
@@ -1041,8 +863,6 @@ END:VCALENDAR`;
                                     "
                                 >
 
-
-                                    {/* RECEPTION */}
 
                                     <div>
 
@@ -1083,8 +903,6 @@ END:VCALENDAR`;
 
                                     </div>
 
-
-                                    {/* PARTY */}
 
                                     <div>
 
@@ -1128,8 +946,6 @@ END:VCALENDAR`;
                                 </div>
 
 
-                                {/* DIVIDER */}
-
                                 <div
                                     className="
                                         mx-auto
@@ -1143,7 +959,10 @@ END:VCALENDAR`;
 
 
                                 {/* =================================================
-                                    LOCATION
+                                    ADDRESS
+
+                                    Tự thay đổi theo:
+                                    bride / groom
                                 ================================================= */}
 
                                 <div>
@@ -1197,7 +1016,7 @@ END:VCALENDAR`;
 
 
                             {/* =================================================
-                                BUTTONS
+                                MAP BUTTON ONLY
                             ================================================= */}
 
                             <div
@@ -1205,19 +1024,10 @@ END:VCALENDAR`;
                                     mt-9
 
                                     flex
-                                    flex-col
 
-                                    gap-3
-
-                                    sm:flex-row
-                                    sm:justify-center
+                                    justify-center
                                 "
                             >
-
-
-                                {/* =================================================
-                                    MAP
-                                ================================================= */}
 
                                 <a
                                     href={
@@ -1232,7 +1042,8 @@ END:VCALENDAR`;
                                     className="
                                         inline-flex
 
-                                        min-h-[50px]
+                                        min-h-[52px]
+                                        min-w-[190px]
 
                                         items-center
                                         justify-center
@@ -1241,7 +1052,7 @@ END:VCALENDAR`;
 
                                         bg-[#31566B]
 
-                                        px-7
+                                        px-8
 
                                         text-[10px]
                                         font-medium
@@ -1261,66 +1072,13 @@ END:VCALENDAR`;
 
                                         hover:bg-[#587589]
 
-                                        sm:min-w-[170px]
+                                        hover:shadow-[0_16px_38px_rgba(49,86,107,0.20)]
+
+                                        sm:min-w-[200px]
                                     "
                                 >
                                     Xem đường đi
                                 </a>
-
-
-                                {/* =================================================
-                                    CALENDAR
-                                ================================================= */}
-
-                                <button
-                                    type="button"
-
-                                    onClick={
-                                        addCalendar
-                                    }
-
-                                    className="
-                                        inline-flex
-
-                                        min-h-[50px]
-
-                                        items-center
-                                        justify-center
-
-                                        rounded-full
-
-                                        border
-                                        border-[#7A9CAC]/35
-
-                                        bg-[#FFFDF8]/45
-
-                                        px-7
-
-                                        text-[10px]
-                                        font-medium
-
-                                        uppercase
-
-                                        tracking-[0.17em]
-
-                                        text-[#587589]
-
-                                        transition-all
-                                        duration-300
-
-                                        hover:-translate-y-0.5
-
-                                        hover:border-[#587589]
-
-                                        hover:bg-[#587589]
-
-                                        hover:text-white
-
-                                        sm:min-w-[170px]
-                                    "
-                                >
-                                    Lưu ngày cưới
-                                </button>
 
                             </div>
 
@@ -1331,7 +1089,6 @@ END:VCALENDAR`;
 
                     {/* =================================================
                         EVENT IMAGE
-                        GIỮ NGUYÊN FORM ẢNH
                     ================================================= */}
 
                     <div
@@ -1410,9 +1167,7 @@ END:VCALENDAR`;
                             />
 
 
-                            {/* =================================================
-                                IMAGE OVERLAY
-                            ================================================= */}
+                            {/* IMAGE OVERLAY */}
 
                             <div
                                 className="
@@ -1430,9 +1185,7 @@ END:VCALENDAR`;
                             />
 
 
-                            {/* =================================================
-                                IMAGE BADGE
-                            ================================================= */}
+                            {/* IMAGE BADGE */}
 
                             <div
                                 className="

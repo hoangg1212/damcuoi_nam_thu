@@ -324,6 +324,10 @@ export const wedding = {
 
     events: {
 
+        /* =================================================
+           NHÀ GÁI
+        ================================================= */
+
         bride: {
 
             sideLabel:
@@ -332,8 +336,12 @@ export const wedding = {
             venue:
                 "Tư gia nhà gái",
 
+            /*
+                Địa chỉ hiển thị trên thiệp
+            */
+
             address:
-                "Địa chỉ nhà gái",
+                "NHẬP ĐỊA CHỈ NHÀ GÁI TẠI ĐÂY",
 
             displayDate:
                 "26 • 12 • 2026",
@@ -347,19 +355,26 @@ export const wedding = {
             partyTime:
                 "11:30",
 
-            startISO:
-                "2026-12-26T10:30:00+07:00",
-
-            endISO:
-                "2026-12-26T14:00:00+07:00",
+            /*
+                Link Google Maps riêng của nhà gái
+            */
 
             mapUrl:
-                "https://maps.google.com/",
+                "https://maps.app.goo.gl/T7UXXGRUBuHE32MD7",
+
+            /*
+                Có thể dùng ảnh riêng cho nhà gái.
+                Nếu dùng chung thì giữ event.png
+            */
 
             image:
                 "/images/event.png",
         },
 
+
+        /* =================================================
+           NHÀ TRAI
+        ================================================= */
 
         groom: {
 
@@ -369,8 +384,12 @@ export const wedding = {
             venue:
                 "Tư gia nhà trai",
 
+            /*
+                Địa chỉ hiển thị trên thiệp
+            */
+
             address:
-                "Địa chỉ nhà trai",
+                "NHẬP ĐỊA CHỈ NHÀ TRAI TẠI ĐÂY",
 
             displayDate:
                 "26 • 12 • 2026",
@@ -384,14 +403,16 @@ export const wedding = {
             partyTime:
                 "11:30",
 
-            startISO:
-                "2026-12-26T10:30:00+07:00",
-
-            endISO:
-                "2026-12-26T14:00:00+07:00",
+            /*
+                Link Google Maps riêng của nhà trai
+            */
 
             mapUrl:
-                "https://maps.google.com/",
+                "https://maps.app.goo.gl/JbBvRow46BXBMXcB8",
+
+            /*
+                Có thể dùng ảnh riêng cho nhà trai.
+            */
 
             image:
                 "/images/event.png",
