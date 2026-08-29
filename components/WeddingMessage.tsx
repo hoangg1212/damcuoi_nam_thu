@@ -1,57 +1,230 @@
+/* =========================================================
+   WEDDING MESSAGE
+   LỜI CẢM ƠN + NHẪN CƯỚI
+========================================================= */
+
 import { wedding } from "@/data/wedding";
 
+
+/* =========================================================
+   NHẪN CƯỚI
+========================================================= */
+
+function RingDecoration() {
+
+    return (
+
+        <div
+            className="
+                mx-auto
+
+                flex
+
+                w-full
+                max-w-[520px]
+
+                items-center
+                justify-center
+
+                py-1
+            "
+            aria-hidden="true"
+        >
+
+            <svg
+                viewBox="0 0 500 100"
+
+                fill="none"
+
+                xmlns="http://www.w3.org/2000/svg"
+
+                className="
+                    h-[66px]
+                    w-full
+
+                    overflow-visible
+
+                    sm:h-[74px]
+
+                    md:h-[84px]
+                "
+            >
+
+                {/* LEFT DECORATIVE LINE */}
+
+                <path
+                    d="
+                        M0 70
+                        C35 52 58 86 91 69
+                        C116 56 121 80 146 68
+                        C162 60 170 59 188 63
+                    "
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1.2"
+
+                    opacity="0.55"
+                />
+
+
+                {/* RIGHT DECORATIVE LINE */}
+
+                <path
+                    d="
+                        M312 63
+                        C330 59 338 60 354 68
+                        C379 80 384 56 409 69
+                        C442 86 465 52 500 70
+                    "
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1.2"
+
+                    opacity="0.55"
+                />
+
+
+                {/* LEFT RING */}
+
+                <ellipse
+                    cx="220"
+                    cy="49"
+
+                    rx="48"
+                    ry="25"
+
+                    transform="rotate(-13 220 49)"
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1.6"
+                />
+
+
+                <ellipse
+                    cx="220"
+                    cy="49"
+
+                    rx="39"
+                    ry="18"
+
+                    transform="rotate(-13 220 49)"
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1"
+
+                    opacity="0.65"
+                />
+
+
+                {/* RIGHT RING */}
+
+                <ellipse
+                    cx="280"
+                    cy="49"
+
+                    rx="48"
+                    ry="25"
+
+                    transform="rotate(13 280 49)"
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1.6"
+                />
+
+
+                <ellipse
+                    cx="280"
+                    cy="49"
+
+                    rx="39"
+                    ry="18"
+
+                    transform="rotate(13 280 49)"
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1"
+
+                    opacity="0.65"
+                />
+
+            </svg>
+
+        </div>
+
+    );
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
 
 export default function WeddingMessage() {
 
     const sparkles = [
+
         {
             left: "8%",
             top: "22%",
             delay: "0s",
             size: 3,
         },
+
         {
             left: "17%",
             top: "68%",
             delay: "2s",
             size: 2,
         },
+
         {
             left: "28%",
             top: "15%",
             delay: "4s",
             size: 2,
         },
+
         {
             left: "39%",
             top: "80%",
             delay: "1s",
             size: 3,
         },
+
         {
             left: "53%",
             top: "20%",
             delay: "3s",
             size: 2,
         },
+
         {
             left: "65%",
             top: "72%",
             delay: "5s",
             size: 3,
         },
+
         {
             left: "78%",
             top: "18%",
             delay: "2.5s",
             size: 2,
         },
+
         {
             left: "89%",
             top: "64%",
             delay: "4.5s",
             size: 3,
         },
+
     ];
 
 
@@ -68,20 +241,18 @@ export default function WeddingMessage() {
                 bg-[linear-gradient(to_bottom,#F8F1EE_0%,#F8F1EE_8%,#F3F5EF_46%,#EAF2F5_100%)]
 
                 px-5
-                py-24
+                py-16
 
                 sm:px-6
+                sm:py-20
 
-                md:py-32
+                md:py-24
             "
         >
 
 
             {/* =================================================
                 SEAMLESS TOP
-
-                WeddingEvent kết thúc bằng #F8F1EE
-                WeddingMessage bắt đầu bằng #F8F1EE
             ================================================= */}
 
             <div
@@ -89,16 +260,19 @@ export default function WeddingMessage() {
                     pointer-events-none
 
                     absolute
+
                     left-0
                     top-0
 
-                    h-24
+                    h-20
                     w-full
 
                     bg-gradient-to-b
 
                     from-[#F8F1EE]
+
                     via-[#F8F1EE]/80
+
                     to-transparent
                 "
             />
@@ -200,7 +374,6 @@ export default function WeddingMessage() {
 
             {/* =================================================
                 LIGHT SWEEP
-                GIỮ NGUYÊN HIỆU ỨNG
             ================================================= */}
 
             <div
@@ -221,7 +394,9 @@ export default function WeddingMessage() {
                     bg-gradient-to-r
 
                     from-transparent
+
                     via-white/20
+
                     to-transparent
 
                     blur-xl
@@ -231,7 +406,6 @@ export default function WeddingMessage() {
 
             {/* =================================================
                 SPARKLES
-                GIỮ NGUYÊN HIỆU ỨNG
             ================================================= */}
 
             <div
@@ -243,112 +417,53 @@ export default function WeddingMessage() {
                 "
             >
 
-                {sparkles.map(
-                    (
-                        sparkle,
-                        index
-                    ) => (
+                {
+                    sparkles.map(
+                        (
+                            sparkle,
+                            index
+                        ) => (
 
-                        <span
-                            key={
-                                `sparkle-${index}`
-                            }
+                            <span
+                                key={
+                                    `sparkle-${index}`
+                                }
 
-                            className="
-                                wedding-message-sparkle
+                                className="
+                                    wedding-message-sparkle
 
-                                absolute
+                                    absolute
 
-                                rounded-full
+                                    rounded-full
 
-                                bg-[#B8A27D]/70
+                                    bg-[#B8A27D]/70
 
-                                shadow-[0_0_12px_rgba(184,162,125,0.35)]
-                            "
+                                    shadow-[0_0_12px_rgba(184,162,125,0.35)]
+                                "
 
-                            style={{
-                                left:
-                                    sparkle.left,
+                                style={{
 
-                                top:
-                                    sparkle.top,
+                                    left:
+                                        sparkle.left,
 
-                                width:
-                                    sparkle.size,
+                                    top:
+                                        sparkle.top,
 
-                                height:
-                                    sparkle.size,
+                                    width:
+                                        sparkle.size,
 
-                                animationDelay:
-                                    sparkle.delay,
-                            }}
-                        />
+                                    height:
+                                        sparkle.size,
 
+                                    animationDelay:
+                                        sparkle.delay,
+
+                                }}
+                            />
+
+                        )
                     )
-                )}
-
-            </div>
-
-
-            {/* =================================================
-                TOP DECORATION
-            ================================================= */}
-
-            <div
-                className="
-                    relative
-                    z-10
-
-                    mx-auto
-                    mb-10
-
-                    flex
-                    max-w-[230px]
-
-                    items-center
-                    justify-center
-
-                    gap-4
-                "
-            >
-
-                <span
-                    className="
-                        wedding-message-line-left
-
-                        h-px
-
-                        bg-gradient-to-r
-
-                        from-transparent
-                        to-[#B8A27D]/45
-                    "
-                />
-
-
-                <span
-                    className="
-                        text-[9px]
-
-                        text-[#C98792]/80
-                    "
-                >
-                    ✦
-                </span>
-
-
-                <span
-                    className="
-                        wedding-message-line-right
-
-                        h-px
-
-                        bg-gradient-to-l
-
-                        from-transparent
-                        to-[#B8A27D]/45
-                    "
-                />
+                }
 
             </div>
 
@@ -372,23 +487,40 @@ export default function WeddingMessage() {
 
 
                 {/* =================================================
+                    RING DECORATION
+                ================================================= */}
+
+                <div
+                    className="
+                        mb-1
+
+                        sm:mb-2
+                    "
+                >
+
+                    <RingDecoration />
+
+                </div>
+
+
+                {/* =================================================
                     SMALL TITLE
                 ================================================= */}
 
                 <p
                     className="
-                        text-[9px]
+                        text-[10px]
                         font-medium
 
                         uppercase
 
-                        tracking-[0.4em]
+                        tracking-[0.36em]
 
                         text-[#C98792]
 
-                        sm:text-[10px]
+                        sm:text-[11px]
 
-                        md:text-[11px]
+                        md:text-[12px]
                     "
                 >
                     {
@@ -409,12 +541,14 @@ export default function WeddingMessage() {
 
                         font-wedding-serif
 
-                        mt-8
+                        mt-6
 
                         text-5xl
                         leading-none
 
                         text-[#7A9CAC]/22
+
+                        sm:mt-7
 
                         md:text-7xl
                     "
@@ -437,10 +571,10 @@ export default function WeddingMessage() {
 
                         max-w-[850px]
 
-                        text-[28px]
+                        text-[27px]
                         font-light
 
-                        leading-[1.55]
+                        leading-[1.5]
 
                         tracking-[-0.015em]
 
@@ -448,10 +582,10 @@ export default function WeddingMessage() {
 
                         sm:text-[32px]
 
-                        md:text-[44px]
-                        md:leading-[1.48]
+                        md:text-[42px]
+                        md:leading-[1.45]
 
-                        lg:text-[48px]
+                        lg:text-[46px]
                     "
                 >
 
@@ -474,65 +608,10 @@ export default function WeddingMessage() {
                                 .weddingMessageSection
                                 .highlight
                         }
+
                     </span>
 
                 </h2>
-
-
-                {/* =================================================
-                    DIVIDER
-                ================================================= */}
-
-                <div
-                    className="
-                        mx-auto
-                        mt-10
-
-                        flex
-                        items-center
-                        justify-center
-
-                        gap-3
-                    "
-                >
-
-                    <span
-                        className="
-                            h-px
-                            w-11
-
-                            bg-gradient-to-r
-
-                            from-transparent
-                            to-[#B8A27D]/45
-                        "
-                    />
-
-
-                    <span
-                        className="
-                            text-[7px]
-
-                            text-[#C98792]
-                        "
-                    >
-                        ✦
-                    </span>
-
-
-                    <span
-                        className="
-                            h-px
-                            w-11
-
-                            bg-gradient-to-l
-
-                            from-transparent
-                            to-[#B8A27D]/45
-                        "
-                    />
-
-                </div>
 
 
                 {/* =================================================
@@ -543,7 +622,7 @@ export default function WeddingMessage() {
                     className="
                         font-wedding
 
-                        mt-7
+                        mt-8
 
                         text-[48px]
 
@@ -551,9 +630,9 @@ export default function WeddingMessage() {
 
                         text-[#587589]
 
-                        sm:text-5xl
+                        sm:text-[54px]
 
-                        md:text-6xl
+                        md:text-[64px]
                     "
                 >
 
@@ -603,7 +682,7 @@ export default function WeddingMessage() {
 
                         mx-auto
 
-                        mt-5
+                        mt-4
 
                         max-w-[570px]
 
@@ -629,67 +708,6 @@ export default function WeddingMessage() {
                             .bottomText
                     }
                 </p>
-
-            </div>
-
-
-            {/* =================================================
-                BOTTOM DECORATION
-            ================================================= */}
-
-            <div
-                className="
-                    relative
-                    z-10
-
-                    mx-auto
-                    mt-12
-
-                    flex
-                    max-w-[190px]
-
-                    items-center
-                    justify-center
-
-                    gap-3
-                "
-            >
-
-                <span
-                    className="
-                        h-px
-                        flex-1
-
-                        bg-gradient-to-r
-
-                        from-transparent
-                        to-[#7A9CAC]/30
-                    "
-                />
-
-
-                <span
-                    className="
-                        text-[8px]
-
-                        text-[#C98792]/65
-                    "
-                >
-                    ♡
-                </span>
-
-
-                <span
-                    className="
-                        h-px
-                        flex-1
-
-                        bg-gradient-to-l
-
-                        from-transparent
-                        to-[#7A9CAC]/30
-                    "
-                />
 
             </div>
 

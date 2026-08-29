@@ -1,5 +1,9 @@
 "use client";
 
+/* =========================================================
+   HEADER
+========================================================= */
+
 import {
     useEffect,
     useState,
@@ -8,54 +12,73 @@ import {
 import { wedding } from "@/data/wedding";
 
 
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
 const links = [
 
     {
         href: "#home",
+        id: "home",
         label: "Trang chủ",
     },
 
     {
         href: "#couple",
+        id: "couple",
         label: "Chúng mình",
     },
 
     {
+        href: "#event",
+        id: "event",
+        label: "Ngày chung đôi",
+    },
+
+    {
         href: "#story",
+        id: "story",
         label: "Hành trình",
     },
 
     {
         href: "#gallery",
+        id: "gallery",
         label: "Khoảnh khắc",
     },
 
     {
-        href: "#event",
-        label: "Ngày chung đôi",
-    },
-
-    {
         href: "#wishes",
+        id: "wishes",
         label: "Lời chúc",
     },
+
 ];
 
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 export default function Header() {
 
     const [
         scrolled,
         setScrolled,
-    ] =
-        useState(false);
+    ] = useState(false);
 
 
     const [
         menuOpen,
         setMenuOpen,
-    ] =
-        useState(false);
+    ] = useState(false);
+
+
+    const [
+        activeSection,
+        setActiveSection,
+    ] = useState("home");
 
 
     /* =========================================================
@@ -64,14 +87,13 @@ export default function Header() {
 
     useEffect(() => {
 
-        const updateScroll =
-            () => {
+        const updateScroll = () => {
 
-                setScrolled(
-                    window.scrollY > 40
-                );
+            setScrolled(
+                window.scrollY > 40
+            );
 
-            };
+        };
 
 
         const frame =
@@ -107,7 +129,107 @@ export default function Header() {
 
 
     /* =========================================================
-       LOCK BODY WHEN MOBILE MENU OPEN
+       ACTIVE SECTION
+    ========================================================= */
+
+    useEffect(() => {
+
+        const sections =
+            links
+                .map(
+                    (link) =>
+                        document.getElementById(
+                            link.id
+                        )
+                )
+                .filter(
+                    (
+                        section
+                    ): section is HTMLElement =>
+                        section !== null
+                );
+
+
+        if (
+            sections.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const observer =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    const visible =
+                        entries
+                            .filter(
+                                (entry) =>
+                                    entry.isIntersecting
+                            )
+                            .sort(
+                                (
+                                    a,
+                                    b
+                                ) =>
+                                    b.intersectionRatio -
+                                    a.intersectionRatio
+                            );
+
+
+                    if (
+                        visible.length > 0
+                    ) {
+
+                        setActiveSection(
+                            visible[0]
+                                .target
+                                .id
+                        );
+
+                    }
+
+                },
+
+                {
+                    root: null,
+
+                    rootMargin:
+                        "-28% 0px -58% 0px",
+
+                    threshold: [
+                        0,
+                        0.1,
+                        0.25,
+                        0.5,
+                    ],
+                }
+
+            );
+
+
+        sections.forEach(
+            (section) =>
+                observer.observe(
+                    section
+                )
+        );
+
+
+        return () => {
+
+            observer.disconnect();
+
+        };
+
+    }, []);
+
+
+    /* =========================================================
+       LOCK BODY WHEN MENU OPEN
     ========================================================= */
 
     useEffect(() => {
@@ -119,6 +241,13 @@ export default function Header() {
             return;
 
         }
+
+
+        const previousOverflow =
+            document
+                .body
+                .style
+                .overflow;
 
 
         document
@@ -134,11 +263,82 @@ export default function Header() {
                 .body
                 .style
                 .overflow =
-                "";
+                previousOverflow;
 
         };
 
     }, [menuOpen]);
+
+
+    /* =========================================================
+       ESC CLOSE MENU
+    ========================================================= */
+
+    useEffect(() => {
+
+        if (
+            !menuOpen
+        ) {
+
+            return;
+
+        }
+
+
+        const handleKeyDown =
+            (
+                event: KeyboardEvent
+            ) => {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    setMenuOpen(
+                        false
+                    );
+
+                }
+
+            };
+
+
+        window.addEventListener(
+            "keydown",
+            handleKeyDown
+        );
+
+
+        return () => {
+
+            window.removeEventListener(
+                "keydown",
+                handleKeyDown
+            );
+
+        };
+
+    }, [menuOpen]);
+
+
+    /* =========================================================
+       SCROLL TO SECTION
+    ========================================================= */
+
+    function handleLinkClick(
+        sectionId: string
+    ) {
+
+        setMenuOpen(
+            false
+        );
+
+
+        setActiveSection(
+            sectionId
+        );
+
+    }
 
 
     return (
@@ -152,6 +352,7 @@ export default function Header() {
             <header
                 className={`
                     fixed
+
                     left-0
                     top-0
 
@@ -167,13 +368,13 @@ export default function Header() {
 
                             ? `
                                 border-b
-                                border-[#7A9CAC]/12
+                                border-[#7A9CAC]/10
 
-                                bg-[#F8F7EE]/90
+                                bg-[#F8F7EE]/92
 
                                 text-[#31566B]
 
-                                shadow-[0_10px_35px_rgba(49,86,107,0.06)]
+                                shadow-[0_8px_30px_rgba(49,86,107,0.055)]
 
                                 backdrop-blur-xl
                               `
@@ -181,8 +382,8 @@ export default function Header() {
                             : `
                                 bg-gradient-to-b
 
-                                from-[#163846]/25
-                                via-[#163846]/8
+                                from-[#183B4A]/28
+                                via-[#183B4A]/10
                                 to-transparent
 
                                 text-white
@@ -198,35 +399,47 @@ export default function Header() {
 
                 <div
                     className={`
+                        pointer-events-none
+
                         absolute
-                        left-0
+
+                        left-1/2
                         top-0
 
                         h-px
-                        w-full
 
-                        transition-opacity
+                        -translate-x-1/2
+
+                        transition-all
                         duration-500
 
                         ${
                             scrolled
-                                ? "opacity-100"
-                                : "opacity-55"
+
+                                ? `
+                                    w-[72%]
+                                    opacity-100
+                                  `
+
+                                : `
+                                    w-[58%]
+                                    opacity-50
+                                  `
                         }
                     `}
                 >
 
                     <div
                         className="
-                            mx-auto
-
                             h-full
-                            w-[70%]
+                            w-full
 
                             bg-gradient-to-r
 
                             from-transparent
-                            via-[#B8A27D]/55
+
+                            via-[#B8A27D]/60
+
                             to-transparent
                         "
                     />
@@ -235,7 +448,7 @@ export default function Header() {
 
 
                 {/* =================================================
-                    HEADER INNER
+                    INNER
                 ================================================= */}
 
                 <div
@@ -244,17 +457,18 @@ export default function Header() {
 
                         flex
 
-                        h-[76px]
+                        h-[70px]
                         max-w-[1320px]
 
                         items-center
                         justify-between
 
-                        px-5
+                        px-4
 
+                        sm:h-[74px]
                         sm:px-6
 
-                        md:h-[88px]
+                        md:h-[82px]
                         md:px-8
                     "
                 >
@@ -267,6 +481,13 @@ export default function Header() {
                     <a
                         href="#home"
 
+                        onClick={
+                            () =>
+                                setActiveSection(
+                                    "home"
+                                )
+                        }
+
                         aria-label={`${wedding.groom.shortName} và ${wedding.bride.shortName}`}
 
                         className="
@@ -277,30 +498,31 @@ export default function Header() {
                             flex
 
                             items-center
+                            justify-center
 
                             gap-2
 
                             transition-transform
                             duration-300
 
-                            hover:scale-[1.02]
+                            hover:scale-[1.015]
                         "
                     >
 
 
-                        {/* GROOM NAME */}
+                        {/* GROOM */}
 
                         <span
                             className="
                                 font-wedding
 
-                                text-[36px]
+                                text-[34px]
 
                                 leading-none
 
-                                sm:text-[40px]
+                                sm:text-[38px]
 
-                                md:text-[46px]
+                                md:text-[44px]
                             "
                         >
                             {
@@ -311,9 +533,7 @@ export default function Header() {
                         </span>
 
 
-                        {/* =================================================
-                            HEART
-                        ================================================= */}
+                        {/* HEART */}
 
                         <span
                             className={`
@@ -321,8 +541,8 @@ export default function Header() {
 
                                 flex
 
-                                h-7
-                                w-7
+                                h-[27px]
+                                w-[27px]
 
                                 items-center
                                 justify-center
@@ -344,11 +564,11 @@ export default function Header() {
                                         ? `
                                             border-[#C98792]/25
 
-                                            bg-[#FFFDF8]/65
+                                            bg-[#FFFDF8]/75
 
                                             text-[#C98792]
 
-                                            shadow-[0_5px_16px_rgba(49,86,107,0.06)]
+                                            shadow-[0_5px_16px_rgba(49,86,107,0.055)]
                                           `
 
                                         : `
@@ -356,7 +576,7 @@ export default function Header() {
 
                                             bg-white/10
 
-                                            text-[#F2C6CD]
+                                            text-[#F4CCD2]
 
                                             backdrop-blur-md
                                           `
@@ -367,14 +587,16 @@ export default function Header() {
                             <span
                                 className="
                                     absolute
+
                                     inset-[3px]
 
                                     rounded-full
 
                                     border
-                                    border-[#B8A27D]/15
+                                    border-[#B8A27D]/17
                                 "
                             />
+
 
                             <span
                                 className="
@@ -388,19 +610,19 @@ export default function Header() {
                         </span>
 
 
-                        {/* BRIDE NAME */}
+                        {/* BRIDE */}
 
                         <span
                             className="
                                 font-wedding
 
-                                text-[36px]
+                                text-[34px]
 
                                 leading-none
 
-                                sm:text-[40px]
+                                sm:text-[38px]
 
-                                md:text-[46px]
+                                md:text-[44px]
                             "
                         >
                             {
@@ -423,123 +645,176 @@ export default function Header() {
 
                             items-center
 
-                            gap-6
+                            gap-5
 
                             lg:flex
 
-                            xl:gap-8
+                            xl:gap-7
                         "
                     >
 
-                        {links.map(
-                            (
-                                link
-                            ) => (
+                        {
+                            links.map(
+                                (
+                                    link
+                                ) => {
 
-                                <a
-                                    key={
-                                        link.href
-                                    }
-
-                                    href={
-                                        link.href
-                                    }
-
-                                    className="
-                                        group
-
-                                        relative
-
-                                        py-3
-
-                                        text-[10px]
-                                        font-medium
-
-                                        uppercase
-
-                                        tracking-[0.16em]
-
-                                        opacity-90
-
-                                        transition-all
-                                        duration-300
-
-                                        hover:opacity-100
-
-                                        xl:text-[11px]
-                                    "
-                                >
-
-                                    {
-                                        link.label
-                                    }
+                                    const active =
+                                        activeSection ===
+                                        link.id;
 
 
-                                    {/* UNDERLINE */}
+                                    return (
 
-                                    <span
-                                        className="
-                                            absolute
+                                        <a
+                                            key={
+                                                link.href
+                                            }
 
-                                            -bottom-0.5
-                                            left-1/2
+                                            href={
+                                                link.href
+                                            }
 
-                                            h-px
-                                            w-0
+                                            onClick={
+                                                () =>
+                                                    handleLinkClick(
+                                                        link.id
+                                                    )
+                                            }
 
-                                            -translate-x-1/2
+                                            className={`
+                                                group
 
-                                            bg-current
+                                                relative
 
-                                            opacity-45
+                                                flex
 
-                                            transition-all
-                                            duration-300
+                                                items-center
+                                                justify-center
 
-                                            group-hover:w-full
-                                        "
-                                    />
+                                                py-3
+
+                                                text-[10px]
+                                                font-medium
+
+                                                uppercase
+
+                                                tracking-[0.14em]
+
+                                                transition-all
+                                                duration-300
+
+                                                xl:text-[11px]
+
+                                                ${
+                                                    active
+
+                                                        ? `
+                                                            opacity-100
+                                                          `
+
+                                                        : `
+                                                            opacity-75
+
+                                                            hover:opacity-100
+                                                          `
+                                                }
+                                            `}
+                                        >
+
+                                            {
+                                                link.label
+                                            }
 
 
-                                    {/* SMALL ROSE DOT */}
+                                            {/* ACTIVE LINE */}
 
-                                    <span
-                                        className="
-                                            absolute
+                                            <span
+                                                className={`
+                                                    absolute
 
-                                            -bottom-[4px]
-                                            left-1/2
+                                                    bottom-[4px]
+                                                    left-1/2
 
-                                            h-[3px]
-                                            w-[3px]
+                                                    h-px
 
-                                            -translate-x-1/2
-                                            scale-0
+                                                    -translate-x-1/2
 
-                                            rounded-full
+                                                    bg-[#B8A27D]
 
-                                            bg-[#C98792]
+                                                    transition-all
+                                                    duration-300
 
-                                            opacity-0
+                                                    ${
+                                                        active
 
-                                            transition-all
-                                            duration-300
+                                                            ? `
+                                                                w-6
+                                                                opacity-80
+                                                              `
 
-                                            group-hover:scale-100
-                                            group-hover:opacity-100
-                                        "
-                                    />
+                                                            : `
+                                                                w-0
+                                                                opacity-0
 
-                                </a>
+                                                                group-hover:w-4
+                                                                group-hover:opacity-50
+                                                              `
+                                                    }
+                                                `}
+                                            />
 
+
+                                            {/* ACTIVE DOT */}
+
+                                            <span
+                                                className={`
+                                                    absolute
+
+                                                    -bottom-[1px]
+                                                    left-1/2
+
+                                                    h-[3px]
+                                                    w-[3px]
+
+                                                    -translate-x-1/2
+
+                                                    rounded-full
+
+                                                    bg-[#C98792]
+
+                                                    transition-all
+                                                    duration-300
+
+                                                    ${
+                                                        active
+
+                                                            ? `
+                                                                scale-100
+                                                                opacity-100
+                                                              `
+
+                                                            : `
+                                                                scale-0
+                                                                opacity-0
+                                                              `
+                                                    }
+                                                `}
+                                            />
+
+                                        </a>
+
+                                    );
+
+                                }
                             )
-                        )}
+                        }
 
                     </nav>
 
 
                     {/* =================================================
-                        MOBILE MENU BUTTON
+                        MOBILE BUTTON
                     ================================================= */}
 
                     <button
@@ -554,13 +829,17 @@ export default function Header() {
 
                         aria-label="Mở menu"
 
+                        aria-expanded={
+                            menuOpen
+                        }
+
                         className={`
                             group
 
                             flex
 
-                            h-11
-                            w-11
+                            h-10
+                            w-10
 
                             flex-col
 
@@ -584,11 +863,11 @@ export default function Header() {
                                     ? `
                                         border-[#7A9CAC]/20
 
-                                        bg-[#FFFDF8]/50
+                                        bg-[#FFFDF8]/60
 
                                         text-[#31566B]
 
-                                        shadow-[0_6px_20px_rgba(49,86,107,0.05)]
+                                        shadow-[0_6px_18px_rgba(49,86,107,0.05)]
                                       `
 
                                     : `
@@ -607,9 +886,12 @@ export default function Header() {
                         <span
                             className="
                                 h-px
-                                w-[19px]
+                                w-[18px]
 
                                 bg-current
+
+                                transition-all
+                                duration-300
                             "
                         />
 
@@ -617,14 +899,14 @@ export default function Header() {
                         <span
                             className="
                                 h-px
-                                w-[14px]
+                                w-[13px]
 
                                 bg-current
 
                                 transition-all
                                 duration-300
 
-                                group-hover:w-[19px]
+                                group-hover:w-[18px]
                             "
                         />
 
@@ -632,9 +914,12 @@ export default function Header() {
                         <span
                             className="
                                 h-px
-                                w-[19px]
+                                w-[18px]
 
                                 bg-current
+
+                                transition-all
+                                duration-300
                             "
                         />
 
@@ -652,6 +937,7 @@ export default function Header() {
             <div
                 className={`
                     fixed
+
                     inset-0
 
                     z-[500]
@@ -704,14 +990,14 @@ export default function Header() {
                         absolute
 
                         -left-28
-                        top-10
+                        top-14
 
-                        h-[340px]
-                        w-[340px]
+                        h-[330px]
+                        w-[330px]
 
                         rounded-full
 
-                        bg-[#8FB4C7]/20
+                        bg-[#8FB4C7]/18
 
                         blur-[105px]
                     "
@@ -731,12 +1017,12 @@ export default function Header() {
                         -bottom-24
                         -right-24
 
-                        h-[370px]
-                        w-[370px]
+                        h-[350px]
+                        w-[350px]
 
                         rounded-full
 
-                        bg-[#D9A5AE]/18
+                        bg-[#D9A5AE]/16
 
                         blur-[115px]
                     "
@@ -744,7 +1030,7 @@ export default function Header() {
 
 
                 {/* =================================================
-                    CENTER CREAM LIGHT
+                    CENTER LIGHT
                 ================================================= */}
 
                 <div
@@ -756,15 +1042,15 @@ export default function Header() {
                         left-1/2
                         top-1/2
 
-                        h-[400px]
-                        w-[75%]
+                        h-[380px]
+                        w-[78%]
 
                         -translate-x-1/2
                         -translate-y-1/2
 
                         rounded-full
 
-                        bg-[#FFFDF8]/35
+                        bg-[#FFFDF8]/38
 
                         blur-[110px]
                     "
@@ -772,70 +1058,7 @@ export default function Header() {
 
 
                 {/* =================================================
-                    TOP DECORATION
-                ================================================= */}
-
-                <div
-                    className="
-                        pointer-events-none
-
-                        absolute
-
-                        left-1/2
-                        top-7
-
-                        flex
-
-                        -translate-x-1/2
-
-                        items-center
-                        justify-center
-
-                        gap-3
-                    "
-                >
-
-                    <span
-                        className="
-                            h-px
-                            w-9
-
-                            bg-gradient-to-r
-
-                            from-transparent
-                            to-[#B8A27D]/40
-                        "
-                    />
-
-
-                    <span
-                        className="
-                            text-[7px]
-
-                            text-[#C98792]/75
-                        "
-                    >
-                        ♥
-                    </span>
-
-
-                    <span
-                        className="
-                            h-px
-                            w-9
-
-                            bg-gradient-to-l
-
-                            from-transparent
-                            to-[#B8A27D]/40
-                        "
-                    />
-
-                </div>
-
-
-                {/* =================================================
-                    CLOSE BUTTON
+                    CLOSE
                 ================================================= */}
 
                 <button
@@ -860,8 +1083,8 @@ export default function Header() {
 
                         flex
 
-                        h-11
-                        w-11
+                        h-10
+                        w-10
 
                         items-center
                         justify-center
@@ -871,25 +1094,25 @@ export default function Header() {
                         border
                         border-[#7A9CAC]/18
 
-                        bg-[#FFFDF8]/55
+                        bg-[#FFFDF8]/65
 
                         font-wedding-serif
 
-                        text-[30px]
+                        text-[27px]
                         font-light
 
                         leading-none
 
                         text-[#31566B]
 
-                        shadow-[0_8px_24px_rgba(49,86,107,0.06)]
+                        shadow-[0_8px_24px_rgba(49,86,107,0.055)]
 
-                        backdrop-blur-lg
+                        backdrop-blur-xl
 
                         transition-all
                         duration-300
 
-                        hover:bg-white
+                        hover:bg-[#FFFDF8]
                     "
                 >
                     ×
@@ -897,7 +1120,7 @@ export default function Header() {
 
 
                 {/* =================================================
-                    MOBILE MENU CONTENT
+                    CONTENT
                 ================================================= */}
 
                 <div
@@ -906,6 +1129,7 @@ export default function Header() {
                         z-10
 
                         flex
+
                         min-h-[100svh]
 
                         flex-col
@@ -914,6 +1138,7 @@ export default function Header() {
                         justify-center
 
                         px-6
+                        py-12
 
                         text-center
                     "
@@ -921,19 +1146,19 @@ export default function Header() {
 
 
                     {/* =================================================
-                        EYEBROW
+                        SMALL TITLE
                     ================================================= */}
 
                     <p
                         className="
-                            mb-3
+                            mb-2
 
                             text-[9px]
                             font-medium
 
                             uppercase
 
-                            tracking-[0.38em]
+                            tracking-[0.34em]
 
                             text-[#C98792]
                         "
@@ -943,7 +1168,7 @@ export default function Header() {
 
 
                     {/* =================================================
-                        COUPLE NAMES
+                        COUPLE
                     ================================================= */}
 
                     <div
@@ -963,7 +1188,7 @@ export default function Header() {
                             className="
                                 font-wedding
 
-                                text-[48px]
+                                text-[47px]
 
                                 leading-none
                             "
@@ -991,7 +1216,7 @@ export default function Header() {
                             className="
                                 font-wedding
 
-                                text-[48px]
+                                text-[47px]
 
                                 leading-none
                             "
@@ -1007,59 +1232,28 @@ export default function Header() {
 
 
                     {/* =================================================
-                        DIVIDER
+                        DATE
                     ================================================= */}
 
-                    <div
+                    <p
                         className="
-                            my-6
+                            font-wedding-serif
 
-                            flex
+                            mt-2
 
-                            items-center
-                            justify-center
+                            text-[11px]
+                            font-medium
 
-                            gap-3
+                            tracking-[0.18em]
+
+                            text-[#587589]/75
                         "
                     >
-
-                        <span
-                            className="
-                                h-px
-                                w-12
-
-                                bg-gradient-to-r
-
-                                from-transparent
-                                to-[#7A9CAC]/30
-                            "
-                        />
-
-
-                        <span
-                            className="
-                                text-[7px]
-
-                                text-[#B8A27D]
-                            "
-                        >
-                            ✦
-                        </span>
-
-
-                        <span
-                            className="
-                                h-px
-                                w-12
-
-                                bg-gradient-to-l
-
-                                from-transparent
-                                to-[#7A9CAC]/30
-                            "
-                        />
-
-                    </div>
+                        {
+                            wedding
+                                .displayDate
+                        }
+                    </p>
 
 
                     {/* =================================================
@@ -1068,162 +1262,173 @@ export default function Header() {
 
                     <nav
                         className="
+                            mt-8
+
                             flex
+
                             flex-col
 
-                            gap-5
+                            gap-4
                         "
                     >
 
-                        {links.map(
-                            (
-                                link,
-                                index
-                            ) => (
+                        {
+                            links.map(
+                                (
+                                    link,
+                                    index
+                                ) => {
 
-                                <a
-                                    key={
-                                        link.href
-                                    }
-
-                                    href={
-                                        link.href
-                                    }
-
-                                    onClick={
-                                        () =>
-                                            setMenuOpen(
-                                                false
-                                            )
-                                    }
-
-                                    className="
-                                        group
-
-                                        flex
-
-                                        items-center
-                                        justify-center
-
-                                        gap-3
-
-                                        font-wedding-serif
-
-                                        text-[27px]
-                                        font-light
-
-                                        text-[#31566B]
-
-                                        transition-all
-                                        duration-300
-
-                                        hover:translate-x-1
-
-                                        hover:text-[#587589]
-
-                                        sm:text-3xl
-                                    "
-                                >
-
-                                    {/* NUMBER */}
-
-                                    <span
-                                        className="
-                                            text-[7px]
-                                            font-medium
-
-                                            tracking-[0.1em]
-
-                                            text-[#C98792]/50
-
-                                            transition-opacity
-
-                                            group-hover:opacity-100
-                                        "
-                                    >
-                                        {String(
-                                            index + 1
-                                        ).padStart(
-                                            2,
-                                            "0"
-                                        )}
-                                    </span>
+                                    const active =
+                                        activeSection ===
+                                        link.id;
 
 
-                                    {
-                                        link.label
-                                    }
+                                    return (
 
-                                </a>
+                                        <a
+                                            key={
+                                                link.href
+                                            }
 
+                                            href={
+                                                link.href
+                                            }
+
+                                            onClick={
+                                                () =>
+                                                    handleLinkClick(
+                                                        link.id
+                                                    )
+                                            }
+
+                                            className={`
+                                                group
+
+                                                flex
+
+                                                items-center
+                                                justify-center
+
+                                                gap-3
+
+                                                font-wedding-serif
+
+                                                text-[25px]
+                                                font-light
+
+                                                transition-all
+                                                duration-300
+
+                                                sm:text-[28px]
+
+                                                ${
+                                                    active
+
+                                                        ? `
+                                                            text-[#C98792]
+                                                          `
+
+                                                        : `
+                                                            text-[#31566B]
+
+                                                            hover:text-[#587589]
+                                                          `
+                                                }
+                                            `}
+                                        >
+
+                                            <span
+                                                className={`
+                                                    text-[7px]
+                                                    font-medium
+
+                                                    tracking-[0.1em]
+
+                                                    transition-all
+                                                    duration-300
+
+                                                    ${
+                                                        active
+
+                                                            ? `
+                                                                text-[#C98792]
+                                                                opacity-100
+                                                              `
+
+                                                            : `
+                                                                text-[#B8A27D]/60
+                                                                opacity-65
+                                                              `
+                                                    }
+                                                `}
+                                            >
+                                                {
+                                                    String(
+                                                        index + 1
+                                                    )
+                                                        .padStart(
+                                                            2,
+                                                            "0"
+                                                        )
+                                                }
+                                            </span>
+
+
+                                            <span>
+                                                {
+                                                    link.label
+                                                }
+                                            </span>
+
+
+                                            {active && (
+
+                                                <span
+                                                    className="
+                                                        text-[6px]
+
+                                                        text-[#C98792]
+                                                    "
+                                                >
+                                                    ♥
+                                                </span>
+
+                                            )}
+
+                                        </a>
+
+                                    );
+
+                                }
                             )
-                        )}
+                        }
 
                     </nav>
 
 
                     {/* =================================================
-                        DATE
+                        BOTTOM TEXT
                     ================================================= */}
 
-                    <div
+                    <p
                         className="
-                            mt-9
+                            font-wedding-serif
 
-                            flex
+                            mt-8
 
-                            items-center
-                            justify-center
+                            text-[13px]
+                            font-normal
 
-                            gap-3
+                            italic
+
+                            tracking-[0.03em]
+
+                            text-[#61726D]/75
                         "
                     >
-
-                        <span
-                            className="
-                                h-px
-                                w-8
-
-                                bg-gradient-to-r
-
-                                from-transparent
-                                to-[#B8A27D]/35
-                            "
-                        />
-
-
-                        <p
-                            className="
-                                font-wedding-serif
-
-                                text-[10px]
-                                font-medium
-
-                                tracking-[0.2em]
-
-                                text-[#587589]/75
-                            "
-                        >
-                            {
-                                wedding
-                                    .displayDate
-                            }
-                        </p>
-
-
-                        <span
-                            className="
-                                h-px
-                                w-8
-
-                                bg-gradient-to-l
-
-                                from-transparent
-                                to-[#B8A27D]/35
-                            "
-                        />
-
-                    </div>
+                        cùng nhau, từ hôm nay về sau
+                    </p>
 
                 </div>
 

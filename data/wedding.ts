@@ -1,59 +1,28 @@
 /* =========================================================
-   TOÀN BỘ DỮ LIỆU WEBSITE CƯỚI
-
-   Sau này muốn đổi:
-   - Tên
-   - Nội dung
-   - Ngày cưới
-   - Ảnh
-   - Địa điểm
-   - Nhạc
-   - Câu chữ
-
-   Chỉ cần sửa chủ yếu trong file này.
+   PHẦN 1 - DATA/WEDDING.TS
+   TOÀN BỘ DỮ LIỆU WEBSITE CƯỚI NAM & THƯ
 ========================================================= */
 
 export const wedding = {
 
-    /* =====================================================
-       CÔ DÂU - CHÚ RỂ
-    ===================================================== */
-
     groom: {
-
-        fullName:
-            "Nguyễn Nam",
-
-        shortName:
-            "Nam",
-
-        image:
-            "/images/chure.png",
-
+        fullName: "Nguyễn Nam",
+        shortName: "Nam",
+        subTitle: "Trưởng nam",
+        image: "/images/chure.png",
         description:
             "Với Nam, hạnh phúc không nằm ở những điều quá lớn lao, mà là được cùng người mình thương sẻ chia những điều bình dị, đồng hành qua từng chặng đường và cùng nhau vun đắp một mái ấm thật bình yên.",
     },
 
-
     bride: {
-
-        fullName:
-            "Huỳnh Thư",
-
-        shortName:
-            "Thư",
-
-        image:
-            "/images/codau.png",
-
+        fullName: "Huỳnh Thư",
+        shortName: "Thư",
+        subTitle: "Trưởng nữ",
+        image: "/images/codau.png",
         description:
             "Với Thư, điều đẹp nhất của tình yêu là sự thấu hiểu, sẻ chia và cảm giác luôn có một người bên cạnh để cùng vui, cùng trưởng thành và cùng gìn giữ những khoảnh khắc giản dị mỗi ngày.",
     },
 
-
-    /* =====================================================
-       THÔNG TIN CHUNG
-    ===================================================== */
 
     dateISO:
         "2026-12-26T10:30:00+07:00",
@@ -62,48 +31,269 @@ export const wedding = {
         "26 • 12 • 2026",
 
 
-    /* =====================================================
-       INVITATION COVER
-    ===================================================== */
-
     invitationMessage:
         "Một dấu mốc đẹp trong hành trình của chúng mình sẽ càng ý nghĩa hơn khi được sẻ chia cùng những người thân quý.",
 
-
-    /* =====================================================
-       HERO
-    ===================================================== */
 
     heroQuote:
         "Từ một cuộc gặp gỡ, chúng mình đã chọn đồng hành cùng nhau. Hôm nay, hành trình ấy bước sang một chương mới, và niềm vui sẽ trọn vẹn hơn khi được sẻ chia cùng những người thân quý.",
 
 
-    /* =====================================================
-       COUPLE SECTION
-    ===================================================== */
-
     coupleSection: {
 
-        eyebrow:
-            "Hai người · Một hành trình",
+        invitationTitle:
+            "Thư mời tham dự lễ cưới",
 
-        title:
-            "Chúng mình",
+        invitationText:
+            "Trân trọng kính mời Quý khách tham dự lễ cưới của",
 
         description:
-            "Từ hai hành trình riêng, chúng mình đã gặp nhau, học cách thấu hiểu, sẻ chia và cùng lựa chọn bước tiếp trên một hành trình mang tên gia đình.",
-
-        bottomText:
-            "cùng nhau, từ hôm nay về sau",
+            "Tình yêu của anh và em là một hành trình đẹp đẽ được viết bằng sự chân thành, thấu hiểu và những tháng ngày cùng nhau vượt qua mọi thử thách. Hôm nay, khi cùng nắm tay bước vào lễ đường, chúng ta không chỉ bắt đầu một đám cưới mà còn bắt đầu một cuộc sống mới — nơi có sự yêu thương, sẻ chia và lời hứa sẽ luôn đồng hành bên nhau trên mọi cung đường phía trước.",
     },
 
 
     /* =====================================================
-       LOVE QUOTE
+       THÔNG TIN HAI GIA ĐÌNH
     ===================================================== */
+
+    families: {
+
+        groom: {
+
+            label:
+                "Nhà trai",
+
+            fatherPrefix:
+                "Ông",
+
+            father:
+                "Tên thân phụ chú rể",
+
+            motherPrefix:
+                "Bà",
+
+            mother:
+                "Tên thân mẫu chú rể",
+
+            address:
+                "Nhập địa chỉ nhà trai tại đây",
+        },
+
+
+        bride: {
+
+            label:
+                "Nhà gái",
+
+            fatherPrefix:
+                "Ông",
+
+            father:
+                "Tên thân phụ cô dâu",
+
+            motherPrefix:
+                "Bà",
+
+            mother:
+                "Tên thân mẫu cô dâu",
+
+            address:
+                "Nhập địa chỉ nhà gái tại đây",
+        },
+
+    },
+
+    /* =====================================================
+       THÔNG TIN LỄ CƯỚI
+    ===================================================== */
+
+    weddingDetailsSection: {
+
+        eyebrow:
+            "Trân trọng kính mời",
+
+        title:
+            "Ngày chung đôi",
+
+        description:
+            "Hai gia đình trân trọng báo tin vui và kính mời đến chung vui trong ngày trọng đại của Nam và Thư.",
+
+        bottomText:
+            "Sự hiện diện là niềm vui và vinh hạnh của hai gia đình",
+    },
+
+
+    /* =====================================================
+       BỮA TIỆC CHUNG VUI
+    ===================================================== */
+
+    ceremonies: {
+
+        party: {
+
+            bride: {
+
+                title:
+                    "Bữa tiệc chung vui",
+
+                intro:
+                    "Được tổ chức vào lúc",
+
+                time:
+                    "17:30",
+
+                weekday:
+                    "Thứ Sáu",
+
+                day:
+                    "25",
+
+                month:
+                    "12",
+
+                year:
+                    "2026",
+
+                lunarDate:
+                    "Tức ngày 17 tháng 11 năm Bính Ngọ",
+
+                venue:
+                    "Tại tư gia nhà gái",
+
+                address:
+                    "Nhập địa chỉ nhà gái tại đây",
+
+                mapUrl:
+                    "https://maps.google.com/",
+            },
+
+
+            groom: {
+
+                title:
+                    "Bữa tiệc chung vui",
+
+                intro:
+                    "Được tổ chức vào lúc",
+
+                time:
+                    "17:30",
+
+                weekday:
+                    "Thứ Sáu",
+
+                day:
+                    "25",
+
+                month:
+                    "12",
+
+                year:
+                    "2026",
+
+                lunarDate:
+                    "Tức ngày 17 tháng 11 năm Bính Ngọ",
+
+                venue:
+                    "Tại tư gia nhà trai",
+
+                address:
+                    "Nhập địa chỉ nhà trai tại đây",
+
+                mapUrl:
+                    "https://maps.google.com/",
+            },
+
+        },
+
+
+        /* =================================================
+           NGHI LỄ CHÍNH
+        ================================================= */
+
+        ceremony: {
+
+            bride: {
+
+                title:
+                    "Lễ vu quy",
+
+                intro:
+                    "Được tổ chức vào lúc",
+
+                time:
+                    "10:30",
+
+                weekday:
+                    "Thứ Bảy",
+
+                day:
+                    "26",
+
+                month:
+                    "12",
+
+                year:
+                    "2026",
+
+                lunarDate:
+                    "Tức ngày 18 tháng 11 năm Bính Ngọ",
+
+                venue:
+                    "Tại tư gia nhà gái",
+
+                address:
+                    "Nhập địa chỉ nhà gái tại đây",
+
+                mapUrl:
+                    "https://maps.google.com/",
+            },
+
+
+            groom: {
+
+                title:
+                    "Lễ thành hôn",
+
+                intro:
+                    "Được tổ chức vào lúc",
+
+                time:
+                    "10:30",
+
+                weekday:
+                    "Thứ Bảy",
+
+                day:
+                    "26",
+
+                month:
+                    "12",
+
+                year:
+                    "2026",
+
+                lunarDate:
+                    "Tức ngày 18 tháng 11 năm Bính Ngọ",
+
+                venue:
+                    "Tại tư gia nhà trai",
+
+                address:
+                    "Nhập địa chỉ nhà trai tại đây",
+
+                mapUrl:
+                    "https://maps.google.com/",
+            },
+
+        },
+
+    },
+
 
     loveQuote:
         "Điều đẹp nhất không phải là một câu chuyện hoàn hảo, mà là sau mỗi chặng đường, chúng mình vẫn lựa chọn ở bên nhau, cùng sẻ chia những điều bình dị và cùng hướng về một mái nhà.",
+
 
     loveQuoteSection: {
 
@@ -111,10 +301,6 @@ export const wedding = {
             "Từ hôm nay, cùng nhau viết tiếp một hành trình mới",
     },
 
-
-    /* =====================================================
-       LOVE STORY SECTION
-    ===================================================== */
 
     storySection: {
 
@@ -132,13 +318,10 @@ export const wedding = {
     },
 
 
-    /* =====================================================
-       STORY DATA
-    ===================================================== */
-
     story: [
 
         {
+
             date:
                 "20 • 08 • 2021",
 
@@ -152,7 +335,9 @@ export const wedding = {
                 "/images/story-1.png",
         },
 
+
         {
+
             date:
                 "12 • 06 • 2022",
 
@@ -166,7 +351,9 @@ export const wedding = {
                 "/images/story-2.png",
         },
 
+
         {
+
             date:
                 "14 • 02 • 2026",
 
@@ -180,7 +367,9 @@ export const wedding = {
                 "/images/story-3.png",
         },
 
+
         {
+
             date:
                 "26 • 12 • 2026",
 
@@ -193,30 +382,9 @@ export const wedding = {
             image:
                 "/images/story-4.png",
         },
+
     ],
 
-    /* =====================================================
-       COUNTDOWN SECTION
-    ===================================================== */
-
-    countdownSection: {
-
-        eyebrow:
-            "Ngày chung đôi đang đến gần",
-
-        title:
-            "Đếm ngược đến ngày",
-
-        highlight:
-            "chúng mình về chung một nhà",
-
-        message:
-            "Từng ngày đang đưa chúng mình đến gần hơn với một dấu mốc thật đẹp — nơi niềm vui được sẻ chia cùng những người thân quý.",
-    },
-
-    /* =====================================================
-       GALLERY SECTION
-    ===================================================== */
 
     gallerySection: {
 
@@ -239,13 +407,11 @@ export const wedding = {
             "Những điều đẹp đẽ sẽ luôn được nhớ về",
     },
 
-    /* =====================================================
-       GALLERY
-    ===================================================== */
 
     gallery: [
 
         {
+
             src:
                 "/images/gallery-01.png",
 
@@ -253,7 +419,9 @@ export const wedding = {
                 "Khoảnh khắc của Nam và Thư",
         },
 
+
         {
+
             src:
                 "/images/gallery-02.png",
 
@@ -261,7 +429,9 @@ export const wedding = {
                 "Khoảnh khắc của Nam và Thư",
         },
 
+
         {
+
             src:
                 "/images/gallery-03.png",
 
@@ -269,7 +439,9 @@ export const wedding = {
                 "Khoảnh khắc của Nam và Thư",
         },
 
+
         {
+
             src:
                 "/images/gallery-04.png",
 
@@ -277,7 +449,9 @@ export const wedding = {
                 "Khoảnh khắc của Nam và Thư",
         },
 
+
         {
+
             src:
                 "/images/gallery-05.png",
 
@@ -285,143 +459,18 @@ export const wedding = {
                 "Khoảnh khắc của Nam và Thư",
         },
 
+
         {
+
             src:
                 "/images/gallery-06.png",
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
         },
+
     ],
 
-
-    /* =====================================================
-      EVENT SECTION
-   ===================================================== */
-
-    eventSection: {
-
-        eyebrow:
-            "Trân trọng kính mời",
-
-        title:
-            "Ngày chung đôi",
-
-        description:
-            "Niềm vui của ngày chung đôi sẽ thêm phần trọn vẹn khi được sẻ chia cùng gia đình, người thân và những người luôn dành tình cảm quý mến cho chúng mình.",
-
-        bottomText:
-            "Hẹn gặp nhau trong ngày vui",
-    },
-
-
-    /* =====================================================
-       THÔNG TIN TIỆC CƯỚI HAI BÊN
-    
-       side=bride  -> Nhà gái
-       side=groom  -> Nhà trai
-    ===================================================== */
-
-    events: {
-
-        /* =================================================
-           NHÀ GÁI
-        ================================================= */
-
-        bride: {
-
-            sideLabel:
-                "Tiệc cưới nhà gái",
-
-            venue:
-                "Tư gia nhà gái",
-
-            /*
-                Địa chỉ hiển thị trên thiệp
-            */
-
-            address:
-                "NHẬP ĐỊA CHỈ NHÀ GÁI TẠI ĐÂY",
-
-            displayDate:
-                "26 • 12 • 2026",
-
-            dayLabel:
-                "Thứ Bảy",
-
-            receptionTime:
-                "10:30",
-
-            partyTime:
-                "11:30",
-
-            /*
-                Link Google Maps riêng của nhà gái
-            */
-
-            mapUrl:
-                "https://maps.app.goo.gl/T7UXXGRUBuHE32MD7",
-
-            /*
-                Có thể dùng ảnh riêng cho nhà gái.
-                Nếu dùng chung thì giữ event.png
-            */
-
-            image:
-                "/images/event.png",
-        },
-
-
-        /* =================================================
-           NHÀ TRAI
-        ================================================= */
-
-        groom: {
-
-            sideLabel:
-                "Tiệc cưới nhà trai",
-
-            venue:
-                "Tư gia nhà trai",
-
-            /*
-                Địa chỉ hiển thị trên thiệp
-            */
-
-            address:
-                "NHẬP ĐỊA CHỈ NHÀ TRAI TẠI ĐÂY",
-
-            displayDate:
-                "26 • 12 • 2026",
-
-            dayLabel:
-                "Thứ Bảy",
-
-            receptionTime:
-                "10:30",
-
-            partyTime:
-                "11:30",
-
-            /*
-                Link Google Maps riêng của nhà trai
-            */
-
-            mapUrl:
-                "https://maps.app.goo.gl/JbBvRow46BXBMXcB8",
-
-            /*
-                Có thể dùng ảnh riêng cho nhà trai.
-            */
-
-            image:
-                "/images/event.png",
-        },
-    },
-
-    /* =====================================================
-       WEDDING MESSAGE
-    ===================================================== */
 
     weddingMessageSection: {
 
@@ -438,9 +487,6 @@ export const wedding = {
             "Cảm ơn vì đã trở thành một phần trong dấu mốc thật đẹp này.",
     },
 
-    /* =====================================================
-       WISHES FORM
-    ===================================================== */
 
     wishesSection: {
 
@@ -472,9 +518,22 @@ export const wedding = {
             "Nam và Thư đã nhận được lời chúc. Cảm ơn vì đã gửi đến chúng mình những tình cảm thật đẹp. ♥",
     },
 
-    /* =====================================================
-       ENDING SECTION
-    ===================================================== */
+
+    countdownSection: {
+
+        eyebrow:
+            "Ngày chung đôi đang đến gần",
+
+        title:
+            "Đếm ngược đến ngày",
+
+        highlight:
+            "chúng mình về chung một nhà",
+
+        message:
+            "Từng ngày đang đưa chúng mình đến gần hơn với một dấu mốc thật đẹp — nơi niềm vui được sẻ chia cùng những người thân quý.",
+    },
+
 
     endingSection: {
 
@@ -494,10 +553,8 @@ export const wedding = {
             "Hẹn gặp nhau trong ngày chung đôi",
     },
 
-    /* =====================================================
-       MUSIC
-    ===================================================== */
 
     music:
         "/music/wedding.mp4",
+
 };

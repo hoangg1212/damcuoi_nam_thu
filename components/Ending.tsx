@@ -1,3 +1,8 @@
+/* =========================================================
+   ENDING
+   GIẢM KHOẢNG TRỐNG TRÊN / DƯỚI
+========================================================= */
+
 import Image from "next/image";
 
 import { wedding } from "@/data/wedding";
@@ -5,8 +10,6 @@ import { wedding } from "@/data/wedding";
 
 /* =========================================================
    PETALS
-
-   GIỮ NGUYÊN HIỆU ỨNG CÁNH HOA RƠI
 ========================================================= */
 
 const petals = [
@@ -66,13 +69,12 @@ const petals = [
         duration: "21s",
         size: 9,
     },
+
 ];
 
 
 /* =========================================================
    SPARKLES
-
-   GIỮ NGUYÊN HIỆU ỨNG HẠT SÁNG
 ========================================================= */
 
 const sparkles = [
@@ -118,6 +120,7 @@ const sparkles = [
         top: "21%",
         delay: "2.5s",
     },
+
 ];
 
 
@@ -136,32 +139,32 @@ export default function Ending() {
                 -mt-px
 
                 flex
-                min-h-[680px]
+
+                min-h-[520px]
 
                 items-center
 
                 overflow-hidden
 
                 px-5
-                py-24
+                py-14
 
+                sm:min-h-[560px]
                 sm:px-6
+                sm:py-16
 
-                md:min-h-[760px]
+                md:min-h-[600px]
                 md:px-8
-                md:py-32
+                md:py-20
 
-                lg:min-h-[820px]
+                lg:min-h-[620px]
+                lg:py-20
             "
         >
 
 
             {/* =================================================
                 BACKGROUND IMAGE
-
-                GIỮ NGUYÊN TÊN FILE.
-                Sau này chỉ thay ảnh mới:
-                public/images/weddingmessage.png
             ================================================= */}
 
             <div
@@ -195,9 +198,6 @@ export default function Ending() {
 
             {/* =================================================
                 SOFT IVORY OVERLAY
-
-                Không làm ảnh tối.
-                Phủ một lớp kem sáng để chữ dễ đọc.
             ================================================= */}
 
             <div
@@ -214,8 +214,6 @@ export default function Ending() {
 
             {/* =================================================
                 CINEMATIC COLOR OVERLAY
-
-                Xanh kem + blue mist + dusty rose
             ================================================= */}
 
             <div
@@ -232,9 +230,7 @@ export default function Ending() {
 
             {/* =================================================
                 SEAMLESS TOP TRANSITION
-
-                WishesForm kết thúc #FAF3EF
-                Ending bắt đầu cùng #FAF3EF
+                GIẢM CHIỀU CAO
             ================================================= */}
 
             <div
@@ -247,20 +243,20 @@ export default function Ending() {
 
                     z-[2]
 
-                    h-32
+                    h-20
                     w-full
 
                     bg-gradient-to-b
 
                     from-[#FAF3EF]
-                    via-[#FAF3EF]/85
+                    via-[#FAF3EF]/75
                     to-transparent
                 "
             />
 
 
             {/* =================================================
-                CENTRAL BLUE / CREAM LIGHT
+                CENTRAL GLOW
             ================================================= */}
 
             <div
@@ -274,8 +270,8 @@ export default function Ending() {
                     left-1/2
                     top-1/2
 
-                    h-[430px]
-                    w-[430px]
+                    h-[400px]
+                    w-[400px]
 
                     -translate-x-1/2
                     -translate-y-1/2
@@ -286,8 +282,8 @@ export default function Ending() {
 
                     blur-[115px]
 
-                    md:h-[570px]
-                    md:w-[570px]
+                    md:h-[520px]
+                    md:w-[520px]
                 "
             />
 
@@ -305,8 +301,8 @@ export default function Ending() {
                     -left-32
                     top-[30%]
 
-                    h-[380px]
-                    w-[380px]
+                    h-[350px]
+                    w-[350px]
 
                     rounded-full
 
@@ -314,8 +310,8 @@ export default function Ending() {
 
                     blur-[125px]
 
-                    md:h-[480px]
-                    md:w-[480px]
+                    md:h-[440px]
+                    md:w-[440px]
                 "
             />
 
@@ -333,8 +329,8 @@ export default function Ending() {
                     -right-36
                     bottom-[12%]
 
-                    h-[400px]
-                    w-[400px]
+                    h-[360px]
+                    w-[360px]
 
                     rounded-full
 
@@ -342,8 +338,8 @@ export default function Ending() {
 
                     blur-[130px]
 
-                    md:h-[500px]
-                    md:w-[500px]
+                    md:h-[450px]
+                    md:w-[450px]
                 "
             />
 
@@ -361,7 +357,7 @@ export default function Ending() {
                     left-1/2
                     top-0
 
-                    h-[300px]
+                    h-[220px]
                     w-[70%]
 
                     -translate-x-1/2
@@ -378,9 +374,6 @@ export default function Ending() {
 
             {/* =================================================
                 PETALS
-
-                GIỮ NGUYÊN ANIMATION
-                Chỉ đổi màu thành dusty rose.
             ================================================= */}
 
             <div
@@ -394,61 +387,61 @@ export default function Ending() {
                 "
             >
 
-                {petals.map(
-                    (
-                        petal,
-                        index
-                    ) => (
+                {
+                    petals.map(
+                        (
+                            petal,
+                            index
+                        ) => (
 
-                        <span
-                            key={
-                                `ending-petal-${index}`
-                            }
+                            <span
+                                key={
+                                    `ending-petal-${index}`
+                                }
 
-                            className="
-                                ending-petal
+                                className="
+                                    ending-petal
 
-                                absolute
+                                    absolute
 
-                                -top-10
+                                    -top-10
 
-                                block
+                                    block
 
-                                rounded-[70%_30%_70%_30%]
+                                    rounded-[70%_30%_70%_30%]
 
-                                bg-[#D7A0AA]/50
+                                    bg-[#D7A0AA]/50
 
-                                shadow-[0_0_10px_rgba(201,135,146,0.16)]
-                            "
+                                    shadow-[0_0_10px_rgba(201,135,146,0.16)]
+                                "
 
-                            style={{
-                                left:
-                                    petal.left,
+                                style={{
+                                    left:
+                                        petal.left,
 
-                                width:
-                                    petal.size,
+                                    width:
+                                        petal.size,
 
-                                height:
-                                    petal.size * 1.5,
+                                    height:
+                                        petal.size * 1.5,
 
-                                animationDelay:
-                                    petal.delay,
+                                    animationDelay:
+                                        petal.delay,
 
-                                animationDuration:
-                                    petal.duration,
-                            }}
-                        />
+                                    animationDuration:
+                                        petal.duration,
+                                }}
+                            />
 
+                        )
                     )
-                )}
+                }
 
             </div>
 
 
             {/* =================================================
                 SPARKLES
-
-                GIỮ NGUYÊN ANIMATION
             ================================================= */}
 
             <div
@@ -460,46 +453,48 @@ export default function Ending() {
                 "
             >
 
-                {sparkles.map(
-                    (
-                        sparkle,
-                        index
-                    ) => (
+                {
+                    sparkles.map(
+                        (
+                            sparkle,
+                            index
+                        ) => (
 
-                        <span
-                            key={
-                                `ending-sparkle-${index}`
-                            }
+                            <span
+                                key={
+                                    `ending-sparkle-${index}`
+                                }
 
-                            className="
-                                ending-sparkle
+                                className="
+                                    ending-sparkle
 
-                                absolute
+                                    absolute
 
-                                h-[3px]
-                                w-[3px]
+                                    h-[3px]
+                                    w-[3px]
 
-                                rounded-full
+                                    rounded-full
 
-                                bg-[#B8A27D]
+                                    bg-[#B8A27D]
 
-                                shadow-[0_0_12px_rgba(184,162,125,0.55)]
-                            "
+                                    shadow-[0_0_12px_rgba(184,162,125,0.55)]
+                                "
 
-                            style={{
-                                left:
-                                    sparkle.left,
+                                style={{
+                                    left:
+                                        sparkle.left,
 
-                                top:
-                                    sparkle.top,
+                                    top:
+                                        sparkle.top,
 
-                                animationDelay:
-                                    sparkle.delay,
-                            }}
-                        />
+                                    animationDelay:
+                                        sparkle.delay,
+                                }}
+                            />
 
+                        )
                     )
-                )}
+                }
 
             </div>
 
@@ -529,7 +524,7 @@ export default function Ending() {
                 <div
                     className="
                         mx-auto
-                        mb-7
+                        mb-4
 
                         flex
 
@@ -617,7 +612,7 @@ export default function Ending() {
 
                         ending-thank-you
 
-                        mt-6
+                        mt-4
 
                         text-[48px]
 
@@ -644,7 +639,7 @@ export default function Ending() {
 
                 <div
                     className="
-                        mt-4
+                        mt-3
 
                         flex
 
@@ -679,11 +674,7 @@ export default function Ending() {
                     </span>
 
 
-                    {/* =================================================
-                        MAIN HEART
-
-                        GIỮ HIỆU ỨNG CŨ
-                    ================================================= */}
+                    {/* HEART */}
 
                     <span
                         className="
@@ -781,7 +772,7 @@ export default function Ending() {
 
                         mx-auto
 
-                        mt-8
+                        mt-5
 
                         max-w-[620px]
 
@@ -831,7 +822,7 @@ export default function Ending() {
                 <div
                     className="
                         mx-auto
-                        mt-8
+                        mt-5
 
                         flex
 
@@ -882,90 +873,6 @@ export default function Ending() {
 
 
                 {/* =================================================
-                    DATE
-                ================================================= */}
-
-                <strong
-                    className="
-                        font-wedding-serif
-
-                        mt-6
-                        block
-
-                        text-[11px]
-                        font-medium
-
-                        tracking-[0.3em]
-
-                        text-[#587589]/85
-
-                        sm:text-xs
-
-                        md:tracking-[0.35em]
-                    "
-                >
-                    {
-                        wedding
-                            .displayDate
-                    }
-                </strong>
-
-
-                {/* =================================================
-                    SIGNATURE
-                ================================================= */}
-
-                <p
-                    className="
-                        font-wedding
-
-                        mt-7
-
-                        text-[38px]
-
-                        leading-none
-
-                        text-[#587589]
-
-                        md:text-[44px]
-                    "
-                >
-
-                    {
-                        wedding
-                            .groom
-                            .shortName
-                    }
-
-
-                    <span
-                        className="
-                            font-wedding-serif
-
-                            mx-3
-
-                            align-middle
-
-                            text-[12px]
-                            font-normal
-
-                            text-[#C98792]
-                        "
-                    >
-                        &
-                    </span>
-
-
-                    {
-                        wedding
-                            .bride
-                            .shortName
-                    }
-
-                </p>
-
-
-                {/* =================================================
                     FINAL TEXT
                 ================================================= */}
 
@@ -973,7 +880,7 @@ export default function Ending() {
                     className="
                         font-wedding-serif
 
-                        mt-4
+                        mt-3
 
                         text-[14px]
                         font-normal
@@ -999,6 +906,7 @@ export default function Ending() {
 
             {/* =================================================
                 BOTTOM FADE
+                GIẢM CHIỀU CAO
             ================================================= */}
 
             <div
@@ -1011,7 +919,7 @@ export default function Ending() {
                     left-0
                     right-0
 
-                    h-32
+                    h-20
 
                     bg-gradient-to-t
 

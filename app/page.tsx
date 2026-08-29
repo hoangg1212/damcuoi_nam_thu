@@ -1,39 +1,35 @@
+/* =========================================================
+   PHẦN 3 - APP/PAGE.TSX
+   THỨ TỰ MỚI CỦA TOÀN BỘ WEBSITE CƯỚI
+========================================================= */
+
 import WeddingProvider from "@/components/providers/WeddingProvider";
 
 import Preloader from "@/components/Preloader";
-
 import InvitationCover from "@/components/InvitationCover";
 
 import Header from "@/components/Header";
 
 import Hero from "@/components/Hero";
-
 import Couple from "@/components/Couple";
 
-import LoveQuote from "@/components/LoveQuote";
+import WeddingDetails from "@/components/WeddingDetails";
 
+import LoveQuote from "@/components/LoveQuote";
 import LoveStory from "@/components/LoveStory";
+import Gallery from "@/components/Gallery";
+
+import WeddingMessage from "@/components/WeddingMessage";
+import WishesForm from "@/components/WishesForm";
 
 import Countdown from "@/components/Countdown";
 
-import Gallery from "@/components/Gallery";
-
-import WeddingEvent from "@/components/WeddingEvent";
-
-import WeddingMessage from "@/components/WeddingMessage";
-
-import WishesForm from "@/components/WishesForm";
-
 import Ending from "@/components/Ending";
-
 import Footer from "@/components/Footer";
 
 import MusicPlayer from "@/components/MusicPlayer";
-
 import FloatingHearts from "@/components/FloatingHearts";
-
 import BackToTop from "@/components/BackToTop";
-
 import CustomCursor from "@/components/CustomCursor";
 
 
@@ -45,9 +41,7 @@ export default function Home() {
 
             <Preloader />
 
-
             <InvitationCover />
-
 
             <Header />
 
@@ -58,19 +52,19 @@ export default function Home() {
 
                 <Couple />
 
+                <WeddingDetails />
+
                 <LoveQuote />
 
                 <LoveStory />
 
-                <Countdown />
-
                 <Gallery />
-
-                <WeddingEvent />
 
                 <WeddingMessage />
 
                 <WishesForm />
+
+                <Countdown />
 
                 <Ending />
 
@@ -78,9 +72,6 @@ export default function Home() {
 
 
             <Footer />
-
-
-            {/* TOOL */}
 
             <MusicPlayer />
 
@@ -91,5 +82,6 @@ export default function Home() {
             <CustomCursor />
 
         </WeddingProvider>
+
     );
 }
