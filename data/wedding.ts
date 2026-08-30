@@ -1,43 +1,102 @@
 /* =========================================================
-   PHẦN 1 - DATA/WEDDING.TS
+   DATA/WEDDING.TS
    TOÀN BỘ DỮ LIỆU WEBSITE CƯỚI NAM & THƯ
 ========================================================= */
 
 export const wedding = {
 
+
+    /* =====================================================
+       CÔ DÂU - CHÚ RỂ
+    ===================================================== */
+
     groom: {
-        fullName: "Nguyễn Nam",
-        shortName: "Nam",
-        subTitle: "Trưởng nam",
-        image: "/images/chure.png",
-        description:
-            "Với Nam, hạnh phúc không nằm ở những điều quá lớn lao, mà là được cùng người mình thương sẻ chia những điều bình dị, đồng hành qua từng chặng đường và cùng nhau vun đắp một mái ấm thật bình yên.",
+
+        fullName:
+            "Nguyễn Nam",
+
+        shortName:
+            "Nam",
+
+        subTitle:
+            "Trưởng nam",
+
+        image:
+            "/images/chure.png",
+
     },
+
 
     bride: {
-        fullName: "Huỳnh Thư",
-        shortName: "Thư",
-        subTitle: "Trưởng nữ",
-        image: "/images/codau.png",
-        description:
-            "Với Thư, điều đẹp nhất của tình yêu là sự thấu hiểu, sẻ chia và cảm giác luôn có một người bên cạnh để cùng vui, cùng trưởng thành và cùng gìn giữ những khoảnh khắc giản dị mỗi ngày.",
+
+        fullName:
+            "Huỳnh Thư",
+
+        shortName:
+            "Thư",
+
+        subTitle:
+            "Trưởng nữ",
+
+        image:
+            "/images/codau.png",
+
     },
 
+
+    /* =====================================================
+       THÔNG TIN CHUNG
+    ===================================================== */
 
     dateISO:
         "2026-12-26T10:30:00+07:00",
+
 
     displayDate:
         "26 • 12 • 2026",
 
 
+    /* =====================================================
+       INVITATION COVER
+    ===================================================== */
+
     invitationMessage:
-        "Một dấu mốc đẹp trong hành trình của chúng mình sẽ càng ý nghĩa hơn khi được sẻ chia cùng những người thân quý.",
+        "Ngày chung đôi sẽ trở nên trọn vẹn hơn khi niềm vui ấy được sẻ chia cùng gia đình, người thân và những người luôn dành tình cảm quý mến cho chúng mình.",
 
 
-    heroQuote:
-        "Từ một cuộc gặp gỡ, chúng mình đã chọn đồng hành cùng nhau. Hôm nay, hành trình ấy bước sang một chương mới, và niềm vui sẽ trọn vẹn hơn khi được sẻ chia cùng những người thân quý.",
+    /* =====================================================
+       HERO
+    ===================================================== */
 
+    heroSection: {
+
+        eyebrow:
+            "Ngày chúng mình về chung một nhà",
+
+        quote:
+            "Từ một cuộc gặp gỡ, chúng mình đã có thêm một người để sẻ chia những niềm vui, cùng bước qua những ngày chưa trọn vẹn và cùng hướng về một mái nhà. Hôm nay, hành trình ấy mở sang một chương mới mang tên gia đình.",
+
+        ctaText:
+            "Xem hành trình của chúng mình",
+
+        ctaHref:
+            "#story",
+
+        mobileBackground:
+            "/images/banner-mobile.png",
+
+        desktopBackground:
+            "/images/banner-desktop.png",
+
+        backgroundAlt:
+            "Ngày chung đôi của Nguyễn Nam và Huỳnh Thư",
+
+    },
+
+
+    /* =====================================================
+       COUPLE SECTION
+    ===================================================== */
 
     coupleSection: {
 
@@ -45,10 +104,11 @@ export const wedding = {
             "Thư mời tham dự lễ cưới",
 
         invitationText:
-            "Trân trọng kính mời Quý khách tham dự lễ cưới của",
+            "Trân trọng kính mời Quý khách đến chung vui trong lễ cưới của",
 
         description:
-            "Tình yêu của anh và em là một hành trình đẹp đẽ được viết bằng sự chân thành, thấu hiểu và những tháng ngày cùng nhau vượt qua mọi thử thách. Hôm nay, khi cùng nắm tay bước vào lễ đường, chúng ta không chỉ bắt đầu một đám cưới mà còn bắt đầu một cuộc sống mới — nơi có sự yêu thương, sẻ chia và lời hứa sẽ luôn đồng hành bên nhau trên mọi cung đường phía trước.",
+            "Từ hai hành trình riêng, chúng mình đã gặp nhau, học cách lắng nghe, thấu hiểu và cùng trưởng thành qua từng ngày. Tình yêu ấy không chỉ được tạo nên từ những khoảnh khắc đẹp, mà còn từ sự sẻ chia, bao dung và lựa chọn luôn đồng hành bên nhau. Hôm nay, chúng mình cùng bước thêm một bước thật ý nghĩa để bắt đầu cuộc sống gia đình bằng tình yêu, sự tin tưởng và những điều bình dị đã cùng nhau vun đắp.",
+
     },
 
 
@@ -77,6 +137,7 @@ export const wedding = {
 
             address:
                 "Nhập địa chỉ nhà trai tại đây",
+
         },
 
 
@@ -99,9 +160,11 @@ export const wedding = {
 
             address:
                 "Nhập địa chỉ nhà gái tại đây",
+
         },
 
     },
+
 
     /* =====================================================
        THÔNG TIN LỄ CƯỚI
@@ -116,15 +179,16 @@ export const wedding = {
             "Ngày chung đôi",
 
         description:
-            "Hai gia đình trân trọng báo tin vui và kính mời đến chung vui trong ngày trọng đại của Nam và Thư.",
+            "Hai gia đình trân trọng báo tin vui và kính mời Quý khách dành thời gian đến chung vui trong ngày Nam và Thư chính thức nên duyên vợ chồng.",
 
         bottomText:
-            "Sự hiện diện là niềm vui và vinh hạnh của hai gia đình",
+            "Sự hiện diện của Quý khách là niềm vui và vinh hạnh của hai gia đình",
+
     },
 
 
     /* =====================================================
-       BỮA TIỆC CHUNG VUI
+       BỮA TIỆC + NGHI LỄ
     ===================================================== */
 
     ceremonies: {
@@ -165,6 +229,7 @@ export const wedding = {
 
                 mapUrl:
                     "https://maps.google.com/",
+
             },
 
 
@@ -202,6 +267,7 @@ export const wedding = {
 
                 mapUrl:
                     "https://maps.google.com/",
+
             },
 
         },
@@ -247,6 +313,7 @@ export const wedding = {
 
                 mapUrl:
                     "https://maps.google.com/",
+
             },
 
 
@@ -284,6 +351,7 @@ export const wedding = {
 
                 mapUrl:
                     "https://maps.google.com/",
+
             },
 
         },
@@ -291,16 +359,25 @@ export const wedding = {
     },
 
 
+    /* =====================================================
+       LOVE QUOTE
+    ===================================================== */
+
     loveQuote:
-        "Điều đẹp nhất không phải là một câu chuyện hoàn hảo, mà là sau mỗi chặng đường, chúng mình vẫn lựa chọn ở bên nhau, cùng sẻ chia những điều bình dị và cùng hướng về một mái nhà.",
+        "Tình yêu với chúng mình không nằm ở những điều quá lớn lao, mà là sau mỗi ngày vẫn muốn trở về bên nhau, cùng sẻ chia những điều bình dị và cùng giữ gìn một mái nhà bằng sự thấu hiểu, tin tưởng và yêu thương.",
 
 
     loveQuoteSection: {
 
         bottomText:
-            "Từ hôm nay, cùng nhau viết tiếp một hành trình mới",
+            "Từ hôm nay, cùng nhau viết tiếp những ngày bình dị nhưng thật đáng quý",
+
     },
 
+
+    /* =====================================================
+       LOVE STORY
+    ===================================================== */
 
     storySection: {
 
@@ -311,10 +388,11 @@ export const wedding = {
             "Hành trình của chúng mình",
 
         description:
-            "Không phải mọi khoảnh khắc đều thật đặc biệt, nhưng khi nhìn lại, chính những điều giản dị ấy đã từng bước đưa chúng mình đến ngày hôm nay.",
+            "Mỗi chặng đường đều có những kỷ niệm riêng. Có những ngày thật vui, cũng có những lúc cần thêm một chút thấu hiểu, nhưng chính tất cả những điều ấy đã giúp chúng mình ngày càng gần nhau hơn.",
 
         bottomText:
-            "Và câu chuyện ấy vẫn đang được viết tiếp",
+            "Và từ hôm nay, hành trình ấy sẽ có thêm một mái nhà chung",
+
     },
 
 
@@ -329,10 +407,11 @@ export const wedding = {
                 "Ngày chúng mình gặp nhau",
 
             description:
-                "Một cuộc gặp tưởng như rất đỗi bình thường, nhưng lại trở thành khởi đầu cho một hành trình mà khi ấy cả hai đều chưa từng nghĩ sẽ đi cùng nhau lâu đến thế.",
+                "Một cuộc gặp gỡ rất đỗi bình thường đã mở đầu cho một mối duyên thật đẹp. Khi ấy, cả hai chưa biết rằng người đang đứng trước mặt rồi sẽ trở thành người cùng mình đi qua rất nhiều ngày tháng về sau.",
 
             image:
                 "/images/story-1.png",
+
         },
 
 
@@ -345,10 +424,11 @@ export const wedding = {
                 "Những ngày đầu bên nhau",
 
             description:
-                "Từ những cuộc trò chuyện giản dị, những lần hẹn đầu tiên đến những khoảnh khắc cùng nhau trải nghiệm điều mới, chúng mình dần trở thành một phần quen thuộc trong cuộc sống của nhau.",
+                "Từ những cuộc trò chuyện, những lần hẹn đầu tiên và những điều giản dị được sẻ chia mỗi ngày, chúng mình dần hiểu nhau nhiều hơn. Tình cảm cũng lớn lên thật tự nhiên từ sự quan tâm và cảm giác bình yên khi có nhau bên cạnh.",
 
             image:
                 "/images/story-2.png",
+
         },
 
 
@@ -361,10 +441,11 @@ export const wedding = {
                 "Một lời hẹn cho tương lai",
 
             description:
-                "Sau những niềm vui, những lần chưa hiểu nhau và cả những ngày cùng nhau trưởng thành, chúng mình nhận ra rằng người mình muốn đồng hành trên chặng đường phía trước vẫn luôn là người đang ở bên cạnh.",
+                "Sau những năm tháng cùng nhau trải qua niềm vui, những khác biệt và cả những lần học cách nhường nhịn, chúng mình nhận ra rằng điều mong muốn nhất vẫn là được tiếp tục đồng hành bên người đã cùng mình trưởng thành.",
 
             image:
                 "/images/story-3.png",
+
         },
 
 
@@ -377,14 +458,19 @@ export const wedding = {
                 "Ngày mình về chung một nhà",
 
             description:
-                "Một chương mới bắt đầu từ đây. Không chỉ là ngày của những lời chúc và những khoảnh khắc đáng nhớ, mà còn là ngày chúng mình cùng lựa chọn xây dựng một mái nhà bằng yêu thương, sẻ chia và sự đồng hành.",
+                "Ngày hôm nay đánh dấu một khởi đầu mới. Từ đây, chúng mình không chỉ cùng nhau gìn giữ một tình yêu, mà còn cùng xây dựng một gia đình bằng sự sẻ chia, trách nhiệm, tin tưởng và tình cảm đã luôn dành cho nhau.",
 
             image:
                 "/images/story-4.png",
+
         },
 
     ],
 
+
+    /* =====================================================
+       GALLERY
+    ===================================================== */
 
     gallerySection: {
 
@@ -398,13 +484,14 @@ export const wedding = {
             "qua từng khung hình",
 
         description:
-            "Mỗi bức ảnh là một lát cắt nhỏ của hành trình đã qua — có những nụ cười, những ngày bình dị và những khoảnh khắc mà chúng mình muốn gìn giữ thật lâu.",
+            "Mỗi bức ảnh lưu lại một phần nhỏ trong hành trình của chúng mình — từ những nụ cười, những chuyến đi đến những ngày rất đỗi bình thường nhưng khi nhìn lại đều trở thành những kỷ niệm đáng quý.",
 
         cardLabel:
             "Khoảnh khắc",
 
         bottomText:
-            "Những điều đẹp đẽ sẽ luôn được nhớ về",
+            "Để mai này nhìn lại, vẫn nhớ mình đã từng hạnh phúc như thế",
+
     },
 
 
@@ -417,6 +504,7 @@ export const wedding = {
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
+
         },
 
 
@@ -427,6 +515,7 @@ export const wedding = {
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
+
         },
 
 
@@ -437,6 +526,7 @@ export const wedding = {
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
+
         },
 
 
@@ -447,6 +537,7 @@ export const wedding = {
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
+
         },
 
 
@@ -457,6 +548,7 @@ export const wedding = {
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
+
         },
 
 
@@ -467,10 +559,15 @@ export const wedding = {
 
             alt:
                 "Khoảnh khắc của Nam và Thư",
+
         },
 
     ],
 
+
+    /* =====================================================
+       WEDDING MESSAGE
+    ===================================================== */
 
     weddingMessageSection: {
 
@@ -478,15 +575,20 @@ export const wedding = {
             "Một lời cảm ơn từ chúng mình",
 
         message:
-            "Ngày chung đôi sẽ thật ý nghĩa không chỉ bởi khoảnh khắc chúng mình cùng bước sang một hành trình mới,",
+            "Ngày cưới là một dấu mốc đặc biệt đối với Nam và Thư, nhưng niềm vui ấy sẽ càng trọn vẹn hơn",
 
         highlight:
-            "mà còn bởi niềm vui ấy được sẻ chia cùng những người thân quý đã luôn dành tình cảm cho Nam và Thư.",
+            "khi được sẻ chia cùng gia đình, người thân và những người đã luôn dành cho chúng mình sự quan tâm và tình cảm quý mến.",
 
         bottomText:
-            "Cảm ơn vì đã trở thành một phần trong dấu mốc thật đẹp này.",
+            "Cảm ơn vì đã dành tình cảm cho chúng mình trong ngày thật ý nghĩa này.",
+
     },
 
+
+    /* =====================================================
+       WISHES
+    ===================================================== */
 
     wishesSection: {
 
@@ -500,10 +602,10 @@ export const wedding = {
             "chúc thật đẹp",
 
         description:
-            "Mỗi lời nhắn được gửi đến trong ngày đặc biệt này đều là một tình cảm quý giá mà Nam và Thư sẽ trân trọng lưu giữ.",
+            "Những lời chúc được gửi đến trong ngày đặc biệt này đều là những tình cảm quý giá mà Nam và Thư sẽ trân trọng lưu giữ.",
 
         subDescription:
-            "Dù chỉ là một câu chúc ngắn hay vài dòng chân thành, tất cả đều sẽ trở thành một phần thật đẹp trong ký ức về ngày chung đôi.",
+            "Dù là một lời chúc ngắn hay vài dòng chân thành, mỗi lời nhắn đều sẽ góp thêm một kỷ niệm đẹp cho ngày chúng mình chính thức về chung một nhà.",
 
         formTitle:
             "Lời chúc dành cho Nam & Thư",
@@ -512,12 +614,17 @@ export const wedding = {
             "Một vài dòng chân thành cũng đủ để ngày vui thêm phần ý nghĩa.",
 
         helperText:
-            "Gửi bằng tất cả yêu thương",
+            "Gửi đến Nam & Thư một lời chúc",
 
         successMessage:
-            "Nam và Thư đã nhận được lời chúc. Cảm ơn vì đã gửi đến chúng mình những tình cảm thật đẹp. ♥",
+            "Nam và Thư đã nhận được lời chúc. Cảm ơn vì tình cảm quý mến đã được gửi đến chúng mình. ♥",
+
     },
 
+
+    /* =====================================================
+       COUNTDOWN
+    ===================================================== */
 
     countdownSection: {
 
@@ -531,9 +638,14 @@ export const wedding = {
             "chúng mình về chung một nhà",
 
         message:
-            "Từng ngày đang đưa chúng mình đến gần hơn với một dấu mốc thật đẹp — nơi niềm vui được sẻ chia cùng những người thân quý.",
+            "Mỗi ngày trôi qua lại đưa chúng mình gần hơn với khoảnh khắc chính thức trở thành một gia đình và được đón những người thân quý đến chung vui trong ngày đặc biệt ấy.",
+
     },
 
+
+    /* =====================================================
+       ENDING
+    ===================================================== */
 
     endingSection: {
 
@@ -541,18 +653,23 @@ export const wedding = {
             "Một ngày để nhớ · Một hành trình để thương",
 
         thankYou:
-            "Cảm ơn vì đã hiện diện",
+            "Cảm ơn vì đã cùng chúng mình sẻ chia ngày vui",
 
         message:
-            "Cảm ơn vì đã dành thời gian ghé qua câu chuyện nhỏ của chúng mình.",
+            "Chúng mình trân trọng từng sự quan tâm, từng lời chúc và tình cảm được gửi đến trong dấu mốc đặc biệt này.",
 
         subMessage:
-            "Sự quan tâm, những lời chúc và tình cảm được gửi đến sẽ luôn là một phần thật đẹp trong dấu mốc của Nam và Thư.",
+            "Sự hiện diện và tình cảm của gia đình, người thân cùng những người quý mến sẽ là một phần thật đẹp trong ký ức về ngày Nam và Thư chính thức bắt đầu cuộc sống gia đình.",
 
         bottomText:
             "Hẹn gặp nhau trong ngày chung đôi",
+
     },
 
+
+    /* =====================================================
+       MUSIC
+    ===================================================== */
 
     music:
         "/music/wedding.mp4",

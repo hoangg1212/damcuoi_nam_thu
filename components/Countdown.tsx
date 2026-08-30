@@ -103,8 +103,6 @@ function calculateTime(): TimeLeft {
 
 /* =========================================================
    FLOATING HEARTS
-
-   GIỮ NGUYÊN HIỆU ỨNG
 ========================================================= */
 
 const floatingItems = [
@@ -261,13 +259,12 @@ const floatingItems = [
         type:
             "♡",
     },
+
 ];
 
 
 /* =========================================================
    BUBBLES
-
-   GIỮ NGUYÊN HIỆU ỨNG
 ========================================================= */
 
 const bubbles = [
@@ -383,6 +380,7 @@ const bubbles = [
         duration:
             "17s",
     },
+
 ];
 
 
@@ -487,6 +485,7 @@ export default function Countdown() {
             value:
                 time?.seconds,
         },
+
     ];
 
 
@@ -499,7 +498,8 @@ export default function Countdown() {
                 -mt-px
 
                 flex
-                min-h-[650px]
+
+                min-h-[560px]
 
                 items-center
 
@@ -508,22 +508,30 @@ export default function Countdown() {
                 bg-[linear-gradient(to_bottom,#EEF4F6_0%,#EEF4F6_8%,#F4F6EF_48%,#F8F1EE_100%)]
 
                 px-5
-                py-24
+
+                pt-14
+                pb-10
 
                 sm:px-6
+                sm:pt-16
+                sm:pb-12
 
-                md:min-h-[720px]
+                md:min-h-[620px]
+
                 md:px-8
-                md:py-28
+
+                md:pt-20
+                md:pb-14
+
+                lg:min-h-[650px]
+                lg:pt-22
+                lg:pb-16
             "
         >
 
 
             {/* =================================================
                 SEAMLESS TOP TRANSITION
-
-                Nối trực tiếp từ LoveStory:
-                #EEF4F6 -> #EEF4F6
             ================================================= */}
 
             <div
@@ -531,17 +539,20 @@ export default function Countdown() {
                     pointer-events-none
 
                     absolute
+
                     left-0
                     top-0
 
-                    h-24
+                    h-16
                     w-full
 
                     bg-gradient-to-b
 
                     from-[#EEF4F6]
-                    via-[#EEF4F6]/80
+                    via-[#EEF4F6]/75
                     to-transparent
+
+                    md:h-20
                 "
             />
 
@@ -640,8 +651,6 @@ export default function Countdown() {
 
             {/* =================================================
                 BUBBLES
-
-                HIỆU ỨNG GIỮ NGUYÊN
             ================================================= */}
 
             <div
@@ -655,65 +664,66 @@ export default function Countdown() {
                 "
             >
 
-                {bubbles.map(
-                    (
-                        bubble,
-                        index
-                    ) => (
+                {
+                    bubbles.map(
+                        (
+                            bubble,
+                            index
+                        ) => (
 
-                        <span
-                            key={
-                                `bubble-${index}`
-                            }
+                            <span
+                                key={
+                                    `bubble-${index}`
+                                }
 
-                            className="
-                                countdown-bubble
+                                className="
+                                    countdown-bubble
 
-                                absolute
+                                    absolute
 
-                                -bottom-20
+                                    -bottom-20
 
-                                rounded-full
+                                    rounded-full
 
-                                border
-                                border-[#FFFFFF]/75
+                                    border
+                                    border-[#FFFFFF]/75
 
-                                bg-[#FFFFFF]/16
+                                    bg-[#FFFFFF]/16
 
-                                shadow-[inset_0_0_18px_rgba(255,255,255,0.7)]
+                                    shadow-[inset_0_0_18px_rgba(255,255,255,0.7)]
 
-                                backdrop-blur-[2px]
-                            "
+                                    backdrop-blur-[2px]
+                                "
 
-                            style={{
+                                style={{
 
-                                left:
-                                    bubble.left,
+                                    left:
+                                        bubble.left,
 
-                                width:
-                                    bubble.size,
+                                    width:
+                                        bubble.size,
 
-                                height:
-                                    bubble.size,
+                                    height:
+                                        bubble.size,
 
-                                animationDelay:
-                                    bubble.delay,
+                                    animationDelay:
+                                        bubble.delay,
 
-                                animationDuration:
-                                    bubble.duration,
-                            }}
-                        />
+                                    animationDuration:
+                                        bubble.duration,
 
+                                }}
+                            />
+
+                        )
                     )
-                )}
+                }
 
             </div>
 
 
             {/* =================================================
                 FLOATING HEARTS
-
-                HIỆU ỨNG GIỮ NGUYÊN
             ================================================= */}
 
             <div
@@ -727,47 +737,52 @@ export default function Countdown() {
                 "
             >
 
-                {floatingItems.map(
-                    (
-                        item,
-                        index
-                    ) => (
+                {
+                    floatingItems.map(
+                        (
+                            item,
+                            index
+                        ) => (
 
-                        <span
-                            key={
-                                `heart-${index}`
-                            }
+                            <span
+                                key={
+                                    `heart-${index}`
+                                }
 
-                            className="
-                                countdown-heart
+                                className="
+                                    countdown-heart
 
-                                absolute
+                                    absolute
 
-                                -bottom-10
+                                    -bottom-10
 
-                                text-[#C98792]/38
-                            "
+                                    text-[#C98792]/38
+                                "
 
-                            style={{
+                                style={{
 
-                                left:
-                                    item.left,
+                                    left:
+                                        item.left,
 
-                                fontSize:
-                                    item.size,
+                                    fontSize:
+                                        item.size,
 
-                                animationDelay:
-                                    item.delay,
+                                    animationDelay:
+                                        item.delay,
 
-                                animationDuration:
-                                    item.duration,
-                            }}
-                        >
-                            {item.type}
-                        </span>
+                                    animationDuration:
+                                        item.duration,
 
+                                }}
+                            >
+                                {
+                                    item.type
+                                }
+                            </span>
+
+                        )
                     )
-                )}
+                }
 
             </div>
 
@@ -783,7 +798,7 @@ export default function Countdown() {
                     absolute
 
                     left-1/2
-                    top-12
+                    top-7
 
                     flex
 
@@ -793,6 +808,8 @@ export default function Countdown() {
                     justify-center
 
                     gap-4
+
+                    md:top-9
                 "
             >
 
@@ -884,6 +901,7 @@ export default function Countdown() {
 
                 {/* =================================================
                     TITLE
+                    MOBILE + DESKTOP: 2 DÒNG
                 ================================================= */}
 
                 <h2
@@ -892,42 +910,67 @@ export default function Countdown() {
 
                         mx-auto
 
-                        mt-5
+                        mt-4
 
-                        max-w-3xl
+                        max-w-4xl
 
-                        text-[39px]
                         font-light
 
-                        leading-[1.15]
+                        leading-[1.12]
 
                         tracking-[-0.02em]
 
                         text-[#31566B]
-
-                        sm:text-5xl
-
-                        md:text-6xl
-
-                        lg:text-[66px]
                     "
                 >
 
-                    {
-                        wedding
-                            .countdownSection
-                            .title
-                    }
-
-
-                    <br />
-
+                    {/* LINE 1 */}
 
                     <span
                         className="
+                            block
+
+                            whitespace-nowrap
+
+                            text-[clamp(25px,7vw,39px)]
+
+                            sm:text-5xl
+
+                            md:text-6xl
+
+                            lg:text-[66px]
+                        "
+                    >
+                        {
+                            wedding
+                                .countdownSection
+                                .title
+                        }
+                    </span>
+
+
+                    {/* LINE 2 */}
+
+                    <span
+                        className="
+                            mt-1
+
+                            block
+
+                            whitespace-nowrap
+
+                            text-[clamp(22px,6.4vw,38px)]
+
                             italic
 
                             text-[#587589]
+
+                            sm:mt-2
+                            sm:text-5xl
+
+                            md:text-6xl
+
+                            lg:text-[66px]
                         "
                     >
                         {
@@ -942,8 +985,6 @@ export default function Countdown() {
 
                 {/* =================================================
                     MAIN HEART
-
-                    GIỮ ICON TRÁI TIM
                 ================================================= */}
 
                 <div
@@ -953,7 +994,8 @@ export default function Countdown() {
                         relative
 
                         mx-auto
-                        mt-6
+
+                        mt-5
 
                         flex
 
@@ -978,12 +1020,15 @@ export default function Countdown() {
 
                         sm:h-12
                         sm:w-12
+
+                        md:mt-6
                     "
                 >
 
                     <span
                         className="
                             absolute
+
                             inset-[4px]
 
                             rounded-full
@@ -1014,7 +1059,7 @@ export default function Countdown() {
                     className="
                         mx-auto
 
-                        mt-12
+                        mt-9
 
                         grid
 
@@ -1024,227 +1069,223 @@ export default function Countdown() {
 
                         gap-5
 
+                        sm:mt-10
                         sm:gap-7
 
+                        md:mt-12
                         md:grid-cols-4
                     "
                 >
 
-                    {values.map(
-                        (
-                            item,
-                            index
-                        ) => (
-
-                            <div
-                                key={
-                                    item.label
-                                }
-
-                                className="
-                                    countdown-card
-
-                                    group
-
-                                    relative
-
-                                    mx-auto
-
-                                    flex
-
-                                    aspect-square
-                                    w-full
-                                    max-w-[155px]
-
-                                    flex-col
-
-                                    items-center
-                                    justify-center
-
-                                    overflow-hidden
-
-                                    rounded-full
-
-                                    border
-                                    border-[#FFFFFF]/80
-
-                                    bg-[#FFFDF8]/40
-
-                                    shadow-[0_20px_60px_rgba(49,86,107,0.09)]
-
-                                    backdrop-blur-lg
-
-                                    transition-all
-                                    duration-500
-
-                                    hover:-translate-y-2
-
-                                    hover:border-[#C98792]/25
-
-                                    hover:bg-[#FFFDF8]/68
-
-                                    hover:shadow-[0_24px_70px_rgba(49,86,107,0.13)]
-
-                                    sm:max-w-[175px]
-
-                                    md:max-w-[200px]
-                                "
-
-                                style={{
-                                    animationDelay:
-                                        `${index * 0.25}s`,
-                                }}
-                            >
-
-
-                                {/* =================================================
-                                    INNER RING
-                                ================================================= */}
+                    {
+                        values.map(
+                            (
+                                item,
+                                index
+                            ) => (
 
                                 <div
+                                    key={
+                                        item.label
+                                    }
+
                                     className="
-                                        pointer-events-none
+                                        countdown-card
 
-                                        absolute
+                                        group
 
-                                        inset-2
+                                        relative
+
+                                        mx-auto
+
+                                        flex
+
+                                        aspect-square
+                                        w-full
+                                        max-w-[155px]
+
+                                        flex-col
+
+                                        items-center
+                                        justify-center
+
+                                        overflow-hidden
 
                                         rounded-full
 
                                         border
-                                        border-[#7A9CAC]/16
+                                        border-[#FFFFFF]/80
+
+                                        bg-[#FFFDF8]/40
+
+                                        shadow-[0_20px_60px_rgba(49,86,107,0.09)]
+
+                                        backdrop-blur-lg
+
+                                        transition-all
+                                        duration-500
+
+                                        hover:-translate-y-2
+
+                                        hover:border-[#C98792]/25
+
+                                        hover:bg-[#FFFDF8]/68
+
+                                        hover:shadow-[0_24px_70px_rgba(49,86,107,0.13)]
+
+                                        sm:max-w-[175px]
+
+                                        md:max-w-[200px]
                                     "
-                                />
 
-
-                                {/* =================================================
-                                    SOFT LIGHT
-                                ================================================= */}
-
-                                <div
-                                    className="
-                                        pointer-events-none
-
-                                        absolute
-
-                                        -right-8
-                                        -top-8
-
-                                        h-24
-                                        w-24
-
-                                        rounded-full
-
-                                        bg-white/55
-
-                                        blur-2xl
-                                    "
-                                />
-
-
-                                {/* =================================================
-                                    NUMBER
-                                ================================================= */}
-
-                                <strong
-                                    className="
-                                        font-wedding-serif
-
-                                        relative
-                                        z-10
-
-                                        block
-
-                                        text-5xl
-                                        font-light
-
-                                        leading-none
-
-                                        tracking-[-0.03em]
-
-                                        text-[#31566B]
-
-                                        sm:text-6xl
-
-                                        md:text-7xl
-                                    "
+                                    style={{
+                                        animationDelay:
+                                            `${index * 0.25}s`,
+                                    }}
                                 >
 
-                                    {
-                                        item.value ===
-                                        undefined
 
-                                            ? "--"
+                                    {/* INNER RING */}
 
-                                            :
+                                    <div
+                                        className="
+                                            pointer-events-none
 
-                                            String(
-                                                item.value
-                                            ).padStart(
-                                                2,
-                                                "0"
-                                            )
-                                    }
+                                            absolute
 
-                                </strong>
+                                            inset-2
 
+                                            rounded-full
 
-                                {/* =================================================
-                                    LABEL
-                                ================================================= */}
-
-                                <span
-                                    className="
-                                        relative
-                                        z-10
-
-                                        mt-3
-
-                                        block
-
-                                        text-[8px]
-                                        font-medium
-
-                                        uppercase
-
-                                        tracking-[0.32em]
-
-                                        text-[#61726D]/80
-
-                                        sm:text-[9px]
-                                    "
-                                >
-                                    {item.label}
-                                </span>
+                                            border
+                                            border-[#7A9CAC]/16
+                                        "
+                                    />
 
 
-                                {/* =================================================
-                                    SMALL HEART
-                                ================================================= */}
+                                    {/* SOFT LIGHT */}
 
-                                <span
-                                    className="
-                                        absolute
-                                        bottom-4
+                                    <div
+                                        className="
+                                            pointer-events-none
 
-                                        text-[7px]
+                                            absolute
 
-                                        text-[#C98792]/45
-                                    "
-                                >
-                                    ♥
-                                </span>
+                                            -right-8
+                                            -top-8
 
-                            </div>
+                                            h-24
+                                            w-24
 
+                                            rounded-full
+
+                                            bg-white/55
+
+                                            blur-2xl
+                                        "
+                                    />
+
+
+                                    {/* NUMBER */}
+
+                                    <strong
+                                        className="
+                                            font-wedding-serif
+
+                                            relative
+                                            z-10
+
+                                            block
+
+                                            text-5xl
+                                            font-light
+
+                                            leading-none
+
+                                            tracking-[-0.03em]
+
+                                            text-[#31566B]
+
+                                            sm:text-6xl
+
+                                            md:text-7xl
+                                        "
+                                    >
+                                        {
+                                            item.value ===
+                                            undefined
+
+                                                ? "--"
+
+                                                :
+
+                                                String(
+                                                    item.value
+                                                ).padStart(
+                                                    2,
+                                                    "0"
+                                                )
+                                        }
+                                    </strong>
+
+
+                                    {/* LABEL */}
+
+                                    <span
+                                        className="
+                                            relative
+                                            z-10
+
+                                            mt-3
+
+                                            block
+
+                                            text-[8px]
+                                            font-medium
+
+                                            uppercase
+
+                                            tracking-[0.32em]
+
+                                            text-[#61726D]/80
+
+                                            sm:text-[9px]
+                                        "
+                                    >
+                                        {
+                                            item.label
+                                        }
+                                    </span>
+
+
+                                    {/* SMALL HEART */}
+
+                                    <span
+                                        className="
+                                            absolute
+
+                                            bottom-4
+
+                                            text-[7px]
+
+                                            text-[#C98792]/45
+                                        "
+                                    >
+                                        ♥
+                                    </span>
+
+                                </div>
+
+                            )
                         )
-                    )}
+                    }
 
                 </div>
 
 
                 {/* =================================================
                     MESSAGE
+                    ĐÂY LÀ PHẦN CUỐI CÙNG
                 ================================================= */}
 
                 <p
@@ -1253,7 +1294,7 @@ export default function Countdown() {
 
                         mx-auto
 
-                        mt-12
+                        mt-9
 
                         max-w-[610px]
 
@@ -1266,10 +1307,11 @@ export default function Countdown() {
 
                         text-[#61726D]/90
 
+                        sm:mt-10
                         sm:text-base
                         sm:leading-8
 
-                        md:mt-14
+                        md:mt-12
                         md:text-lg
                     "
                 >
@@ -1280,127 +1322,9 @@ export default function Countdown() {
                     }
                 </p>
 
-
-                {/* =================================================
-                    COUPLE NAMES
-                ================================================= */}
-
-                <p
-                    className="
-                        font-wedding
-
-                        mt-5
-
-                        text-[42px]
-
-                        leading-none
-
-                        text-[#587589]
-
-                        sm:text-5xl
-
-                        md:text-[54px]
-                    "
-                >
-
-                    {
-                        wedding
-                            .groom
-                            .shortName
-                    }
-
-
-                    <span
-                        className="
-                            font-wedding-serif
-
-                            mx-3
-
-                            align-middle
-
-                            text-[14px]
-                            font-normal
-
-                            text-[#C98792]
-                        "
-                    >
-                        &
-                    </span>
-
-
-                    {
-                        wedding
-                            .bride
-                            .shortName
-                    }
-
-                </p>
-
-            </div>
-
-
-            {/* =================================================
-                BOTTOM DECORATION
-            ================================================= */}
-
-            <div
-                className="
-                    pointer-events-none
-
-                    absolute
-
-                    bottom-9
-                    left-1/2
-
-                    flex
-
-                    -translate-x-1/2
-
-                    items-center
-                    justify-center
-
-                    gap-3
-                "
-            >
-
-                <span
-                    className="
-                        h-px
-                        w-12
-
-                        bg-gradient-to-r
-
-                        from-transparent
-                        to-[#B8A27D]/30
-                    "
-                />
-
-
-                <span
-                    className="
-                        text-[8px]
-
-                        text-[#C98792]/55
-                    "
-                >
-                    ♡
-                </span>
-
-
-                <span
-                    className="
-                        h-px
-                        w-12
-
-                        bg-gradient-to-l
-
-                        from-transparent
-                        to-[#B8A27D]/30
-                    "
-                />
-
             </div>
 
         </section>
+
     );
 }

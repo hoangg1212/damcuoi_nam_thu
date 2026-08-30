@@ -10,14 +10,10 @@ import {
 
 
 /* =========================================================
-   BIỂU TƯỢNG HAI BÀN TAY TẠO THÀNH TRÁI TIM
-
-   SVG trang trí nhẹ, không quá cartoon.
-   Màu dusty rose để liên kết với hoa hồng
-   trên background sau này.
+   RING DECORATION
 ========================================================= */
 
-function HandHeart() {
+function RingDecoration() {
 
     return (
 
@@ -26,291 +22,51 @@ function HandHeart() {
                 mx-auto
 
                 flex
+
+                w-full
+                max-w-[420px]
+
                 items-center
                 justify-center
             "
-
             aria-hidden="true"
         >
 
             <svg
-                viewBox="0 0 150 90"
+                viewBox="0 0 500 100"
 
                 fill="none"
 
                 xmlns="http://www.w3.org/2000/svg"
 
                 className="
-                    h-[58px]
-                    w-[105px]
+                    h-[56px]
+                    w-full
 
                     overflow-visible
 
-                    sm:h-[64px]
-                    sm:w-[118px]
+                    sm:h-[62px]
 
-                    md:h-[68px]
-                    md:w-[126px]
+                    md:h-[70px]
+
+                    lg:h-[74px]
                 "
             >
 
-                {/* =========================================
-                    BÀN TAY TRÁI
-                ========================================== */}
 
-                <g
-                    stroke="#B97882"
-
-                    strokeWidth="1.65"
-
-                    strokeLinecap="round"
-
-                    strokeLinejoin="round"
-
-                    opacity="0.82"
-                >
-
-                    {/* Cổ tay + lòng bàn tay */}
-
-                    <path
-                        d="
-                            M16 69
-
-                            C26 67
-                            32 63
-                            38 56
-
-                            C43 50
-                            47 43
-                            51 37
-                        "
-                    />
-
-
-                    {/* Ngón cái tạo nửa trái tim */}
-
-                    <path
-                        d="
-                            M51 37
-
-                            C53 31
-                            56 25
-                            61 22
-
-                            C65 19
-                            70 20
-                            74 24
-
-                            C75 25
-                            76 27
-                            77 29
-                        "
-                    />
-
-
-                    {/* Ngón trỏ */}
-
-                    <path
-                        d="
-                            M38 56
-
-                            C42 53
-                            46 50
-                            50 47
-
-                            C54 44
-                            57 42
-                            60 40
-                        "
-                    />
-
-
-                    {/* Ngón giữa */}
-
-                    <path
-                        d="
-                            M32 61
-
-                            C38 59
-                            43 56
-                            48 53
-
-                            C52 51
-                            56 48
-                            59 46
-                        "
-                    />
-
-
-                    {/* Ngón áp út */}
-
-                    <path
-                        d="
-                            M27 64
-
-                            C33 63
-                            39 60
-                            44 57
-                        "
-                    />
-
-
-                    {/* Chi tiết lòng bàn tay */}
-
-                    <path
-                        d="
-                            M37 55
-
-                            C37 61
-                            41 66
-                            47 70
-                        "
-
-                        opacity="0.45"
-                    />
-
-                </g>
-
-
-                {/* =========================================
-                    BÀN TAY PHẢI
-                ========================================== */}
-
-                <g
-                    stroke="#B97882"
-
-                    strokeWidth="1.65"
-
-                    strokeLinecap="round"
-
-                    strokeLinejoin="round"
-
-                    opacity="0.82"
-                >
-
-                    {/* Cổ tay + lòng bàn tay */}
-
-                    <path
-                        d="
-                            M134 69
-
-                            C124 67
-                            118 63
-                            112 56
-
-                            C107 50
-                            103 43
-                            99 37
-                        "
-                    />
-
-
-                    {/* Ngón cái tạo nửa trái tim */}
-
-                    <path
-                        d="
-                            M99 37
-
-                            C97 31
-                            94 25
-                            89 22
-
-                            C85 19
-                            80 20
-                            76 24
-
-                            C75 25
-                            74 27
-                            73 29
-                        "
-                    />
-
-
-                    {/* Ngón trỏ */}
-
-                    <path
-                        d="
-                            M112 56
-
-                            C108 53
-                            104 50
-                            100 47
-
-                            C96 44
-                            93 42
-                            90 40
-                        "
-                    />
-
-
-                    {/* Ngón giữa */}
-
-                    <path
-                        d="
-                            M118 61
-
-                            C112 59
-                            107 56
-                            102 53
-
-                            C98 51
-                            94 48
-                            91 46
-                        "
-                    />
-
-
-                    {/* Ngón áp út */}
-
-                    <path
-                        d="
-                            M123 64
-
-                            C117 63
-                            111 60
-                            106 57
-                        "
-                    />
-
-
-                    {/* Chi tiết lòng bàn tay */}
-
-                    <path
-                        d="
-                            M113 55
-
-                            C113 61
-                            109 66
-                            103 70
-                        "
-
-                        opacity="0.45"
-                    />
-
-                </g>
-
-
-                {/* =========================================
-                    ĐƯỜNG TIM NHẸ Ở GIỮA
-
-                    Không làm kín hoàn toàn để nhìn
-                    tinh tế hơn.
-                ========================================== */}
+                {/* =================================================
+                    LEFT DECORATIVE LINE
+                ================================================= */}
 
                 <path
                     d="
-                        M51 37
-
-                        C55 47
-                        64 56
-                        75 65
-
-                        C86 56
-                        95 47
-                        99 37
+                        M0 64
+                        C34 51 60 76 92 64
+                        C116 55 128 68 150 62
+                        C165 58 177 57 190 61
                     "
 
-                    stroke="#D4A0A8"
+                    stroke="#B89A70"
 
                     strokeWidth="1.1"
 
@@ -320,21 +76,131 @@ function HandHeart() {
                 />
 
 
-                {/* CHẤM NHỎ TRANG TRÍ */}
+                {/* =================================================
+                    RIGHT DECORATIVE LINE
+                ================================================= */}
+
+                <path
+                    d="
+                        M310 61
+                        C323 57 335 58 350 62
+                        C372 68 384 55 408 64
+                        C440 76 466 51 500 64
+                    "
+
+                    stroke="#B89A70"
+
+                    strokeWidth="1.1"
+
+                    strokeLinecap="round"
+
+                    opacity="0.48"
+                />
+
+
+                {/* =================================================
+                    LEFT RING
+                ================================================= */}
+
+                <ellipse
+                    cx="220"
+                    cy="49"
+
+                    rx="47"
+                    ry="24"
+
+                    transform="rotate(-12 220 49)"
+
+                    stroke="#B89A70"
+
+                    strokeWidth="1.55"
+                />
+
+
+                <ellipse
+                    cx="220"
+                    cy="49"
+
+                    rx="38"
+                    ry="17"
+
+                    transform="rotate(-12 220 49)"
+
+                    stroke="#B89A70"
+
+                    strokeWidth="0.9"
+
+                    opacity="0.55"
+                />
+
+
+                {/* =================================================
+                    RIGHT RING
+                ================================================= */}
+
+                <ellipse
+                    cx="280"
+                    cy="49"
+
+                    rx="47"
+                    ry="24"
+
+                    transform="rotate(12 280 49)"
+
+                    stroke="#B89A70"
+
+                    strokeWidth="1.55"
+                />
+
+
+                <ellipse
+                    cx="280"
+                    cy="49"
+
+                    rx="38"
+                    ry="17"
+
+                    transform="rotate(12 280 49)"
+
+                    stroke="#B89A70"
+
+                    strokeWidth="0.9"
+
+                    opacity="0.55"
+                />
+
+
+                {/* =================================================
+                    SMALL DETAILS
+                ================================================= */}
 
                 <circle
-                    cx="75"
-                    cy="72"
+                    cx="250"
+                    cy="24"
+
+                    r="2"
+
+                    fill="#B97882"
+
+                    opacity="0.65"
+                />
+
+
+                <circle
+                    cx="250"
+                    cy="75"
+
                     r="1.4"
 
                     fill="#B89A70"
 
-                    opacity="0.65"
+                    opacity="0.55"
                 />
 
             </svg>
 
         </div>
+
     );
 }
 
@@ -349,6 +215,10 @@ export default function Hero() {
         invitationOpened,
     } =
         useWedding();
+
+
+    const hero =
+        wedding.heroSection;
 
 
     return (
@@ -369,8 +239,7 @@ export default function Hero() {
 
 
             {/* =================================================
-                MOBILE BANNER
-                < 768px
+                MOBILE BACKGROUND
             ================================================= */}
 
             <div
@@ -383,9 +252,13 @@ export default function Hero() {
             >
 
                 <Image
-                    src="/images/banner-mobile.png"
+                    src={
+                        hero.mobileBackground
+                    }
 
-                    alt="Ngày chung đôi của Nguyễn Nam và Huỳnh Thư"
+                    alt={
+                        hero.backgroundAlt
+                    }
 
                     fill
 
@@ -403,8 +276,7 @@ export default function Hero() {
 
 
             {/* =================================================
-                DESKTOP BANNER
-                >= 768px
+                DESKTOP BACKGROUND
             ================================================= */}
 
             <div
@@ -419,9 +291,13 @@ export default function Hero() {
             >
 
                 <Image
-                    src="/images/banner-desktop.png"
+                    src={
+                        hero.desktopBackground
+                    }
 
-                    alt="Ngày chung đôi của Nguyễn Nam và Huỳnh Thư"
+                    alt={
+                        hero.backgroundAlt
+                    }
 
                     fill
 
@@ -439,12 +315,7 @@ export default function Hero() {
 
 
             {/* =================================================
-                SOFT OVERLAY
-
-                Chuẩn bị sẵn cho background:
-                xanh kem + hoa phối hồng.
-
-                Không phủ đen ảnh.
+                SOFT COLOR OVERLAY
             ================================================= */}
 
             <div
@@ -454,20 +325,13 @@ export default function Hero() {
                     absolute
                     inset-0
 
-                    bg-gradient-to-b
-
-                    from-[#FFFDF8]/10
-                    via-transparent
-                    to-[#DDE5D8]/22
+                    bg-[linear-gradient(to_bottom,rgba(255,253,248,0.16)_0%,rgba(255,253,248,0.02)_42%,rgba(220,229,216,0.24)_100%)]
                 "
             />
 
 
             {/* =================================================
-                CENTER LIGHT
-
-                Khi ảnh nền có nhiều hoa ở 2 bên,
-                vùng giữa vẫn đủ sạch để đọc chữ.
+                CENTER IVORY LIGHT
             ================================================= */}
 
             <div
@@ -479,25 +343,25 @@ export default function Hero() {
                     left-1/2
                     top-[48%]
 
-                    h-[520px]
-                    w-[94%]
+                    h-[540px]
+                    w-[96%]
 
                     -translate-x-1/2
                     -translate-y-1/2
 
                     rounded-full
 
-                    bg-[#F9F8EE]/58
+                    bg-[#FFFDF8]/54
 
-                    blur-[85px]
+                    blur-[90px]
 
-                    sm:w-[80%]
+                    sm:w-[82%]
 
-                    md:h-[600px]
+                    md:h-[620px]
                     md:w-[58%]
 
-                    lg:h-[650px]
-                    lg:w-[48%]
+                    lg:h-[670px]
+                    lg:w-[49%]
 
                     xl:w-[43%]
                 "
@@ -505,10 +369,7 @@ export default function Hero() {
 
 
             {/* =================================================
-                LỚP SÁNG TRẮNG NHẸ RIÊNG Ở TRUNG TÂM
-
-                Giúp tên vẫn rõ nếu background mới
-                có cành hoa đi qua khu vực giữa.
+                CENTER WHITE MIST
             ================================================= */}
 
             <div
@@ -518,10 +379,10 @@ export default function Hero() {
                     absolute
 
                     left-1/2
-                    top-1/2
+                    top-[50%]
 
-                    h-[68%]
-                    w-[82%]
+                    h-[72%]
+                    w-[86%]
 
                     -translate-x-1/2
                     -translate-y-1/2
@@ -530,9 +391,65 @@ export default function Hero() {
 
                     bg-white/10
 
-                    blur-[60px]
+                    blur-[65px]
 
-                    md:w-[48%]
+                    md:w-[50%]
+                "
+            />
+
+
+            {/* =================================================
+                BLUE SIDE GLOW
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
+                    -left-36
+                    top-[24%]
+
+                    h-[360px]
+                    w-[360px]
+
+                    rounded-full
+
+                    bg-[#8FB4C7]/10
+
+                    blur-[120px]
+
+                    md:h-[460px]
+                    md:w-[460px]
+                "
+            />
+
+
+            {/* =================================================
+                ROSE SIDE GLOW
+            ================================================= */}
+
+            <div
+                className="
+                    pointer-events-none
+
+                    absolute
+
+                    -right-36
+                    bottom-[12%]
+
+                    h-[360px]
+                    w-[360px]
+
+                    rounded-full
+
+                    bg-[#D9A5AE]/11
+
+                    blur-[125px]
+
+                    md:h-[460px]
+                    md:w-[460px]
                 "
             />
 
@@ -549,6 +466,7 @@ export default function Hero() {
                     mx-auto
 
                     flex
+
                     min-h-[100svh]
 
                     w-full
@@ -559,8 +477,8 @@ export default function Hero() {
 
                     px-5
 
-                    pb-14
-                    pt-24
+                    pb-12
+                    pt-20
 
                     text-center
 
@@ -568,11 +486,11 @@ export default function Hero() {
                     duration-1000
 
                     sm:px-6
-                    sm:pb-16
+                    sm:pb-14
 
                     md:px-8
-                    md:pb-20
-                    md:pt-28
+                    md:pb-16
+                    md:pt-24
 
                     ${
                         invitationOpened
@@ -598,19 +516,19 @@ export default function Hero() {
                         mx-auto
 
                         w-full
-                        max-w-[570px]
+                        max-w-[590px]
 
-                        sm:max-w-[620px]
+                        sm:max-w-[640px]
 
-                        md:max-w-[650px]
+                        md:max-w-[690px]
 
-                        lg:max-w-[700px]
+                        lg:max-w-[740px]
                     "
                 >
 
 
                     {/* =================================================
-                        SMALL TITLE
+                        EYEBROW
                     ================================================= */}
 
                     <div
@@ -627,16 +545,28 @@ export default function Hero() {
                         <span
                             className="
                                 h-px
-                                w-7
+                                w-6
 
                                 bg-gradient-to-r
 
                                 from-transparent
                                 to-[#B89A70]/55
 
-                                sm:w-10
+                                sm:w-9
 
-                                md:w-12
+                                md:w-11
+                            "
+                        />
+
+
+                        <span
+                            className="
+                                h-[3px]
+                                w-[3px]
+
+                                rounded-full
+
+                                bg-[#B97882]/70
                             "
                         />
 
@@ -648,34 +578,48 @@ export default function Hero() {
 
                                 uppercase
 
-                                tracking-[0.27em]
+                                tracking-[0.25em]
 
                                 text-[#607568]
 
                                 sm:text-[10px]
-                                sm:tracking-[0.32em]
+                                sm:tracking-[0.30em]
 
                                 md:text-[11px]
-                                md:tracking-[0.36em]
+                                md:tracking-[0.34em]
                             "
                         >
-                            Ngày chúng mình về chung một nhà
+                            {
+                                hero.eyebrow
+                            }
                         </p>
 
 
                         <span
                             className="
+                                h-[3px]
+                                w-[3px]
+
+                                rounded-full
+
+                                bg-[#B97882]/70
+                            "
+                        />
+
+
+                        <span
+                            className="
                                 h-px
-                                w-7
+                                w-6
 
                                 bg-gradient-to-l
 
                                 from-transparent
                                 to-[#B89A70]/55
 
-                                sm:w-10
+                                sm:w-9
 
-                                md:w-12
+                                md:w-11
                             "
                         />
 
@@ -683,31 +627,33 @@ export default function Hero() {
 
 
                     {/* =================================================
-                        DECORATIVE HAND HEART
+                        RING DECORATION
                     ================================================= */}
 
                     <div
                         className="
-                            mt-5
+                            mt-3
 
-                            sm:mt-6
+                            sm:mt-4
+
+                            md:mt-5
                         "
                     >
 
-                        <HandHeart />
+                        <RingDecoration />
 
                     </div>
 
 
                     {/* =================================================
-                        NAMES
+                        COUPLE NAMES
                     ================================================= */}
 
                     <h1
                         className="
                             font-wedding
 
-                            mt-2
+                            -mt-1
 
                             flex
                             flex-wrap
@@ -728,7 +674,6 @@ export default function Hero() {
 
                             sm:text-[74px]
 
-                            md:mt-3
                             md:gap-x-4
                             md:text-[90px]
 
@@ -738,7 +683,8 @@ export default function Hero() {
                         "
                     >
 
-                        {/* NAM */}
+
+                        {/* GROOM */}
 
                         <span>
                             {
@@ -749,12 +695,14 @@ export default function Hero() {
                         </span>
 
 
-                        {/* =============================================
+                        {/* =================================================
                             &
-                        ============================================== */}
+                        ================================================= */}
 
                         <span
                             className="
+                                relative
+
                                 flex
 
                                 h-10
@@ -768,9 +716,9 @@ export default function Hero() {
                                 rounded-full
 
                                 border
-                                border-[#B89A70]/35
+                                border-[#B89A70]/28
 
-                                bg-[#FFFDF8]/72
+                                bg-[#FFFDF8]/68
 
                                 font-wedding-serif
 
@@ -794,11 +742,34 @@ export default function Hero() {
                                 md:text-base
                             "
                         >
-                            &
+
+                            <span
+                                className="
+                                    absolute
+
+                                    inset-[4px]
+
+                                    rounded-full
+
+                                    border
+                                    border-[#C98792]/12
+                                "
+                            />
+
+
+                            <span
+                                className="
+                                    relative
+                                    z-10
+                                "
+                            >
+                                &
+                            </span>
+
                         </span>
 
 
-                        {/* THƯ */}
+                        {/* BRIDE */}
 
                         <span>
                             {
@@ -812,15 +783,18 @@ export default function Hero() {
 
 
                     {/* =================================================
-                        DECORATIVE DIVIDER
+                        MINIMAL DECORATION
                     ================================================= */}
 
                     <div
                         className="
                             mx-auto
-                            mt-5
+
+                            mt-4
 
                             flex
+
+                            max-w-[180px]
 
                             items-center
                             justify-center
@@ -832,40 +806,40 @@ export default function Hero() {
                         <span
                             className="
                                 h-px
-                                w-10
+
+                                flex-1
 
                                 bg-gradient-to-r
 
                                 from-transparent
                                 to-[#B89A70]/45
-
-                                sm:w-14
                             "
                         />
 
 
                         <span
                             className="
-                                text-[9px]
+                                h-[4px]
+                                w-[4px]
 
-                                text-[#B97882]
+                                rotate-45
+
+                                border
+                                border-[#B97882]/60
                             "
-                        >
-                            ♡
-                        </span>
+                        />
 
 
                         <span
                             className="
                                 h-px
-                                w-10
+
+                                flex-1
 
                                 bg-gradient-to-l
 
                                 from-transparent
                                 to-[#B89A70]/45
-
-                                sm:w-14
                             "
                         />
 
@@ -874,14 +848,6 @@ export default function Hero() {
 
                     {/* =================================================
                         QUOTE
-
-                        Không dùng:
-                        - bạn
-                        - anh/chị
-                        - cô/chú
-                        - chúng con
-
-                        nên phù hợp nhiều đối tượng người nhận.
                     ================================================= */}
 
                     <p
@@ -890,7 +856,7 @@ export default function Hero() {
 
                             mx-auto
 
-                            mt-5
+                            mt-4
 
                             max-w-[515px]
 
@@ -908,17 +874,17 @@ export default function Hero() {
                             sm:text-lg
                             sm:leading-8
 
-                            md:mt-6
+                            md:mt-5
                             md:max-w-[570px]
                             md:text-xl
                             md:leading-9
                         "
                     >
-                        “Từ một cuộc gặp gỡ,
-                        chúng mình đã chọn đồng hành cùng nhau.
-                        Hôm nay, hành trình ấy bước sang một chương mới,
-                        và niềm vui sẽ trọn vẹn hơn khi được sẻ chia
-                        cùng những người thân quý.”
+                        “
+                        {
+                            hero.quote
+                        }
+                        ”
                     </p>
 
 
@@ -928,70 +894,99 @@ export default function Hero() {
 
                     <div
                         className="
-                            my-6
+                            mx-auto
+
+                            my-5
 
                             flex
+
+                            max-w-[340px]
 
                             items-center
                             justify-center
 
                             gap-3
 
-                            sm:my-7
+                            sm:my-6
                             sm:gap-4
 
-                            md:my-8
+                            md:my-7
                         "
                     >
 
                         <span
                             className="
                                 h-px
-                                w-9
+
+                                flex-1
 
                                 bg-gradient-to-r
 
                                 from-transparent
-                                to-[#B89A70]/50
-
-                                sm:w-12
+                                to-[#B89A70]/45
                             "
                         />
 
 
-                        <p
+                        <div
                             className="
-                                font-wedding-serif
+                                rounded-full
 
-                                text-[13px]
-                                font-medium
+                                border
+                                border-[#B89A70]/20
 
-                                tracking-[0.20em]
+                                bg-[#FFFDF8]/52
 
-                                text-[#465A4E]
+                                px-4
+                                py-2
 
-                                sm:text-sm
-                                sm:tracking-[0.24em]
+                                shadow-[0_7px_25px_rgba(63,81,71,0.05)]
 
-                                md:text-[15px]
-                                md:tracking-[0.28em]
+                                backdrop-blur-md
+
+                                sm:px-5
                             "
                         >
-                            {wedding.displayDate}
-                        </p>
+
+                            <p
+                                className="
+                                    font-wedding-serif
+
+                                    whitespace-nowrap
+
+                                    text-[12px]
+                                    font-medium
+
+                                    tracking-[0.18em]
+
+                                    text-[#465A4E]
+
+                                    sm:text-[13px]
+                                    sm:tracking-[0.22em]
+
+                                    md:text-[14px]
+                                    md:tracking-[0.25em]
+                                "
+                            >
+                                {
+                                    wedding
+                                        .displayDate
+                                }
+                            </p>
+
+                        </div>
 
 
                         <span
                             className="
                                 h-px
-                                w-9
+
+                                flex-1
 
                                 bg-gradient-to-l
 
                                 from-transparent
-                                to-[#B89A70]/50
-
-                                sm:w-12
+                                to-[#B89A70]/45
                             "
                         />
 
@@ -1003,14 +998,16 @@ export default function Hero() {
                     ================================================= */}
 
                     <a
-                        href="#story"
+                        href={
+                            hero.ctaHref
+                        }
 
                         className="
                             group
 
                             inline-flex
 
-                            min-h-[50px]
+                            min-h-[48px]
 
                             items-center
                             justify-center
@@ -1020,23 +1017,23 @@ export default function Hero() {
                             rounded-full
 
                             border
-                            border-[#607568]/30
+                            border-[#607568]/26
 
-                            bg-[#FFFDF8]/76
+                            bg-[#FFFDF8]/72
 
                             px-6
-                            py-3.5
+                            py-3
 
                             text-[9px]
                             font-medium
 
                             uppercase
 
-                            tracking-[0.17em]
+                            tracking-[0.16em]
 
                             text-[#3F5147]
 
-                            shadow-[0_12px_32px_rgba(63,81,71,0.10)]
+                            shadow-[0_12px_32px_rgba(63,81,71,0.09)]
 
                             backdrop-blur-md
 
@@ -1053,7 +1050,7 @@ export default function Hero() {
 
                             hover:shadow-[0_16px_40px_rgba(185,120,130,0.16)]
 
-                            sm:min-h-[52px]
+                            sm:min-h-[50px]
                             sm:px-7
                             sm:text-[10px]
 
@@ -1063,13 +1060,15 @@ export default function Hero() {
                     >
 
                         <span>
-                            Xem hành trình của chúng mình
+                            {
+                                hero.ctaText
+                            }
                         </span>
 
 
                         <span
                             className="
-                                text-base
+                                text-[15px]
 
                                 transition-transform
                                 duration-300
@@ -1082,79 +1081,6 @@ export default function Hero() {
 
                     </a>
 
-
-                    {/* =================================================
-                        SIGNATURE
-                    ================================================= */}
-
-                    <div
-                        className="
-                            mt-7
-
-                            flex
-
-                            items-center
-                            justify-center
-
-                            gap-3
-
-                            sm:mt-8
-                        "
-                    >
-
-                        <span
-                            className="
-                                h-px
-                                w-6
-
-                                bg-[#B89A70]/30
-                            "
-                        />
-
-
-                        <p
-                            className="
-                                font-wedding-serif
-
-                                text-[11px]
-                                font-normal
-
-                                italic
-
-                                text-[#607568]/80
-
-                                sm:text-xs
-                            "
-                        >
-                            Nam
-
-                            <span
-                                className="
-                                    mx-2
-
-                                    not-italic
-
-                                    text-[#B97882]
-                                "
-                            >
-                                ♥
-                            </span>
-
-                            Thư
-                        </p>
-
-
-                        <span
-                            className="
-                                h-px
-                                w-6
-
-                                bg-[#B89A70]/30
-                            "
-                        />
-
-                    </div>
-
                 </div>
 
             </div>
@@ -1162,9 +1088,6 @@ export default function Hero() {
 
             {/* =================================================
                 BOTTOM TRANSITION
-
-                Chuyển từ Hero xuống section tiếp theo
-                nhẹ hơn.
             ================================================= */}
 
             <div
@@ -1172,20 +1095,21 @@ export default function Hero() {
                     pointer-events-none
 
                     absolute
+
                     bottom-0
                     left-0
 
                     z-[5]
 
-                    h-20
+                    h-16
                     w-full
 
                     bg-gradient-to-t
 
-                    from-[#F9F8EE]/55
+                    from-[#F9F8EE]/58
                     to-transparent
 
-                    md:h-24
+                    md:h-20
                 "
             />
 

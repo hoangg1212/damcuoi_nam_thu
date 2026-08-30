@@ -14,8 +14,6 @@ import { wedding } from "@/data/wedding";
 
 /* =========================================================
    EDITORIAL IMAGE LAYOUT
-
-   GIỮ NGUYÊN BỐ CỤC ẢNH HIỆN TẠI
 ========================================================= */
 
 const layouts = [
@@ -31,6 +29,7 @@ const layouts = [
     "lg:col-span-5 lg:h-[600px]",
 
     "lg:col-span-7 lg:h-[470px] lg:mt-24",
+
 ];
 
 
@@ -145,8 +144,7 @@ export default function Gallery() {
         () => {
 
             function keydown(
-                event:
-                    KeyboardEvent
+                event: KeyboardEvent
             ) {
 
                 if (
@@ -253,27 +251,26 @@ export default function Gallery() {
                 bg-[linear-gradient(to_bottom,#F8F1EE_0%,#F8F1EE_8%,#F6F6ED_44%,#EEF4F6_100%)]
 
                 px-5
-                py-20
+
+                pt-12
+                pb-10
 
                 sm:px-6
-                sm:py-24
+                sm:pt-14
+                sm:pb-12
 
                 md:px-8
-                md:py-32
+                md:pt-16
+                md:pb-14
 
-                lg:py-36
+                lg:pt-20
+                lg:pb-16
             "
         >
 
 
             {/* =================================================
                 SEAMLESS TOP TRANSITION
-
-                Countdown kết thúc:
-                #F8F1EE
-
-                Gallery bắt đầu:
-                #F8F1EE
             ================================================= */}
 
             <div
@@ -281,17 +278,20 @@ export default function Gallery() {
                     pointer-events-none
 
                     absolute
+
                     left-0
                     top-0
 
-                    h-24
+                    h-12
                     w-full
 
                     bg-gradient-to-b
 
                     from-[#F8F1EE]
-                    via-[#F8F1EE]/80
+                    via-[#F8F1EE]/75
                     to-transparent
+
+                    md:h-16
                 "
             />
 
@@ -383,71 +383,6 @@ export default function Gallery() {
 
 
             {/* =================================================
-                TOP DECORATION
-            ================================================= */}
-
-            <div
-                className="
-                    pointer-events-none
-
-                    absolute
-
-                    left-1/2
-                    top-8
-
-                    flex
-
-                    -translate-x-1/2
-
-                    items-center
-                    justify-center
-
-                    gap-3
-
-                    md:top-12
-                "
-            >
-
-                <span
-                    className="
-                        h-px
-                        w-9
-
-                        bg-gradient-to-r
-
-                        from-transparent
-                        to-[#B8A27D]/55
-                    "
-                />
-
-
-                <span
-                    className="
-                        text-[8px]
-
-                        text-[#C98792]/80
-                    "
-                >
-                    ♡
-                </span>
-
-
-                <span
-                    className="
-                        h-px
-                        w-9
-
-                        bg-gradient-to-l
-
-                        from-transparent
-                        to-[#B8A27D]/55
-                    "
-                />
-
-            </div>
-
-
-            {/* =================================================
                 MAIN CONTAINER
             ================================================= */}
 
@@ -471,22 +406,24 @@ export default function Gallery() {
                     className="
                         mx-auto
 
-                        mb-14
+                        mb-12
 
                         max-w-3xl
 
                         text-center
 
-                        sm:mb-16
+                        sm:mb-14
 
-                        md:mb-20
+                        md:mb-16
 
-                        lg:mb-24
+                        lg:mb-20
                     "
                 >
 
 
-                    {/* EYEBROW */}
+                    {/* =================================================
+                        EYEBROW
+                    ================================================= */}
 
                     <p
                         className="
@@ -514,6 +451,7 @@ export default function Gallery() {
 
                     {/* =================================================
                         TITLE
+                        MOBILE + DESKTOP: 2 DÒNG
                     ================================================= */}
 
                     <h2
@@ -526,48 +464,65 @@ export default function Gallery() {
 
                             max-w-4xl
 
-                            text-[41px]
                             font-light
 
-                            leading-[1.15]
+                            leading-[1.12]
 
                             tracking-[-0.02em]
 
                             text-[#31566B]
-
-                            sm:text-5xl
-
-                            md:text-6xl
-
-                            lg:text-[72px]
                         "
                     >
 
-                        {
-                            wedding
-                                .gallerySection
-                                .title
-                        }
-
-
-                        <br
-                            className="
-                                hidden
-
-                                sm:block
-                            "
-                        />
-
+                        {/* LINE 1 */}
 
                         <span
                             className="
+                                block
+
+                                whitespace-nowrap
+
+                                text-[clamp(25px,7.3vw,41px)]
+
+                                sm:text-5xl
+
+                                md:text-6xl
+
+                                lg:text-[72px]
+                            "
+                        >
+                            {
+                                wedding
+                                    .gallerySection
+                                    .title
+                            }
+                        </span>
+
+
+                        {/* LINE 2 */}
+
+                        <span
+                            className="
+                                mt-1
+
+                                block
+
+                                whitespace-nowrap
+
+                                text-[clamp(26px,7.5vw,41px)]
+
                                 italic
 
                                 text-[#587589]
+
+                                sm:mt-2
+                                sm:text-5xl
+
+                                md:text-6xl
+
+                                lg:text-[72px]
                             "
                         >
-                            {" "}
-
                             {
                                 wedding
                                     .gallerySection
@@ -585,7 +540,8 @@ export default function Gallery() {
                     <div
                         className="
                             mx-auto
-                            mt-6
+
+                            mt-5
 
                             flex
 
@@ -649,7 +605,7 @@ export default function Gallery() {
 
                             mx-auto
 
-                            mt-6
+                            mt-5
 
                             max-w-[700px]
 
@@ -679,14 +635,6 @@ export default function Gallery() {
 
                 {/* =================================================
                     GALLERY
-
-                    GIỮ NGUYÊN:
-                    - layout
-                    - kích thước
-                    - frame
-                    - hover
-                    - số thứ tự
-                    - nút +
                 ================================================= */}
 
                 <div
@@ -705,292 +653,167 @@ export default function Gallery() {
                     "
                 >
 
-                    {wedding.gallery.map(
-                        (
-                            image,
-                            index
-                        ) => (
+                    {
+                        wedding.gallery.map(
+                            (
+                                image,
+                                index
+                            ) => (
 
-                            <button
-                                key={
-                                    `${image.src}-${index}`
-                                }
-
-                                type="button"
-
-                                onClick={
-                                    () =>
-                                        setSelected(
-                                            index
-                                        )
-                                }
-
-                                aria-label={
-                                    `Xem ảnh ${index + 1}: ${image.alt}`
-                                }
-
-                                className={`
-                                    group
-
-                                    relative
-
-                                    h-[390px]
-
-                                    overflow-hidden
-
-                                    rounded-[24px]
-
-                                    border
-                                    border-[#FFFDF8]/85
-
-                                    bg-[#F1F3EB]
-
-                                    p-[5px]
-
-                                    text-left
-
-                                    shadow-[0_24px_65px_rgba(49,86,107,0.10)]
-
-                                    transition-all
-                                    duration-500
-
-                                    hover:-translate-y-1
-
-                                    hover:shadow-[0_30px_75px_rgba(49,86,107,0.15)]
-
-                                    sm:h-[420px]
-                                    sm:rounded-[28px]
-
-                                    lg:rounded-[32px]
-
-                                    ${
-                                        layouts[
-                                            index %
-                                            layouts.length
-                                        ]
+                                <button
+                                    key={
+                                        `${image.src}-${index}`
                                     }
-                                `}
-                            >
 
+                                    type="button"
 
-                                {/* =================================================
-                                    IMAGE
-                                ================================================= */}
+                                    onClick={
+                                        () =>
+                                            setSelected(
+                                                index
+                                            )
+                                    }
 
-                                <div
-                                    className="
+                                    aria-label={
+                                        `Xem ảnh ${index + 1}: ${image.alt}`
+                                    }
+
+                                    className={`
+                                        group
+
                                         relative
 
-                                        h-full
-                                        w-full
+                                        h-[390px]
 
                                         overflow-hidden
 
-                                        rounded-[20px]
+                                        rounded-[24px]
 
-                                        sm:rounded-[24px]
+                                        border
+                                        border-[#FFFDF8]/85
 
-                                        lg:rounded-[28px]
-                                    "
+                                        bg-[#F1F3EB]
+
+                                        p-[5px]
+
+                                        text-left
+
+                                        shadow-[0_24px_65px_rgba(49,86,107,0.10)]
+
+                                        transition-all
+                                        duration-500
+
+                                        hover:-translate-y-1
+
+                                        hover:shadow-[0_30px_75px_rgba(49,86,107,0.15)]
+
+                                        sm:h-[420px]
+                                        sm:rounded-[28px]
+
+                                        lg:rounded-[32px]
+
+                                        ${
+                                            layouts[
+                                                index %
+                                                layouts.length
+                                            ]
+                                        }
+                                    `}
                                 >
 
-                                    <Image
-                                        src={
-                                            image.src
-                                        }
-
-                                        alt={
-                                            image.alt
-                                        }
-
-                                        fill
-
-                                        sizes="
-                                            (max-width: 639px) 92vw,
-                                            (max-width: 1023px) 46vw,
-                                            65vw
-                                        "
-
-                                        className="
-                                            object-cover
-                                            object-center
-
-                                            transition-transform
-                                            duration-[1400ms]
-
-                                            ease-out
-
-                                            group-hover:scale-[1.045]
-                                        "
-                                    />
-
 
                                     {/* =================================================
-                                        IMAGE OVERLAY
-
-                                        Đổi nâu đen thành
-                                        ocean blue trầm.
+                                        IMAGE
                                     ================================================= */}
 
                                     <div
                                         className="
-                                            absolute
-                                            inset-0
+                                            relative
 
-                                            bg-gradient-to-t
+                                            h-full
+                                            w-full
 
-                                            from-[#183747]/55
-                                            via-[#213E50]/5
-                                            to-transparent
+                                            overflow-hidden
 
-                                            opacity-75
+                                            rounded-[20px]
 
-                                            transition-opacity
-                                            duration-500
+                                            sm:rounded-[24px]
 
-                                            group-hover:opacity-90
-                                        "
-                                    />
-
-
-                                    {/* =================================================
-                                        IMAGE NUMBER
-                                    ================================================= */}
-
-                                    <div
-                                        className="
-                                            absolute
-
-                                            left-4
-                                            top-4
-
-                                            flex
-
-                                            h-9
-                                            w-9
-
-                                            items-center
-                                            justify-center
-
-                                            rounded-full
-
-                                            border
-                                            border-white/40
-
-                                            bg-white/18
-
-                                            font-wedding-serif
-
-                                            text-[11px]
-                                            font-medium
-
-                                            text-white
-
-                                            shadow-lg
-
-                                            backdrop-blur-md
-
-                                            sm:left-5
-                                            sm:top-5
-                                        "
-                                    >
-                                        {String(
-                                            index + 1
-                                        ).padStart(
-                                            2,
-                                            "0"
-                                        )}
-                                    </div>
-
-
-                                    {/* =================================================
-                                        BOTTOM INFO
-                                    ================================================= */}
-
-                                    <div
-                                        className="
-                                            absolute
-
-                                            bottom-4
-                                            left-4
-                                            right-4
-
-                                            flex
-
-                                            items-end
-                                            justify-between
-
-                                            gap-4
-
-                                            sm:bottom-5
-                                            sm:left-5
-                                            sm:right-5
+                                            lg:rounded-[28px]
                                         "
                                     >
 
-                                        <div>
+                                        <Image
+                                            src={
+                                                image.src
+                                            }
 
+                                            alt={
+                                                image.alt
+                                            }
 
-                                            {/* LABEL */}
+                                            fill
 
-                                            <p
-                                                className="
-                                                    text-[9px]
-                                                    font-medium
+                                            sizes="
+                                                (max-width: 639px) 92vw,
+                                                (max-width: 1023px) 46vw,
+                                                65vw
+                                            "
 
-                                                    uppercase
+                                            className="
+                                                object-cover
+                                                object-center
 
-                                                    tracking-[0.24em]
+                                                transition-transform
+                                                duration-[1400ms]
 
-                                                    text-white/70
+                                                ease-out
 
-                                                    sm:text-[10px]
-                                                "
-                                            >
-                                                {
-                                                    wedding
-                                                        .gallerySection
-                                                        .cardLabel
-                                                }
-                                            </p>
-
-
-                                            {/* ALT TEXT */}
-
-                                            <p
-                                                className="
-                                                    font-wedding-serif
-
-                                                    mt-1
-
-                                                    line-clamp-1
-
-                                                    text-[17px]
-                                                    font-normal
-
-                                                    text-white
-
-                                                    sm:text-lg
-                                                "
-                                            >
-                                                {image.alt}
-                                            </p>
-
-                                        </div>
+                                                group-hover:scale-[1.045]
+                                            "
+                                        />
 
 
                                         {/* =================================================
-                                            VIEW BUTTON
+                                            IMAGE OVERLAY
                                         ================================================= */}
 
-                                        <span
+                                        <div
                                             className="
+                                                absolute
+                                                inset-0
+
+                                                bg-gradient-to-t
+
+                                                from-[#183747]/55
+                                                via-[#213E50]/5
+                                                to-transparent
+
+                                                opacity-75
+
+                                                transition-opacity
+                                                duration-500
+
+                                                group-hover:opacity-90
+                                            "
+                                        />
+
+
+                                        {/* =================================================
+                                            IMAGE NUMBER
+                                        ================================================= */}
+
+                                        <div
+                                            className="
+                                                absolute
+
+                                                left-4
+                                                top-4
+
                                                 flex
 
-                                                h-11
-                                                w-11
-
-                                                shrink-0
+                                                h-9
+                                                w-9
 
                                                 items-center
                                                 justify-center
@@ -998,42 +821,170 @@ export default function Gallery() {
                                                 rounded-full
 
                                                 border
-                                                border-white/45
+                                                border-white/40
 
-                                                bg-white/10
+                                                bg-white/18
 
                                                 font-wedding-serif
 
-                                                text-2xl
-                                                font-light
+                                                text-[11px]
+                                                font-medium
 
                                                 text-white
 
+                                                shadow-lg
+
                                                 backdrop-blur-md
 
-                                                transition-all
-                                                duration-300
-
-                                                group-hover:rotate-90
-
-                                                group-hover:border-white
-
-                                                group-hover:bg-white
-
-                                                group-hover:text-[#31566B]
+                                                sm:left-5
+                                                sm:top-5
                                             "
                                         >
-                                            +
-                                        </span>
+                                            {
+                                                String(
+                                                    index + 1
+                                                ).padStart(
+                                                    2,
+                                                    "0"
+                                                )
+                                            }
+                                        </div>
+
+
+                                        {/* =================================================
+                                            BOTTOM INFO
+                                        ================================================= */}
+
+                                        <div
+                                            className="
+                                                absolute
+
+                                                bottom-4
+                                                left-4
+                                                right-4
+
+                                                flex
+
+                                                items-end
+                                                justify-between
+
+                                                gap-4
+
+                                                sm:bottom-5
+                                                sm:left-5
+                                                sm:right-5
+                                            "
+                                        >
+
+                                            <div>
+
+
+                                                {/* LABEL */}
+
+                                                <p
+                                                    className="
+                                                        text-[9px]
+                                                        font-medium
+
+                                                        uppercase
+
+                                                        tracking-[0.24em]
+
+                                                        text-white/70
+
+                                                        sm:text-[10px]
+                                                    "
+                                                >
+                                                    {
+                                                        wedding
+                                                            .gallerySection
+                                                            .cardLabel
+                                                    }
+                                                </p>
+
+
+                                                {/* ALT */}
+
+                                                <p
+                                                    className="
+                                                        font-wedding-serif
+
+                                                        mt-1
+
+                                                        line-clamp-1
+
+                                                        text-[17px]
+                                                        font-normal
+
+                                                        text-white
+
+                                                        sm:text-lg
+                                                    "
+                                                >
+                                                    {
+                                                        image.alt
+                                                    }
+                                                </p>
+
+                                            </div>
+
+
+                                            {/* =================================================
+                                                VIEW BUTTON
+                                            ================================================= */}
+
+                                            <span
+                                                className="
+                                                    flex
+
+                                                    h-11
+                                                    w-11
+
+                                                    shrink-0
+
+                                                    items-center
+                                                    justify-center
+
+                                                    rounded-full
+
+                                                    border
+                                                    border-white/45
+
+                                                    bg-white/10
+
+                                                    font-wedding-serif
+
+                                                    text-2xl
+                                                    font-light
+
+                                                    text-white
+
+                                                    backdrop-blur-md
+
+                                                    transition-all
+                                                    duration-300
+
+                                                    group-hover:rotate-90
+
+                                                    group-hover:border-white
+
+                                                    group-hover:bg-white
+
+                                                    group-hover:text-[#31566B]
+                                                "
+                                            >
+                                                +
+                                            </span>
+
+                                        </div>
 
                                     </div>
 
-                                </div>
+                                </button>
 
-                            </button>
-
+                            )
                         )
-                    )}
+                    }
 
                 </div>
 
@@ -1046,7 +997,7 @@ export default function Gallery() {
                     className="
                         mx-auto
 
-                        mt-14
+                        mt-9
 
                         flex
 
@@ -1057,9 +1008,9 @@ export default function Gallery() {
 
                         gap-4
 
-                        sm:mt-16
+                        sm:mt-10
 
-                        md:mt-20
+                        md:mt-12
                     "
                 >
 
@@ -1121,473 +1072,479 @@ export default function Gallery() {
 
             {/* =================================================
                 LIGHTBOX
-
-                GIỮ NGUYÊN CHỨC NĂNG
             ================================================= */}
 
-            {selected !== null && (
+            {
+                selected !== null && (
 
-                <div
-                    className="
-                        fixed
-                        inset-0
+                    <div
+                        className="
+                            fixed
+                            inset-0
 
-                        z-[12000]
+                            z-[12000]
 
-                        flex
+                            flex
 
-                        items-center
-                        justify-center
+                            items-center
+                            justify-center
 
-                        overflow-hidden
+                            overflow-hidden
 
-                        bg-[#102735]/95
+                            bg-[#102735]/95
 
-                        px-3
-                        py-4
+                            px-3
+                            py-4
 
-                        backdrop-blur-xl
+                            backdrop-blur-xl
 
-                        sm:p-5
-                    "
+                            sm:p-5
+                        "
 
-                    onTouchStart={
-                        (
-                            event
-                        ) => {
-
-                            touchStart.current =
+                        onTouchStart={
+                            (
                                 event
-                                    .touches[0]
-                                    .clientX;
+                            ) => {
 
+                                touchStart.current =
+                                    event
+                                        .touches[0]
+                                        .clientX;
+
+                            }
                         }
-                    }
 
-                    onTouchEnd={
-                        (
-                            event
-                        ) => {
-
-                            const diff =
+                        onTouchEnd={
+                            (
                                 event
-                                    .changedTouches[0]
-                                    .clientX -
-                                touchStart.current;
+                            ) => {
+
+                                const diff =
+                                    event
+                                        .changedTouches[0]
+                                        .clientX -
+                                    touchStart.current;
 
 
-                            if (
-                                diff >
-                                60
-                            ) {
+                                if (
+                                    diff >
+                                    60
+                                ) {
 
-                                previous();
+                                    previous();
+
+                                }
+
+
+                                if (
+                                    diff <
+                                    -60
+                                ) {
+
+                                    next();
+
+                                }
 
                             }
-
-
-                            if (
-                                diff <
-                                -60
-                            ) {
-
-                                next();
-
-                            }
-
                         }
-                    }
-                >
-
-
-                    {/* =================================================
-                        LIGHTBOX GLOW
-                    ================================================= */}
-
-                    <div
-                        className="
-                            pointer-events-none
-
-                            absolute
-
-                            left-1/2
-                            top-1/2
-
-                            h-[520px]
-                            w-[520px]
-
-                            -translate-x-1/2
-                            -translate-y-1/2
-
-                            rounded-full
-
-                            bg-[#8FB4C7]/10
-
-                            blur-[140px]
-                        "
-                    />
-
-
-                    <div
-                        className="
-                            pointer-events-none
-
-                            absolute
-
-                            -right-24
-                            bottom-0
-
-                            h-[350px]
-                            w-[350px]
-
-                            rounded-full
-
-                            bg-[#C98792]/8
-
-                            blur-[120px]
-                        "
-                    />
-
-
-                    {/* =================================================
-                        CLOSE
-                    ================================================= */}
-
-                    <button
-                        type="button"
-
-                        onClick={
-                            () =>
-                                setSelected(
-                                    null
-                                )
-                        }
-
-                        aria-label="Đóng ảnh"
-
-                        className="
-                            absolute
-
-                            right-4
-                            top-4
-
-                            z-30
-
-                            flex
-                            h-11
-                            w-11
-
-                            items-center
-                            justify-center
-
-                            rounded-full
-
-                            border
-                            border-white/20
-
-                            bg-white/10
-
-                            font-wedding-serif
-
-                            text-3xl
-                            font-light
-
-                            leading-none
-
-                            text-white
-
-                            backdrop-blur-md
-
-                            transition-all
-                            duration-300
-
-                            hover:bg-white
-
-                            hover:text-[#31566B]
-
-                            sm:right-6
-                            sm:top-6
-                        "
-                    >
-                        ×
-                    </button>
-
-
-                    {/* =================================================
-                        PREVIOUS
-                    ================================================= */}
-
-                    <button
-                        type="button"
-
-                        onClick={
-                            previous
-                        }
-
-                        aria-label="Ảnh trước"
-
-                        className="
-                            absolute
-
-                            bottom-6
-                            left-[calc(50%_-_58px)]
-
-                            z-30
-
-                            flex
-                            h-11
-                            w-11
-
-                            items-center
-                            justify-center
-
-                            rounded-full
-
-                            border
-                            border-white/25
-
-                            bg-white/8
-
-                            font-wedding-serif
-
-                            text-3xl
-
-                            text-white
-
-                            backdrop-blur-md
-
-                            transition-all
-                            duration-300
-
-                            hover:bg-white
-
-                            hover:text-[#31566B]
-
-                            md:bottom-auto
-                            md:left-7
-                            md:top-1/2
-                            md:-translate-y-1/2
-
-                            md:h-12
-                            md:w-12
-                        "
-                    >
-                        ‹
-                    </button>
-
-
-                    {/* =================================================
-                        IMAGE WRAPPER
-                    ================================================= */}
-
-                    <div
-                        className="
-                            relative
-                            z-10
-
-                            flex
-
-                            h-[78svh]
-                            w-full
-
-                            max-w-[1150px]
-
-                            items-center
-                            justify-center
-
-                            sm:h-[84vh]
-                            sm:w-[90vw]
-                        "
                     >
 
-                        <Image
-                            src={
-                                wedding
-                                    .gallery[
-                                        selected
-                                    ]
-                                    .src
-                            }
 
-                            alt={
-                                wedding
-                                    .gallery[
-                                        selected
-                                    ]
-                                    .alt
-                            }
+                        {/* =================================================
+                            LIGHTBOX GLOW
+                        ================================================= */}
 
-                            fill
-
-                            priority
-
-                            sizes="95vw"
-
+                        <div
                             className="
-                                object-contain
+                                pointer-events-none
+
+                                absolute
+
+                                left-1/2
+                                top-1/2
+
+                                h-[520px]
+                                w-[520px]
+
+                                -translate-x-1/2
+                                -translate-y-1/2
+
+                                rounded-full
+
+                                bg-[#8FB4C7]/10
+
+                                blur-[140px]
                             "
                         />
 
-                    </div>
 
-
-                    {/* =================================================
-                        NEXT
-                    ================================================= */}
-
-                    <button
-                        type="button"
-
-                        onClick={
-                            next
-                        }
-
-                        aria-label="Ảnh tiếp theo"
-
-                        className="
-                            absolute
-
-                            bottom-6
-                            right-[calc(50%_-_58px)]
-
-                            z-30
-
-                            flex
-                            h-11
-                            w-11
-
-                            items-center
-                            justify-center
-
-                            rounded-full
-
-                            border
-                            border-white/25
-
-                            bg-white/8
-
-                            font-wedding-serif
-
-                            text-3xl
-
-                            text-white
-
-                            backdrop-blur-md
-
-                            transition-all
-                            duration-300
-
-                            hover:bg-white
-
-                            hover:text-[#31566B]
-
-                            md:bottom-auto
-                            md:right-7
-                            md:top-1/2
-                            md:-translate-y-1/2
-
-                            md:h-12
-                            md:w-12
-                        "
-                    >
-                        ›
-                    </button>
-
-
-                    {/* =================================================
-                        IMAGE INFO
-                    ================================================= */}
-
-                    <div
-                        className="
-                            absolute
-
-                            bottom-20
-                            left-1/2
-
-                            z-20
-
-                            w-full
-                            max-w-xl
-
-                            -translate-x-1/2
-
-                            px-6
-
-                            text-center
-
-                            text-white
-
-                            md:bottom-8
-                        "
-                    >
-
-                        {/* INDEX */}
-
-                        <p
+                        <div
                             className="
-                                text-[9px]
-                                font-medium
+                                pointer-events-none
 
-                                uppercase
+                                absolute
 
-                                tracking-[0.26em]
+                                -right-24
+                                bottom-0
 
-                                text-white/55
+                                h-[350px]
+                                w-[350px]
+
+                                rounded-full
+
+                                bg-[#C98792]/8
+
+                                blur-[120px]
                             "
-                        >
-                            {String(
-                                selected +
-                                1
-                            ).padStart(
-                                2,
-                                "0"
-                            )}
-
-                            {" · "}
-
-                            {String(
-                                wedding
-                                    .gallery
-                                    .length
-                            ).padStart(
-                                2,
-                                "0"
-                            )}
-                        </p>
+                        />
 
 
-                        {/* IMAGE NAME */}
+                        {/* =================================================
+                            CLOSE
+                        ================================================= */}
 
-                        <p
+                        <button
+                            type="button"
+
+                            onClick={
+                                () =>
+                                    setSelected(
+                                        null
+                                    )
+                            }
+
+                            aria-label="Đóng ảnh"
+
                             className="
+                                absolute
+
+                                right-4
+                                top-4
+
+                                z-30
+
+                                flex
+
+                                h-11
+                                w-11
+
+                                items-center
+                                justify-center
+
+                                rounded-full
+
+                                border
+                                border-white/20
+
+                                bg-white/10
+
                                 font-wedding-serif
 
-                                mt-1
+                                text-3xl
+                                font-light
 
-                                text-base
-                                font-normal
+                                leading-none
 
-                                text-white/90
+                                text-white
 
-                                sm:text-lg
+                                backdrop-blur-md
+
+                                transition-all
+                                duration-300
+
+                                hover:bg-white
+                                hover:text-[#31566B]
+
+                                sm:right-6
+                                sm:top-6
                             "
                         >
-                            {
-                                wedding
-                                    .gallery[
-                                        selected
-                                    ]
-                                    .alt
+                            ×
+                        </button>
+
+
+                        {/* =================================================
+                            PREVIOUS
+                        ================================================= */}
+
+                        <button
+                            type="button"
+
+                            onClick={
+                                previous
                             }
-                        </p>
+
+                            aria-label="Ảnh trước"
+
+                            className="
+                                absolute
+
+                                bottom-6
+                                left-[calc(50%_-_58px)]
+
+                                z-30
+
+                                flex
+
+                                h-11
+                                w-11
+
+                                items-center
+                                justify-center
+
+                                rounded-full
+
+                                border
+                                border-white/25
+
+                                bg-white/8
+
+                                font-wedding-serif
+
+                                text-3xl
+
+                                text-white
+
+                                backdrop-blur-md
+
+                                transition-all
+                                duration-300
+
+                                hover:bg-white
+                                hover:text-[#31566B]
+
+                                md:bottom-auto
+                                md:left-7
+                                md:top-1/2
+                                md:-translate-y-1/2
+
+                                md:h-12
+                                md:w-12
+                            "
+                        >
+                            ‹
+                        </button>
+
+
+                        {/* =================================================
+                            IMAGE WRAPPER
+                        ================================================= */}
+
+                        <div
+                            className="
+                                relative
+                                z-10
+
+                                flex
+
+                                h-[78svh]
+                                w-full
+
+                                max-w-[1150px]
+
+                                items-center
+                                justify-center
+
+                                sm:h-[84vh]
+                                sm:w-[90vw]
+                            "
+                        >
+
+                            <Image
+                                src={
+                                    wedding
+                                        .gallery[
+                                            selected
+                                        ]
+                                        .src
+                                }
+
+                                alt={
+                                    wedding
+                                        .gallery[
+                                            selected
+                                        ]
+                                        .alt
+                                }
+
+                                fill
+
+                                priority
+
+                                sizes="95vw"
+
+                                className="
+                                    object-contain
+                                "
+                            />
+
+                        </div>
+
+
+                        {/* =================================================
+                            NEXT
+                        ================================================= */}
+
+                        <button
+                            type="button"
+
+                            onClick={
+                                next
+                            }
+
+                            aria-label="Ảnh tiếp theo"
+
+                            className="
+                                absolute
+
+                                bottom-6
+                                right-[calc(50%_-_58px)]
+
+                                z-30
+
+                                flex
+
+                                h-11
+                                w-11
+
+                                items-center
+                                justify-center
+
+                                rounded-full
+
+                                border
+                                border-white/25
+
+                                bg-white/8
+
+                                font-wedding-serif
+
+                                text-3xl
+
+                                text-white
+
+                                backdrop-blur-md
+
+                                transition-all
+                                duration-300
+
+                                hover:bg-white
+                                hover:text-[#31566B]
+
+                                md:bottom-auto
+                                md:right-7
+                                md:top-1/2
+                                md:-translate-y-1/2
+
+                                md:h-12
+                                md:w-12
+                            "
+                        >
+                            ›
+                        </button>
+
+
+                        {/* =================================================
+                            IMAGE INFO
+                        ================================================= */}
+
+                        <div
+                            className="
+                                absolute
+
+                                bottom-20
+                                left-1/2
+
+                                z-20
+
+                                w-full
+                                max-w-xl
+
+                                -translate-x-1/2
+
+                                px-6
+
+                                text-center
+
+                                text-white
+
+                                md:bottom-8
+                            "
+                        >
+
+
+                            {/* INDEX */}
+
+                            <p
+                                className="
+                                    text-[9px]
+                                    font-medium
+
+                                    uppercase
+
+                                    tracking-[0.26em]
+
+                                    text-white/55
+                                "
+                            >
+                                {
+                                    String(
+                                        selected +
+                                        1
+                                    ).padStart(
+                                        2,
+                                        "0"
+                                    )
+                                }
+
+                                {" · "}
+
+                                {
+                                    String(
+                                        wedding
+                                            .gallery
+                                            .length
+                                    ).padStart(
+                                        2,
+                                        "0"
+                                    )
+                                }
+                            </p>
+
+
+                            {/* IMAGE NAME */}
+
+                            <p
+                                className="
+                                    font-wedding-serif
+
+                                    mt-1
+
+                                    text-base
+                                    font-normal
+
+                                    text-white/90
+
+                                    sm:text-lg
+                                "
+                            >
+                                {
+                                    wedding
+                                        .gallery[
+                                            selected
+                                        ]
+                                        .alt
+                                }
+                            </p>
+
+                        </div>
 
                     </div>
 
-                </div>
-
-            )}
+                )
+            }
 
         </section>
+
     );
 }

@@ -166,7 +166,7 @@ export default function LoveQuote() {
         bg-[linear-gradient(to_bottom,#EEF4F6_0%,#EEF4F6_12%,#F4F6EF_55%,#F8F1EE_100%)]
 
         px-5
-        py-24
+        py-12
 
         sm:px-6
 
@@ -394,29 +394,6 @@ export default function LoveQuote() {
                 )}
 
             </div>
-
-
-            {/* =================================================
-                TOP DECORATION
-            ================================================= */}
-
-            <div
-                className="
-                    pointer-events-none
-
-                    absolute
-
-                    left-1/2
-                    top-12
-
-                    -translate-x-1/2
-
-                    text-[#C98792]/25
-                "
-            >
-                ♡
-            </div>
-
 
             {/* =================================================
                 BOTTOM DECORATION

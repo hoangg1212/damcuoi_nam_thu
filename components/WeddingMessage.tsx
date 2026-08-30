@@ -25,8 +25,6 @@ function RingDecoration() {
 
                 items-center
                 justify-center
-
-                py-1
             "
             aria-hidden="true"
         >
@@ -39,14 +37,14 @@ function RingDecoration() {
                 xmlns="http://www.w3.org/2000/svg"
 
                 className="
-                    h-[66px]
+                    h-[58px]
                     w-full
 
                     overflow-visible
 
-                    sm:h-[74px]
+                    sm:h-[66px]
 
-                    md:h-[84px]
+                    md:h-[74px]
                 "
             >
 
@@ -241,12 +239,19 @@ export default function WeddingMessage() {
                 bg-[linear-gradient(to_bottom,#F8F1EE_0%,#F8F1EE_8%,#F3F5EF_46%,#EAF2F5_100%)]
 
                 px-5
-                py-16
+
+                pt-8
+                pb-7
 
                 sm:px-6
-                sm:py-20
+                sm:pt-10
+                sm:pb-9
 
-                md:py-24
+                md:pt-12
+                md:pb-10
+
+                lg:pt-14
+                lg:pb-12
             "
         >
 
@@ -264,16 +269,18 @@ export default function WeddingMessage() {
                     left-0
                     top-0
 
-                    h-20
+                    h-10
                     w-full
 
                     bg-gradient-to-b
 
                     from-[#F8F1EE]
-
-                    via-[#F8F1EE]/80
-
+                    via-[#F8F1EE]/70
                     to-transparent
+
+                    sm:h-12
+
+                    md:h-14
                 "
             />
 
@@ -394,9 +401,7 @@ export default function WeddingMessage() {
                     bg-gradient-to-r
 
                     from-transparent
-
                     via-white/20
-
                     to-transparent
 
                     blur-xl
@@ -488,13 +493,18 @@ export default function WeddingMessage() {
 
                 {/* =================================================
                     RING DECORATION
+                    ĐƯA GẦN SECTION PHÍA TRÊN HƠN
                 ================================================= */}
 
                 <div
                     className="
-                        mb-1
+                        -mt-1
+                        mb-0
 
-                        sm:mb-2
+                        sm:-mt-1
+                        sm:mb-1
+
+                        md:-mt-2
                     "
                 >
 
@@ -541,15 +551,16 @@ export default function WeddingMessage() {
 
                         font-wedding-serif
 
-                        mt-6
+                        mt-5
 
                         text-5xl
                         leading-none
 
                         text-[#7A9CAC]/22
 
-                        sm:mt-7
+                        sm:mt-6
 
+                        md:mt-7
                         md:text-7xl
                     "
                 >
@@ -622,7 +633,7 @@ export default function WeddingMessage() {
                     className="
                         font-wedding
 
-                        mt-8
+                        mt-7
 
                         text-[48px]
 
@@ -632,6 +643,7 @@ export default function WeddingMessage() {
 
                         sm:text-[54px]
 
+                        md:mt-8
                         md:text-[64px]
                     "
                 >
@@ -674,6 +686,13 @@ export default function WeddingMessage() {
 
                 {/* =================================================
                     BOTTOM TEXT
+
+                    MOBILE:
+                    - 1 DÒNG
+                    - FONT TỰ CO ĐỂ KHÔNG XUỐNG HÀNG
+
+                    DESKTOP:
+                    - GIẢM KHOẢNG CÁCH PHÍA DƯỚI
                 ================================================= */}
 
                 <p
@@ -682,24 +701,29 @@ export default function WeddingMessage() {
 
                         mx-auto
 
-                        mt-4
+                        mt-3
 
-                        max-w-[570px]
+                        max-w-none
 
-                        text-[14px]
+                        whitespace-nowrap
+
+                        text-[clamp(10px,2.8vw,14px)]
                         font-normal
 
                         italic
 
-                        leading-7
+                        leading-6
 
-                        tracking-[0.03em]
+                        tracking-[0.01em]
 
                         text-[#61726D]/85
 
+                        sm:mt-4
                         sm:text-[15px]
+                        sm:tracking-[0.02em]
 
                         md:text-[16px]
+                        md:tracking-[0.03em]
                     "
                 >
                     {

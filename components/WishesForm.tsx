@@ -1,13 +1,173 @@
 "use client";
 
-import {
+import type {
     FormEvent,
     ReactNode,
+} from "react";
+
+import {
     useState,
 } from "react";
 
 import { wedding } from "@/data/wedding";
 
+
+/* =========================================================
+   NHẪN CƯỚI
+========================================================= */
+
+function RingDecoration() {
+
+    return (
+
+        <div
+            className="
+                mx-auto
+
+                flex
+
+                w-full
+                max-w-[360px]
+
+                items-center
+                justify-center
+            "
+            aria-hidden="true"
+        >
+
+            <svg
+                viewBox="0 0 500 100"
+
+                fill="none"
+
+                xmlns="http://www.w3.org/2000/svg"
+
+                className="
+                    h-[54px]
+                    w-full
+
+                    overflow-visible
+
+                    sm:h-[60px]
+
+                    md:h-[66px]
+                "
+            >
+
+                {/* LEFT DECORATIVE LINE */}
+
+                <path
+                    d="
+                        M0 70
+                        C35 52 58 86 91 69
+                        C116 56 121 80 146 68
+                        C162 60 170 59 188 63
+                    "
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1.2"
+
+                    opacity="0.55"
+                />
+
+
+                {/* RIGHT DECORATIVE LINE */}
+
+                <path
+                    d="
+                        M312 63
+                        C330 59 338 60 354 68
+                        C379 80 384 56 409 69
+                        C442 86 465 52 500 70
+                    "
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1.2"
+
+                    opacity="0.55"
+                />
+
+
+                {/* LEFT RING */}
+
+                <ellipse
+                    cx="220"
+                    cy="49"
+
+                    rx="48"
+                    ry="25"
+
+                    transform="rotate(-13 220 49)"
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1.6"
+                />
+
+
+                <ellipse
+                    cx="220"
+                    cy="49"
+
+                    rx="39"
+                    ry="18"
+
+                    transform="rotate(-13 220 49)"
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1"
+
+                    opacity="0.65"
+                />
+
+
+                {/* RIGHT RING */}
+
+                <ellipse
+                    cx="280"
+                    cy="49"
+
+                    rx="48"
+                    ry="25"
+
+                    transform="rotate(13 280 49)"
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1.6"
+                />
+
+
+                <ellipse
+                    cx="280"
+                    cy="49"
+
+                    rx="39"
+                    ry="18"
+
+                    transform="rotate(13 280 49)"
+
+                    stroke="#B8A27D"
+
+                    strokeWidth="1"
+
+                    opacity="0.65"
+                />
+
+            </svg>
+
+        </div>
+
+    );
+}
+
+
+/* =========================================================
+   WISHES FORM
+========================================================= */
 
 export default function WishesForm() {
 
@@ -213,24 +373,26 @@ export default function WishesForm() {
                 bg-[linear-gradient(to_bottom,#EAF2F5_0%,#EAF2F5_8%,#F3F6EF_46%,#FAF3EF_100%)]
 
                 px-5
-                py-20
+
+                pt-10
+                pb-10
 
                 sm:px-6
-                sm:py-24
+                sm:pt-12
+                sm:pb-12
 
                 md:px-8
-                md:py-32
+                md:pt-14
+                md:pb-14
 
-                lg:py-36
+                lg:pt-16
+                lg:pb-16
             "
         >
 
 
             {/* =================================================
                 SEAMLESS TOP TRANSITION
-
-                WeddingMessage kết thúc #EAF2F5
-                WishesForm bắt đầu #EAF2F5
             ================================================= */}
 
             <div
@@ -241,14 +403,18 @@ export default function WishesForm() {
                     left-0
                     top-0
 
-                    h-24
+                    h-10
                     w-full
 
                     bg-gradient-to-b
 
                     from-[#EAF2F5]
-                    via-[#EAF2F5]/80
+                    via-[#EAF2F5]/75
                     to-transparent
+
+                    sm:h-12
+
+                    md:h-14
                 "
             />
 
@@ -340,71 +506,6 @@ export default function WishesForm() {
 
 
             {/* =================================================
-                TOP DECORATION
-            ================================================= */}
-
-            <div
-                className="
-                    pointer-events-none
-
-                    absolute
-
-                    left-1/2
-                    top-8
-
-                    flex
-
-                    -translate-x-1/2
-
-                    items-center
-                    justify-center
-
-                    gap-3
-
-                    md:top-12
-                "
-            >
-
-                <span
-                    className="
-                        h-px
-                        w-9
-
-                        bg-gradient-to-r
-
-                        from-transparent
-                        to-[#B8A27D]/50
-                    "
-                />
-
-
-                <span
-                    className="
-                        text-[8px]
-
-                        text-[#C98792]/80
-                    "
-                >
-                    ♥
-                </span>
-
-
-                <span
-                    className="
-                        h-px
-                        w-9
-
-                        bg-gradient-to-l
-
-                        from-transparent
-                        to-[#B8A27D]/50
-                    "
-                />
-
-            </div>
-
-
-            {/* =================================================
                 MAIN CONTENT
             ================================================= */}
 
@@ -416,16 +517,20 @@ export default function WishesForm() {
                     mx-auto
 
                     grid
+
                     max-w-[1160px]
 
                     items-center
 
-                    gap-14
+                    gap-10
+
+                    sm:gap-12
 
                     lg:grid-cols-[0.82fr_1.18fr]
-                    lg:gap-16
 
-                    xl:gap-24
+                    lg:gap-12
+
+                    xl:gap-16
                 "
             >
 
@@ -448,7 +553,9 @@ export default function WishesForm() {
                 >
 
 
-                    {/* EYEBROW */}
+                    {/* =================================================
+                        EYEBROW
+                    ================================================= */}
 
                     <p
                         className="
@@ -509,7 +616,6 @@ export default function WishesForm() {
                         <br
                             className="
                                 hidden
-
                                 lg:block
                             "
                         />
@@ -540,7 +646,7 @@ export default function WishesForm() {
 
                     <div
                         className="
-                            mt-7
+                            mt-6
 
                             flex
 
@@ -602,7 +708,7 @@ export default function WishesForm() {
                         className="
                             font-wedding-serif
 
-                            mt-6
+                            mt-5
 
                             text-[16px]
                             font-normal
@@ -626,11 +732,15 @@ export default function WishesForm() {
                     </p>
 
 
+                    {/* =================================================
+                        SUB DESCRIPTION
+                    ================================================= */}
+
                     <p
                         className="
                             font-wedding-serif
 
-                            mt-4
+                            mt-3
 
                             text-[16px]
                             font-normal
@@ -657,7 +767,7 @@ export default function WishesForm() {
 
                     <div
                         className="
-                            mt-8
+                            mt-6
 
                             flex
 
@@ -823,6 +933,7 @@ export default function WishesForm() {
                             pointer-events-none
 
                             absolute
+
                             inset-[6px]
 
                             rounded-[25px]
@@ -834,6 +945,10 @@ export default function WishesForm() {
                         "
                     />
 
+
+                    {/* =================================================
+                        FORM CONTENT
+                    ================================================= */}
 
                     <div
                         className="
@@ -849,75 +964,31 @@ export default function WishesForm() {
 
                         <div
                             className="
-                                mb-8
+                                mb-6
 
                                 text-center
 
-                                md:mb-10
+                                md:mb-8
                             "
                         >
 
 
-                            {/* HEART ICON */}
+                            {/* =================================================
+                                RING DECORATION
+                            ================================================= */}
 
-                            <div
-                                className="
-                                    relative
-
-                                    mx-auto
-
-                                    flex
-                                    h-14
-                                    w-14
-
-                                    items-center
-                                    justify-center
-
-                                    rounded-full
-
-                                    border
-                                    border-[#C98792]/25
-
-                                    bg-[#FFFDF8]/75
-
-                                    text-[#C98792]
-
-                                    shadow-[0_10px_30px_rgba(49,86,107,0.07)]
-                                "
-                            >
-
-                                <span
-                                    className="
-                                        absolute
-                                        inset-[5px]
-
-                                        rounded-full
-
-                                        border
-                                        border-[#B8A27D]/16
-                                    "
-                                />
+                            <RingDecoration />
 
 
-                                <span
-                                    className="
-                                        relative
-                                        z-10
-                                    "
-                                >
-                                    ♡
-                                </span>
-
-                            </div>
-
-
-                            {/* FORM TITLE */}
+                            {/* =================================================
+                                FORM TITLE
+                            ================================================= */}
 
                             <h3
                                 className="
                                     font-wedding-serif
 
-                                    mt-5
+                                    mt-2
 
                                     text-[27px]
                                     font-normal
@@ -927,6 +998,8 @@ export default function WishesForm() {
                                     text-[#31566B]
 
                                     sm:text-3xl
+
+                                    md:mt-3
                                 "
                             >
                                 {
@@ -937,7 +1010,10 @@ export default function WishesForm() {
                             </h3>
 
 
-                            {/* FORM DESCRIPTION */}
+                            {/* =================================================
+                                FORM DESCRIPTION
+                                MOBILE: ÉP 1 DÒNG
+                            ================================================= */}
 
                             <p
                                 className="
@@ -947,16 +1023,24 @@ export default function WishesForm() {
 
                                     mt-2
 
-                                    max-w-md
+                                    max-w-none
 
-                                    text-[14px]
+                                    whitespace-nowrap
+
+                                    text-[clamp(10px,3vw,14px)]
                                     font-normal
 
-                                    leading-6
+                                    leading-5
+
+                                    tracking-[-0.01em]
 
                                     text-[#61726D]/85
 
+                                    sm:max-w-md
+                                    sm:whitespace-normal
                                     sm:text-[15px]
+                                    sm:leading-6
+                                    sm:tracking-normal
                                 "
                             >
                                 {
@@ -1368,8 +1452,8 @@ export default function WishesForm() {
                                 mt-2
 
                                 flex
-                                min-h-[54px]
 
+                                min-h-[54px]
                                 w-full
 
                                 items-center
@@ -1405,7 +1489,6 @@ export default function WishesForm() {
                                 hover:shadow-[0_18px_45px_rgba(49,86,107,0.22)]
 
                                 disabled:cursor-wait
-
                                 disabled:opacity-60
 
                                 sm:text-[11px]
@@ -1441,51 +1524,59 @@ export default function WishesForm() {
                             STATUS
                         ================================================= */}
 
-                        {status.text && (
+                        {
+                            status.text && (
 
-                            <div
-                                className={`
-                                    mt-5
+                                <div
+                                    className={`
+                                        mt-5
 
-                                    rounded-2xl
+                                        rounded-2xl
 
-                                    border
+                                        border
 
-                                    px-4
-                                    py-3.5
+                                        px-4
+                                        py-3.5
 
-                                    text-center
+                                        text-center
 
-                                    font-wedding-serif
+                                        font-wedding-serif
 
-                                    text-[14px]
+                                        text-[14px]
 
-                                    leading-6
+                                        leading-6
 
-                                    sm:text-[15px]
+                                        sm:text-[15px]
 
-                                    ${
-                                        status.type ===
-                                        "success"
+                                        ${
+                                            status.type ===
+                                            "success"
 
-                                            ? `
-                                                border-[#8EA995]/30
-                                                bg-[#F0F6F0]/85
-                                                text-[#53705B]
-                                              `
+                                                ? `
+                                                    border-[#8EA995]/30
 
-                                            : `
-                                                border-[#D9A29A]/30
-                                                bg-[#FFF1EF]/85
-                                                text-[#985950]
-                                              `
+                                                    bg-[#F0F6F0]/85
+
+                                                    text-[#53705B]
+                                                  `
+
+                                                : `
+                                                    border-[#D9A29A]/30
+
+                                                    bg-[#FFF1EF]/85
+
+                                                    text-[#985950]
+                                                  `
+                                        }
+                                    `}
+                                >
+                                    {
+                                        status.text
                                     }
-                                `}
-                            >
-                                {status.text}
-                            </div>
+                                </div>
 
-                        )}
+                            )
+                        }
 
                     </div>
 
@@ -1553,35 +1644,41 @@ function Field({
             >
 
                 <span>
-                    {label}
+                    {
+                        label
+                    }
                 </span>
 
 
-                {optional && (
+                {
+                    optional && (
 
-                    <span
-                        className="
-                            font-wedding-serif
+                        <span
+                            className="
+                                font-wedding-serif
 
-                            text-[11px]
-                            font-normal
+                                text-[11px]
+                                font-normal
 
-                            normal-case
+                                normal-case
 
-                            tracking-normal
+                                tracking-normal
 
-                            text-[#61726D]/55
-                        "
-                    >
-                        Không bắt buộc
-                    </span>
+                                text-[#61726D]/55
+                            "
+                        >
+                            Không bắt buộc
+                        </span>
 
-                )}
+                    )
+                }
 
             </label>
 
 
-            {children}
+            {
+                children
+            }
 
         </div>
 
